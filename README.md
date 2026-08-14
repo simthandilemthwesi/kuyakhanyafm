@@ -189,24 +189,9 @@ The team structure includes:
 
 ### Management
 
-- **Mr Mzoxolo Panduva** — Managing Director
-- **Mr Zolani Fulani** — Station Manager
-- **Mr Simthandile Mthwesi** — Media Manager
-
 ### Technical Team
 
-- **Mr Anthon Skweyiya** — Senior Technician
-
 ### Presenters
-
-The presenter section includes programmes such as:
-
-- Elobukumkani
-- Yizani Sibonisane
-- Ithemba Labalili
-- Healing & Deliverance
-- Umzila Weenyawo Zabezolo
-- Yizani Sakhe
 
 ## 🔗 Navigation
 
