@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - KUYAKHANYA FM</title>
+    <meta name="description" content="Meet the dedicated team behind KUYAKHANYA FM - bringing light to Thembalethu through radio broadcasting.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --purple: #6a0dad;
+            --purple-light: #8a2be2;
+            --purple-dark: #4b0082;
+            --gold: #ffd700;
+            --gold-light: #ffec8b;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --gray-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: var(--gold);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+            z-index: 1100;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .sidebar-nav {
+            padding: 80px 30px 30px;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .sidebar-nav a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        /* Main Content Styles */
+        .main {
+            min-height: calc(100vh - 160px);
+        }
+
+        .hero {
+            position: relative;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/team_image.jpg') center/cover no-repeat;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(106, 13, 173, 0.623), rgba(76, 0, 130, 0.726));
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--white);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--purple-dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+            text-shadow: none;
+        }
+
+        .btn:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--gray-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--purple);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 15px auto;
+        }
+
+        .content-box {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        /* Team Styles */
+        .team-hero {
+            padding: 0;
+        }
+
+        .team-category {
+            margin-bottom: 60px;
+        }
+
+        .team-category-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--purple);
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .team-category-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 15px auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-photo {
+            margin-bottom: 20px;
+        }
+
+        .member-photo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-info h3 {
+            color: var(--purple);
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .role {
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .member-desc {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Featured Team Member (Managing Director) */
+        .featured-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .featured-member .member-photo img {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+        }
+
+        .footer-logo h3 {
+            margin-bottom: 5px;
+        }
+
+        .footer-logo p {
+            color: var(--gold);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            
+            .logo-text p {
+                font-size: 0.8rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+                min-height: 80vh;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .content-box {
+                padding: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smart TV Optimizations */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .hero-content h2 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .content-box {
+                font-size: 1.1rem;
+            }
+            
+            .nav a {
+                font-size: 1.1rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --purple: #000080;
+                --gold: #ffff00;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="images/Kuyakhanya FM Icon.png" alt="KUYAKHANYA FM Logo" class="logo">
+                </a>
+                <div class="logo-text">
+                    <h1>KUYAKHANYA FM</h1>
+                    <p>We Shine Brighter Together</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html#introduction">Introduction</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#vision-mission">Vision & Mission</a></li>
+                    <li><a href="index.html#aims">Aims & Objectives</a></li>
+                    <li><a href="our-team.html">Our Team</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-sidebar" id="closeSidebar">&times;</button>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html#introduction">Introduction</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#vision-mission">Vision & Mission</a></li>
+                <li><a href="index.html#aims">Aims & Objectives</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+                <li><a href="index.html#contact">Contact Us</a></li>
+                <li><a href="index.html#podcast">Listen Live</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Team Hero Section -->
+        <section class="hero team-hero">
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="container">
+                    <h2>Meet Our Team</h2>
+                    <p>Dedicated individuals bringing light to Thembalethu through quality broadcasting</p>
+                    <a href="#team-section" class="btn">Explore Our Team</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="section" id="team-section">
+            <div class="container">
+                <!-- Managing Director Section -->
+                <div class="team-category">
+                    <h2 class="team-category-title">Managing Director</h2>
+                    <div class="featured-member">
+                        <div class="member-photo">
+                            <img src="images/team1.jpg" alt="Managing Director">
+                        </div>
+                        <div class="member-info">
+                            <h3>Mr Mzoxolo Panduva</h3>
+                            <p class="role">Managing Director</p>
+                            <p class="member-desc">Leads overall strategy and community engagement for KUYAKHANYA FM, ensuring we shine brighter together in our mission to bring light to Thembalethu.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Management Team Section -->
+                <div class="team-category">
+                    <h2 class="team-category-title">Management Team</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team2.jpg" alt="Station Manager">
+                            </div>
+                            <div class="member-info">
+                                <h3>Mr Zolani Fulani</h3>
+                                <p class="role">Station Manager</p>
+                                <p class="member-desc">Oversight of programming content and ensuring all broadcasts align with our mission and vision.</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team3.jpg" alt="Media Manager">
+                            </div>
+                            <div class="member-info">
+                                <h3>Mr Simthandile Mthwesi</h3>
+                                <p class="role">Media Manager</p>
+                                <p class="member-desc">Oversight of Media content. Marketing & sponsorship coordination for KUYAKHANYA FM.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technician Section -->
+                <div class="team-category">
+                    <h2 class="team-category-title">Technician</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team4.jpg" alt="Technician">
+                            </div>
+                            <div class="member-info">
+                                <h3>Mr Anthon Skweyiya</h3>
+                                <p class="role">Senior Technician</p>
+                                <p class="member-desc">Ensuring all technical aspects of our broadcasts run smoothly and maintaining our broadcasting equipment during live broadcasts and recordings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presenters Section -->
+                <div class="team-category">
+                    <h2 class="team-category-title">Presenters</h2>
+                    <div class="team-grid">
+                        <!-- Presenter 1 to 18 -->
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team5.jpg" alt="Presenter 1">
+                            </div>
+                            <div class="member-info">
+                                <h3>Sis Kholeka Mekile</h3>
+                                <p class="role">Elobukumkani</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team6.jpg" alt="Presenter 2">
+                            </div>
+                            <div class="member-info">
+                                <h3>Sis Busisiwe Ngxabi</h3>
+                                <p class="role">Elobukumkani</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team7.jpg" alt="Presenter 3">
+                            </div>
+                            <div class="member-info">
+                                <h3>Rev. Mkuseli Masele</h3>
+                                <p class="role">Yizani Sibonisane</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team8.jpg" alt="Presenter 4">
+                            </div>
+                            <div class="member-info">
+                                <h3>Rev. Zolani None</h3>
+                                <p class="role">Yizani Sibonisane</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team9.jpg" alt="Presenter 7">
+                            </div>
+                            <div class="member-info">
+                                <h3>Mrs Noxolo Mati</h3>
+                                <p class="role">Ithemba Labalili</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team10.jpg" alt="Presenter 8">
+                            </div>
+                            <div class="member-info">
+                                <h3>Lady Bishop Lolwana</h3>
+                                <p class="role">Ithemba Labalili</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team11.jpg" alt="Presenter 9">
+                            </div>
+                            <div class="member-info">
+                                <h3>Lady Prophet Panduva</h3>
+                                <p class="role">Ithemba Labalili</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team12.jpg" alt="Presenter 10">
+                            </div>
+                            <div class="member-info">
+                                <h3>Pastor Ernest Ussivane</h3>
+                                <p class="role">Healing & Deliverance</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team13.jpg" alt="Presenter 11">
+                            </div>
+                            <div class="member-info">
+                                <h3>Pastor Mzamo Mgadle</h3>
+                                <p class="role">Healing & Deliverance</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team14.jpg" alt="Presenter 12">
+                            </div>
+                            <div class="member-info">
+                                <h3>Sis Lutho Velaphi</h3>
+                                <p class="role">Healing & Deliverance</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team16.jpg" alt="Presenter 14">
+                            </div>
+                            <div class="member-info">
+                                <h3>Mr Thukela Poswayo</h3>
+                                <p class="role">Umzila Weenyawo Zabezolo</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team17.jpg" alt="Presenter 15">
+                            </div>
+                            <div class="member-info">
+                                <h3>Mrs Daniswa Mthwesi</h3>
+                                <p class="role">Yizani Sakhe</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team18.jpg" alt="Presenter 16">
+                            </div>
+                            <div class="member-info">
+                                <h3>Rev. Mzimkhulu Maboza</h3>
+                                <p class="role">Yizani Sakhe</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team19.jpg" alt="Presenter 17">
+                            </div>
+                            <div class="member-info">
+                                <h3>Sis Iviwe Mbekela</h3>
+                                <p class="role">Yizani Sakhe</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="images/team20.jpg" alt="Presenter 18">
+                            </div>
+                            <div class="member-info">
+                                <h3>Sis Thabisa Jini</h3>
+                                <p class="role">Yizani Sakhe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/Kuyakhanya FM Icon.png" alt="KUYAKHANYA FM Logo" class="logo">
+                <div>
+                <h3>KUYAKHANYA FM</h3>
+                <p>We Shine Brighter Together</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                <li><a href="index.html#introduction">Introduction</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#vision-mission">Vision & Mission</a></li>
+                <li><a href="our-team.html">Our Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><a href="tel:0639780839" style="color: var(--white); text-decoration: none; transition: color 0.3s;">0639780839</a></p>
+                <p><a href="mailto:info.kuyakhanyafm@gmail.com" style="color: var(--white); text-decoration: none; transition: color 0.3s;">info.kuyakhanyafm@gmail.com</a></p>
+            </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KUYAKHANYA FM. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const closeSidebar = document.getElementById('closeSidebar');
+            
+            // Toggle sidebar
+            if (menuToggle && sidebar) {
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            // Close sidebar
+            if (closeSidebar && sidebar) {
+                closeSidebar.addEventListener('click', function() {
+                    sidebar.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(event) {
+                if (sidebar && sidebar.classList.contains('active') && 
+                    !sidebar.contains(event.target) && 
+                    event.target !== menuToggle) {
+                    sidebar.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Team member hover effects
+            const teamMembers = document.querySelectorAll('.team-member');
+            teamMembers.forEach(member => {
+                member.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                member.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Animate team members on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe team members for animation
+            const teamMemberElements = document.querySelectorAll('.team-member, .featured-member');
+            teamMemberElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+            
+            // Parallax effect for hero background
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero-background');
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

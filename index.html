@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUYAKHANYA FM - We Shine Brighter Together</title>
+    <meta name="description" content="KUYAKHANYA FM - Online radio station based in Thembalethu, George. Bringing light through Christ with uplifting music and inspirational messages.">
+    <meta name="keywords" content="Kuyakhanya FM, online radio, Christian radio, Thembalethu, George, inspirational music">
+    <meta name="google-site-verification" content="5xpY0V-DR-U_GmbHXTEE2ZceAvZB6ay2Kesnqzi7hI8">
+    <link rel="google-site-verification" href="/google220ef3af12fadf4c.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /*
+          Copyright (c) 2025 Simthandile Mthwesi
+          Licensed under the MIT License
+          See LICENSE file in the project root for full license text.
+        */
+        :root {
+            --purple: #6a0dad;
+            --purple-light: #8a2be2;
+            --purple-dark: #4b0082;
+            --gold: #ffd700;
+            --gold-light: #ffec8b;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --gray-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: var(--gold);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+            z-index: 1100;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .close-sidebar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .sidebar-nav {
+            padding: 80px 30px 30px;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .sidebar-nav a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        /* Main Content Styles */
+        .main {
+            min-height: calc(100vh - 160px);
+        }
+
+        .hero {
+            background: 
+                linear-gradient(rgba(106, 13, 173, 0.7), rgba(75, 0, 130, 0.7)),
+                url('images/team_image.jpg') center/cover no-repeat;
+            color: var(--white);
+            padding: 140px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+            line-height: 1.2;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--purple-dark);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--gray-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--purple);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 15px auto;
+        }
+
+        .content-box {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-box h3 {
+            color: var(--purple);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .content-box ul {
+            padding-left: 20px;
+        }
+
+        .content-box li {
+            margin-bottom: 10px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Podcast Section */
+        .podcast-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .podcast-info {
+            text-align: center;
+        }
+
+        .podcast-embed {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .podcast-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact Section */
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--purple);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--purple-light);
+            transform: translateY(-3px);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
+        /* Google Forms Container */
+        .google-form-container {
+            width: 100%;
+            height: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .google-form-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Team Page Styles */
+        .team-hero {
+            padding: 80px 0;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .team-member.featured {
+            flex-direction: column;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto 60px;
+        }
+
+        .member-photo {
+            flex-shrink: 0;
+        }
+
+        .member-photo img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member.featured .member-photo img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .member-info h3 {
+            color: var(--purple);
+            margin-bottom: 5px;
+        }
+
+        .role {
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-grid .team-member {
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .team-grid .member-photo img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .presenters .team-member {
+            margin-bottom: 30px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+        }
+
+        .footer-logo h3 {
+            margin-bottom: 5px;
+        }
+
+        .footer-logo p {
+            color: var(--gold);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            
+            .logo-text p {
+                font-size: 0.8rem;
+            }
+            
+            .hero {
+                padding: 100px 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .google-form-container {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .content-box {
+                padding: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .google-form-container {
+                height: 400px;
+            }
+        }
+
+        /* Smart TV Optimizations */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .hero-content h2 {
+                font-size: 4rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .content-box {
+                font-size: 1.1rem;
+            }
+            
+            .nav a {
+                font-size: 1.1rem;
+            }
+            
+            .nav ul {
+                gap: 35px;
+            }
+            
+            .google-form-container {
+                height: 700px;
+            }
+        }
+
+        /* Desktop Navigation - Straight Line */
+        @media (min-width: 769px) {
+            .nav ul {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+            }
+            
+            .nav li {
+                margin: 0;
+            }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --purple: #000080;
+                --gold: #ffff00;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/Kuyakhanya FM Icon.png" alt="KUYAKHANYA FM Logo" class="logo">
+                <div class="logo-text">
+                    <h1>KUYAKHANYA FM</h1>
+                    <p>We Shine Brighter Together</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#vision-mission">Vision & Mission</a></li>
+                    <li><a href="#aims">Aims & Objectives</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-sidebar" id="closeSidebar">&times;</button>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#vision-mission">Vision & Mission</a></li>
+                <li><a href="#aims">Aims & Objectives</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#podcast">Listen Live</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Bringing Light to Thembalethu</h2>
+                <p>Uplifting, inspiring, and transforming lives through the light of Christ</p>
+                <a href="#podcast" class="btn">Listen Live Now</a>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="introduction" class="section">
+            <div class="container">
+                <h2 class="section-title">Introduction</h2>
+                <div class="content-box">
+                    <p>Kuyakhanya FM is an online radio station birthed from a God-given vision. Through a dream, the call came to bring light to the people of Thembalethu. The station exists to uplift, inspire, and transform lives by spreading the light of Christ, especially to those walking in spiritual darkness. Kuyakhanya FM is more than just radio; it is a movement of hope, unity, and empowerment for the community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <div class="content-box">
+                    <p>Kuyakhanya FM is established to be a beacon of hope, faith, and transformation in Thembalethu and beyond. Our goal is to use the power of broadcasting to bring people together, spread the love of God, and empower individuals through uplifting music, inspirational messages, and community-driven programs. We believe that by shining brighter together, we can light the way for generations to come.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission Section -->
+        <section id="vision-mission" class="section">
+            <div class="container">
+                <h2 class="section-title">Vision & Mission</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <div class="content-box">
+                            <h3>Vision</h3>
+                            <p>To be the light of hope and transformation in Thembalethu and beyond, shining the love of God through radio broadcasting, inspiring positive change, and uniting the community to walk in truth, purpose, and spiritual growth.</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content-box">
+                            <h3>Mission</h3>
+                            <ul>
+                                <li>To spread the light of Christ to those living in spiritual darkness, bringing encouragement, faith, and restoration.</li>
+                                <li>To provide uplifting music, inspiring messages, and community-driven programs that empower individuals and families.</li>
+                                <li>To be a voice of unity, hope, and transformation, helping people discover their God-given potential.</li>
+                                <li>To create a platform that promotes local talent, culture, and testimonies of God's goodness.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aims & Objectives Section -->
+        <section id="aims" class="section">
+            <div class="container">
+                <h2 class="section-title">Aims & Objectives</h2>
+                <div class="content-box">
+                    <ul>
+                        <li>To serve as a platform of spiritual empowerment for the Thembalethu community.</li>
+                        <li>To promote local talent, creativity, and culture through radio programming.</li>
+                        <li>To create opportunities for dialogue, education, and positive social change.</li>
+                        <li>To encourage youth development through skills training, mentorship, and exposure.</li>
+                        <li>To build strong partnerships with churches, organizations, and the wider community to shine brighter together.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Section -->
+        <section id="team" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Team</h2>
+                <div class="content-box">
+                    <p>Meet the dedicated individuals who make KUYAKHANYA FM possible. Our team is committed to bringing light and inspiration to our community through quality broadcasting and meaningful content.</p>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="our-team.html" class="btn">View Full Team</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Podcast Section -->
+        <section id="podcast" class="section">
+            <div class="container">
+            <h2 class="section-title">Listen Live</h2>
+
+            <div class="content-box podcast-container">
+                <div class="podcast-info">
+                <h3>KUYAKHANYA FM Live Stream</h3>
+                <p>Tune in to our live broadcast for uplifting music, inspirational messages, and community programs.</p>
+                </div>
+
+                <!-- Centered, professional live player -->
+                <div class="live-player-row" style="margin-top:20px;">
+                <div class="live-player" role="region" aria-label="KUYAKHANYA FM live player">
+                    <!-- Optional station logo (hidden if missing) -->
+                    <img src="images/Kuyakhanya FM Icon.png" alt="KUYAKHANYA FM logo" class="player-logo" onerror="this.style.display='none'">
+
+                    <!-- Player container (the external script will replace or enhance this) -->
+                    <div class="player-wrap">
+                    <div class="cc_player" data-username="kuyakhan" data-size="sm" data-style="light">Loading …</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <style>
+            /* Scoped player styles for a centered, polished look */
+            .live-player-row {
+                display: flex;
+                justify-content: center;
+            }
+
+            .live-player {
+                width: 100%;
+                max-width: 640px;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                padding: 16px;
+                border-radius: 14px;
+                background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(106,13,173,0.025));
+                box-shadow: 0 10px 30px rgba(106,13,173,0.12);
+                border: 1px solid rgba(106,13,173,0.08);
+                transition: transform 0.18s ease, box-shadow 0.18s ease;
+            }
+
+            .live-player:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 18px 45px rgba(106,13,173,0.14);
+            }
+
+            .player-logo {
+                width: 64px;
+                height: 64px;
+                border-radius: 10px;
+                object-fit: cover;
+                flex: 0 0 64px;
+                border: 2px solid rgba(255,215,0,0.12);
+                background: rgba(255,255,255,0.02);
+                display: block;
+            }
+
+            .player-wrap {
+                flex: 1;
+                min-width: 0; /* allow inner content to shrink on small screens */
+            }
+
+            /* Make the embedded player fill available width */
+            .player-wrap .cc_player,
+            .player-wrap iframe {
+                width: 100% !important;
+                height: 64px;
+                display: block;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 520px) {
+                .live-player {
+                gap: 12px;
+                padding: 12px;
+                }
+
+                .player-logo {
+                width: 52px;
+                height: 52px;
+                flex: 0 0 52px;
+                }
+
+                .player-wrap .cc_player,
+                .player-wrap iframe {
+                height: 56px;
+                }
+            }
+
+            @media (max-width: 360px) {
+                .player-logo { display: none; }
+                .player-wrap .cc_player,
+                .player-wrap iframe { height: 50px; }
+            }
+            </style>
+
+            <!-- Webplayer script (loads the visible player above) -->
+            <script language="javascript" type="text/javascript" src="https://cast3.asurahosting.com/system/player.js"></script>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <div class="content-box">
+                            <h3>Get In Touch</h3>
+                            <div class="contact-info">
+                                <p><i class="fas fa-phone"></i> <a href="tel:0639780839" style="color: inherit; text-decoration: none;">0639780839</a></p>
+                                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27639780839" style="color: inherit; text-decoration: none;">0639780839</a></p>
+                                <p><i class="fas fa-envelope"></i> <a href="mailto:info.kuyakhanyafm@gmail.com" style="color: inherit; text-decoration: none;">info.kuyakhanyafm@gmail.com</a></p>
+                            </div>
+                            <div class="social-icons">
+                                <a href="https://www.facebook.com/profile.php?id=61580413033664" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                                <a href="https://www.instagram.com/kuyakhanyafm/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@KuyakhanyaFM" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.tiktok.com/@kuyakhanyafm" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                                <a href="https://wa.me/27639780839" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content-box">
+                            <h3>Send Us a Message</h3>
+                            <div class="google-form-container">
+                                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScFijWKgFqrUr-etsbtSrym6_u1N13CTSPnoH9kwibxtNYyjw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/Kuyakhanya FM Icon.png" alt="KUYAKHANYA FM Logo" class="logo">
+                    <div>
+                        <h3>KUYAKHANYA FM</h3>
+                        <p>We Shine Brighter Together</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#vision-mission">Vision & Mission</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><a href="tel:0639780839" style="color: inherit; text-decoration: none;">0639780839</a></p>
+                    <p><a href="mailto:info.kuyakhanyafm@gmail.com" style="color: inherit; text-decoration: none;">info.kuyakhanyafm@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom" style="padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+                    <div style="flex:1;display:flex;justify-content:center;">
+                        <p style="margin:0;text-align:center;">&copy; 2025 KUYAKHANYA FM. All Rights Reserved.</p>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <span style="color:var(--white);font-weight:600;">Designed by</span>
+                        <a href="simportfolio.html" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit;">
+                            <img src="simlogo.svg" alt="Simthandile" style="height: 60px; border-radius:6px;display:block;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Copyright (c) 2025 Simthandile Mthwesi
+        // Licensed under the MIT License
+        // See LICENSE file in the project root for full license text.
+
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const closeSidebar = document.getElementById('closeSidebar');
+            
+            // Toggle sidebar
+            if (menuToggle && sidebar) {
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
+                });
+            }
+            
+            // Close sidebar
+            if (closeSidebar && sidebar) {
+                closeSidebar.addEventListener('click', function() {
+                    sidebar.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                });
+            }
+            
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(event) {
+                if (sidebar && sidebar.classList.contains('active') && 
+                    !sidebar.contains(event.target) && 
+                    event.target !== menuToggle) {
+                    sidebar.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close sidebar if open
+                        if (sidebar && sidebar.classList.contains('active')) {
+                            sidebar.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                        
+                        // Scroll to target
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add loading state to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (this.type === 'submit') {
+                        // For submit buttons, show loading state
+                        const originalText = this.textContent;
+                        this.textContent = 'Sending...';
+                        this.disabled = true;
+                        
+                        // Reset after 3 seconds (simulating form submission)
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.disabled = false;
+                        }, 3000);
+                    }
+                });
+            });
+            
+            // Podcast player controls (if needed in future)
+            const podcastIframe = document.querySelector('.podcast-embed iframe');
+            if (podcastIframe) {
+                // Add event listener for when the iframe loads
+                podcastIframe.addEventListener('load', function() {
+                    console.log('Podcast player loaded');
+                    // You could add custom controls or tracking here
+                });
+            }
+            
+            // Google Forms iframe
+            const googleFormIframe = document.querySelector('.google-form-container iframe');
+            if (googleFormIframe) {
+                googleFormIframe.addEventListener('load', function() {
+                    console.log('Google Form loaded');
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                if (window.scrollY > 100) {
+                    header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                    header.style.background = 'linear-gradient(135deg, var(--purple-dark), var(--purple))';
+                } else {
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                    header.style.background = 'linear-gradient(135deg, var(--purple), var(--purple-dark))';
+                }
+            });
+            
+            // Initialize with scroll effect
+            window.dispatchEvent(new Event('scroll'));
+            
+            // Add animation to elements when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            const animatedElements = document.querySelectorAll('.content-box, .team-member, .section-title');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+            
+            // SEO optimization - Update page title based on scroll position
+            let currentSection = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            const sectionObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        currentSection = entry.target.id;
+                        updatePageTitle();
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+            
+            function updatePageTitle() {
+                const baseTitle = 'KUYAKHANYA FM - We Shine Brighter Together';
+                let sectionTitle = '';
+                
+                switch(currentSection) {
+                    case 'introduction':
+                        sectionTitle = ' - Introduction';
+                        break;
+                    case 'about':
+                        sectionTitle = ' - About Us';
+                        break;
+                    case 'vision-mission':
+                        sectionTitle = ' - Vision & Mission';
+                        break;
+                    case 'aims':
+                        sectionTitle = ' - Aims & Objectives';
+                        break;
+                    case 'podcast':
+                        sectionTitle = ' - Listen Live';
+                        break;
+                    case 'contact':
+                        sectionTitle = ' - Contact Us';
+                        break;
+                    default:
+                        sectionTitle = '';
+                }
+                
+                document.title = baseTitle + sectionTitle;
+            }
+        });
+
+        // Service Worker Registration for PWA (Progressive Web App) capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // In a real implementation, you would register a service worker here
+                // navigator.serviceWorker.register('/sw.js')
+                //   .then(registration => console.log('SW registered'))
+                //   .catch(err => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
