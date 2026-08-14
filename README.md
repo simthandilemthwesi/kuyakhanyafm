@@ -185,14 +185,6 @@ Accessibility considerations include:
 
 The website contains a dedicated **Our Team** page featuring the station's management, technical team, and presenters.
 
-The team structure includes:
-
-### Management
-
-### Technical Team
-
-### Presenters
-
 ## 🔗 Navigation
 
 The main website navigation includes:
@@ -279,9 +271,13 @@ firebase deploy --only hosting
 
 ## 📄 License
 
-Copyright © 2026 **KUYAKHANYA FM**.
+This project is licensed under a **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** license.
 
-Unless otherwise stated, the station's branding, logo, photographs, written content, and other original media should not be reproduced or redistributed without permission.
+You may share and adapt the project for **non-commercial purposes**, provided that appropriate credit is given to KUYAKHANYA FM and derivative works are distributed under the same license.
+
+For the complete license terms, see the official Creative Commons license:
+
+**https://creativecommons.org/licenses/by-nc-sa/4.0/**
 
 ## 👨🏾‍💻 Website Development
 
@@ -302,6 +298,7 @@ Media Manager / Digital & Technology Support
 | Hosting | Firebase Hosting |
 | Project Type | Static Radio Station Website |
 | Frontend | HTML5 / CSS3 / JavaScript |
+| License | CC BY-NC-SA 4.0 |
 | Responsive | Yes |
 | Mobile Navigation | Yes |
 | Accessibility Features | Yes |
