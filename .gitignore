@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+package-lock.json
+.pnp
+.pnp.*
+
+# next.js
+.next/
+out/
+dist/
+build/
+
+# env
+.env.local
+.env*.local
+
+# os
+.DS_Store
+Thumbs.db
+
+# vercel
+.vercel
+
+# logs
+npm-debug.log*

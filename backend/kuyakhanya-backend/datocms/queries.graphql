@@ -1,0 +1,110 @@
+# Kuyakhanya FM — DatoCMS GraphQL queries (free-tier, no trial)
+# Endpoint: https://graphql.datocms.com
+# Headers: Authorization: Bearer <DATOCMS_READONLY_API_TOKEN>
+# Preview of all models — copy into https://kuyakhanya-fm.admin.datocms.com/admin/graphql-explorer
+
+# 1 — Programmes
+query AllProgrammes {
+  allProgrammes(orderBy: title_ASC, first: 50) {
+    id title slug description schedule isActive
+    cover { url alt width height }
+    presenters { id name slug showName }
+  }
+}
+
+# 2 — Presenters
+query AllPresenters {
+  allPresenters(orderBy: order_ASC, first: 100) {
+    id name slug bio showName order
+    photo { url alt width height }
+    programmes { id title slug }
+  }
+}
+
+# 3 — Management Team
+query AllManagement {
+  allManagementTeamMembers(orderBy: order_ASC) {
+    id name role bio order isActive
+    photo { url alt }
+  }
+}
+
+# 4 — Technicians
+query AllTechnicians {
+  allTechnicians {
+    id name role bio isActive
+    photo { url alt }
+  }
+}
+
+# 5 — Vision & Mission (single)
+query VisionMission {
+  visionMission {
+    vision
+    missionItems
+  }
+}
+
+# 6 — Aims & Objectives (single)
+query Aims {
+  aimsObjectives {
+    title
+    objectives
+  }
+}
+
+# 7 — Contact Info (single)
+query Contact {
+  contactInfo {
+    phone whatsapp email address
+    facebook instagram youtube tiktok whatsappLink
+    googleFormUrl
+  }
+}
+
+# 8 — About Us (single)
+query AboutUs {
+  aboutUs {
+    history { value }
+    vision mission
+    values
+    impactMetrics
+    futurePlans { value }
+    heroImage { url alt }
+  }
+}
+
+# 9 — News & Updates
+query AllNews {
+  allNewsUpdates(orderBy: date_DESC, first: 20) {
+    id title slug excerpt author date isFeatured
+    coverImage { url alt responsiveImage(imgixParams: {auto: format, w: 800}) { src srcSet } }
+    content { value }
+  }
+}
+query NewsBySlug($slug: String!) {
+  newsUpdate(filter: { slug: { eq: $slug } }) {
+    id title slug excerpt author date
+    coverImage { url alt }
+    content { value }
+  }
+}
+
+# 10 — Services
+query AllServices {
+  allServices(orderBy: order_ASC) {
+    id title slug description order isActive
+    image { url alt }
+    longDescription { value }
+  }
+}
+
+# Combined Home (one fetch for SSR)
+query Home {
+  visionMission { vision missionItems }
+  aimsObjectives { title objectives }
+  contactInfo { phone whatsapp email facebook instagram youtube tiktok whatsappLink googleFormUrl }
+  aboutUs { history { value } vision mission values impactMetrics futurePlans { value } heroImage { url } }
+  allServices(first: 6, orderBy: order_ASC) { id title slug description image { url } }
+  allNewsUpdates(first: 3, orderBy: date_DESC) { id title slug excerpt date coverImage { url } }
+}

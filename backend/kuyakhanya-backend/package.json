@@ -1,0 +1,45 @@
+{
+  "name": "kuyakhanya-backend",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Kuyakhanya FM v2 — Strapi 5 CMS with Supabase & Cloudinary (free tier)",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+  },
+  "dependencies": {
+    "@strapi/database": "5.52.1",
+    "@strapi/plugin-cloud": "5.52.1",
+    "@strapi/plugin-graphql": "5.52.1",
+    "@strapi/plugin-users-permissions": "5.52.1",
+    "@strapi/provider-upload-cloudinary": "5.52.1",
+    "@strapi/strapi": "5.52.1",
+    "better-sqlite3": "12.8.0",
+    "pg": "^8.12.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.30.3",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20.0.0 <=26.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "6191f18a-7ef3-4a15-966f-2a78a3c0282a",
+    "installId": "42c97c4e0a2e41a7d6ae29ec0afb5ff9e29cc968a5f972dff5f327d060c01d82"
+  }
+}

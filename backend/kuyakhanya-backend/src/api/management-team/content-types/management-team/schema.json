@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "management_teams",
+  "info": {
+    "singularName": "management-team",
+    "pluralName": "management-teams",
+    "displayName": "Management Team",
+    "description": "Station management (Managing Director, Station Manager, Media Manager, etc.)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "bio": {
+      "type": "text",
+      "required": false
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "order": {
+      "type": "integer",
+      "required": false
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
