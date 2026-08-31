@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "aims_objectives",
+  "info": {
+    "singularName": "aims-objectives",
+    "pluralName": "aims-objectives",
+    "displayName": "Aims & Objectives",
+    "description": "Single type: list of station aims & objectives"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false,
+      "default": "Aims & Objectives"
+    },
+    "objectives": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

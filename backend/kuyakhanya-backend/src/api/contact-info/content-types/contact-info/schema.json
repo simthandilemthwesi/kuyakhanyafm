@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_infos",
+  "info": {
+    "singularName": "contact-info",
+    "pluralName": "contact-infos",
+    "displayName": "Contact Info",
+    "description": "Single type: phone, email, social links, address"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "whatsapp": {
+      "type": "string",
+      "required": false
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": false
+    },
+    "facebook": { "type": "string", "required": false },
+    "instagram": { "type": "string", "required": false },
+    "youtube": { "type": "string", "required": false },
+    "tiktok": { "type": "string", "required": false },
+    "whatsappLink": { "type": "string", "required": false },
+    "googleFormUrl": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

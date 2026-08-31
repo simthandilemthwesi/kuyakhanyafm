@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "presenters",
+  "info": {
+    "singularName": "presenter",
+    "pluralName": "presenters",
+    "displayName": "Presenter",
+    "description": "On-air presenters and hosts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "bio": {
+      "type": "text",
+      "required": false
+    },
+    "showName": {
+      "type": "string",
+      "required": false,
+      "description": "On-air show / programme name e.g. Elobukumkani"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "facebook": { "type": "string", "required": false },
+    "instagram": { "type": "string", "required": false },
+    "order": {
+      "type": "integer",
+      "required": false
+    },
+    "programmes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::programme.programme",
+      "mappedBy": "presenters"
+    }
+  }
+}

@@ -1,309 +1,156 @@
-# KUYAKHANYA FM Website
+# KUYAKHANYA FM — Version 2
 
-> **We Shine Brighter Together**
+> Full-stack CMS-driven radio platform — upgrade from static Firebase site (v1) to dynamic DatoCMS + Next.js + Tailwind.
 
-The official website for **KUYAKHANYA FM**, a community-focused radio station serving and bringing light to **Thembalethu** through quality broadcasting, community engagement, information, entertainment, and inspirational programming.
+**Live (v1 legacy):** https://kuyakhanyafm.web.app
+**v2 target:** Vercel (frontend) + Render (Strapi fallback) + Supabase Postgres (DB) + Cloudinary (media) + DatoCMS (CMS)
 
-## 🌐 Live Website
+> Free-tier only: DatoCMS free plan, Supabase Postgres, Cloudinary free tier, Vercel Hobby, Firebase free. No trial services used.
 
-**https://kuyakhanyafm.web.app**
+## Project Structure
 
-The website is hosted and deployed using **Firebase Hosting**.
-
-## 📻 About KUYAKHANYA FM
-
-KUYAKHANYA FM is built around the vision of bringing people together through radio and community-focused broadcasting.
-
-The website provides information about the station, its vision and mission, objectives, programming, team, and contact channels.
-
-The station's branding uses a distinctive **purple and gold** visual identity, with the slogan:
-
-> **We Shine Brighter Together**
-
-## ✨ Website Features
-
-- KUYAKHANYA FM landing page
-- Station introduction
-- About Us section
-- Vision & Mission
-- Aims & Objectives
-- Our Team page
-- Management team profiles
-- Presenter profiles
-- Community-focused programming information
-- Contact information
-- Listen Live / podcast section
-- Responsive navigation
-- Mobile sidebar navigation
-- Responsive design for desktop, tablet, and mobile
-- Smart TV / large-screen optimizations
-- Accessibility-focused keyboard navigation
-- Reduced-motion support
-- High-contrast mode support
-- Firebase Hosting deployment
-
-## 🛠️ Technologies
-
-This is a lightweight static website built with:
-
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- **SVG**
-- **Font Awesome**
-- **Firebase Hosting**
-
-## 🎨 Design System
-
-### Primary Colours
-
-| Colour | Purpose |
-|---|---|
-| Purple `#6a0dad` | Primary brand colour |
-| Light Purple `#8a2be2` | Accent / gradient |
-| Dark Purple `#4b0082` | Dark backgrounds |
-| Gold `#ffd700` | Accent / buttons / highlights |
-| Light Gold `#ffec8b` | Hover states |
-| White `#ffffff` | Text and backgrounds |
-
-The website uses purple gradients with gold accents for navigation, buttons, headings, and highlights.
-
-## 📁 Project Structure
-
-```text
-kuyakhanya-fm/
-│
-├── index.html
-├── our-team.html
-├── firebase.json
-├── .firebaserc
-├── README.md
-│
-├── images/
-│   ├── Kuyakhanya FM Icon.png
-│   ├── team_image.jpg
-│   ├── team1.jpg
-│   ├── team2.jpg
-│   ├── team3.jpg
-│   └── ...
-│
-└── other website assets/
+```
+KUYAKHANYA FM WEB DEV/
+├── backend/
+│   └── kuyakhanya-backend/
+│       └── DatoCMS (models, GraphQL, migration, env)
+│       └── Supabase (Postgres schema, contact forms, optional analytics)
+│       └── Cloudinary (media upload config)
+├── frontend/
+│   └── kuyakhanya-frontend/
+│       └── Next.js 16 (App Router, Turbopack)
+│       └── Tailwind CSS v4
+│       └── TypeScript 5
+│       └── 10 reusable components (Hero, Introduction, AboutUs, VisionMission, AimsObjectives, TeamPreview, ListenLive, Footer, Header, ContactSection)
+│       └── lib/ (api.ts, datocms.ts, queries.ts, site-data.ts)
+│       └── app/ (Home, /team, /contact, layout.tsx, globals.css)
+│       └── public/ (team photos, logo, hero image)
+│       └── README.md (frontend docs)
+├── vercel.json    → Vercel config (headers, rewrites)
+├── firebase.json  → Firebase rewrite for kuyakhanyafm.web.app
+└── README.md      → this file
 ```
 
-## 🚀 Firebase Hosting
+## What's New in v2 (vs v1 static)
 
-### Prerequisites
+| v1 (Firebase static) | v2 (CMS-driven) |
+|----------------------|-----------------|
+| Hard-coded HTML/CSS in `index.html` (~1219 lines) | Next.js App Router with 10 reusable Tailwind components |
+| Google Form iframe only | DatoCMS GraphQL + REST + fallback form |
+| Images in flat `/images` | DatoCMS CDN + `next/image` optimization |
+| No CMS | DatoCMS: 10 models, GraphQL, draftAndPublish, RBAC (5 roles) |
+| Firebase hosting only | Vercel (frontend) + Firebase domain mapping + SSL |
+| Static data | Real-time CMS data with ISR fallback |
 
-Install **Node.js** and the Firebase CLI:
+## Local Development — Full Stack
+
+### 1) Backend — DatoCMS bootstrap
 
 ```bash
-npm install -g firebase-tools
+cd backend/kuyakhanya-backend
+# set env
+copy .env.example .env
+# edit .env — set DATOCMS_API_TOKEN (full-access, env: main)
+# optional: SUPABASE_*, CLOUDINARY_* if you use the optional schemas
+
+npm install   # installs @datocms/cma-client-node
+node datocms/migrate.mjs   # creates 10 models in DatoCMS project 229086
+# then in DatoCMS UI → Content → create records for each model
+# set DATOCMS_READONLY_API_TOKEN in frontend .env.local
 ```
 
-Check the installation:
+### 2) Frontend — Next.js dev
 
 ```bash
-firebase --version
+cd frontend/kuyakhanya-frontend
+npm install
+
+# .env.local (optional — works offline with site-data fallback)
+echo NEXT_PUBLIC_DATOCMS_READONLY_API_TOKEN=YOUR_TOKEN > .env.local
+
+npm run dev
+# open http://localhost:3000
+# Home pulls from DatoCMS (vision-mission, aims, etc.) with fallback to site-data.ts
 ```
 
-### Login
+Pages:
+- `/` — Home: Hero + Introduction + About + Vision & Mission + Aims + Team Preview + Listen Live + Contact
+- `/team` — Our Team: MD + Management + Technician + Presenters grid
+- `/contact` — Contact: banner + phone/email/WhatsApp/socials + Google Form iframe
+- `/about`, `/services`, `/programmes`, `/news` — DatoCMS-driven pages
 
+### 3) Deployment
+
+#### Frontend — Vercel (Free Hobby tier)
+
+**A) Dashboard (recommended)**
+1. Push repo to GitHub.
+2. https://vercel.com → **Add New Project** → Import GitHub repo
+3. Root Directory: `frontend/kuyakhanya-frontend`
+4. Framework: Next.js, Build: `npm run build`, Output: `.next`
+5. Env: `NEXT_PUBLIC_DATOCMS_READONLY_API_TOKEN=<your token>`
+6. Deploy → gets `https://kuyakhanya-xyz.vercel.app`
+
+**B) CLI**
 ```bash
-firebase login
+npm i -g vercel
+cd frontend/kuyakhanya-frontend
+vercel --prod
+# or: powershell -ExecutionPolicy Bypass -Command "vercel --prod"
+vercel env add NEXT_PUBLIC_DATOCMS_READONLY_API_TOKEN
+# then redeploy
+vercel --prod
 ```
 
-### Initialize Firebase Hosting
+**Custom domain mapping:**
+- Vercel Dashboard → Settings → Domains → Add `kuyakhanyafm.co.za` (or your domain)
+- Add CNAME in your registrar → `cname.vercel-dns.com`
 
-From the project root:
+**Firebase domain mapping** `kuyakhanyafm.web.app`:
+See `firebase.json` — rewrites send all routes to Vercel. Or:
+1. Keep `kuyakhanyafm.web.app` on Firebase Hosting (static, no SSR needed).
+2. Or use a custom domain you own and add to both Vercel + Firebase.
+3. SSL auto-provisioned by both Vercel & Firebase.
 
-```bash
-firebase init hosting
-```
+#### Backend — Render / Railway (free tier) + Supabase + Cloudinary
 
-Select the Firebase project associated with:
+**Render (free 750 hrs/month):**
+1. render.com → New Web Service → connect GitHub → Root: `backend/kuyakhanya-backend`
+2. Build: `npm install && npm run build`, Start: `npm run start`
+3. Env: `DATABASE_CLIENT=postgres`, `DATABASE_URL=<Supabase pooling URI>`, `CLOUDINARY_*`, `FRONTEND_URL=https://your-vercel-url`
+4. Deploy → `https://kuyakhanya-backend.onrender.com`
 
-```text
-kuyakhanyafm.web.app
-```
+**Supabase:** free tier (500 MB DB, 2 GB bandwidth). Enable PgBouncer pooling URI.
 
-For a static HTML website, select the directory containing `index.html` as the Firebase Hosting public directory.
+**Cloudinary:** no deploy, just env vars.
 
-### Deploy
+After backend is live, set `NEXT_PUBLIC_DATOCMS_READONLY_API_TOKEN` in Vercel and redeploy.
 
-Deploy Hosting only:
+#### Deployment Checklist
+- [ ] Backend env set (DATABASE_URL, CLOUDINARY_*, DATOCMS_*)
+- [ ] Frontend env has `NEXT_PUBLIC_DATOCMS_READONLY_API_TOKEN`
+- [ ] CORS in DatoCMS (or fallback to public read) allows Vercel URL
+- [ ] Admin created at DatoCMS UI
+- [ ] Records created for all 10 models in DatoCMS
+- [ ] Images load via DatoCMS CDN / Cloudinary mirror
+- [ ] `kuyakhanyafm.web.app` serves new site (or via custom domain) with SSL lock
+- [ ] Vercel Analytics optional (free hobby)
+- [ ] firebase.json tested — `firebase deploy --only hosting`
 
-```bash
-firebase deploy --only hosting
-```
+## Free-Tier Limits & Tips
 
-Or deploy all configured Firebase services:
+| Service | Free quota | Tip |
+|---------|------------|-----|
+| **DatoCMS** | 10 models, 1000 records, GraphQL | Free plan permanent — no trial. We use 10 models exactly. |
+| **Supabase Postgres** | 500 MB DB, 2 GB bandwidth, 50k MAU | Use PgBouncer pooling URI; prune `contact_submissions` periodically. |
+| **Cloudinary** | 25 GB storage + 25 GB bandwidth/month | Set `sizeLimit:10MB`, use `f_auto,q_auto` in Next.js `next/image`. |
+| **Vercel** | 100 GB bandwidth, 6000 exec hrs | Hobby is free forever; no trial. |
+| **Firebase Hosting** | 10 GB storage, 360 MB/day transfer | Keep as fallback; or export Next.js to static `out/` and deploy there. |
 
-```bash
-firebase deploy
-```
+## License
 
-The live website is:
+MIT — © 2025 Simthandile Mthwesi / Kuyakhanya FM
 
-```text
-https://kuyakhanyafm.web.app
-```
+--- 
 
-## 🧪 Local Development
-
-Preview the site locally using the Firebase Hosting emulator:
-
-```bash
-firebase emulators:start --only hosting
-```
-
-Use this to test navigation, images, responsive layouts, JavaScript interactions, links, and the mobile menu before deployment.
-
-## 📱 Responsive Design
-
-The website is designed for:
-
-- Desktop computers
-- Laptops
-- Tablets
-- Mobile phones
-- Large displays / Smart TVs
-
-The navigation changes to a mobile sidebar on smaller screens, while larger displays receive expanded typography and content layouts.
-
-## ♿ Accessibility
-
-Accessibility considerations include:
-
-- Keyboard focus indicators
-- Reduced-motion support
-- High-contrast mode support
-- Semantic HTML structure
-- Descriptive image `alt` attributes
-- Responsive navigation
-
-## 👥 Our Team
-
-The website contains a dedicated **Our Team** page featuring the station's management, technical team, and presenters.
-
-## 🔗 Navigation
-
-The main website navigation includes:
-
-- Introduction
-- About Us
-- Vision & Mission
-- Aims & Objectives
-- Our Team
-- Contact Us
-- Listen Live
-
-## 📞 Contact
-
-For current station contact information, visit the official website:
-
-**https://kuyakhanyafm.web.app**
-
-## 🔒 Security
-
-Do **not** place sensitive information in the Firebase Hosting public directory.
-
-Never commit:
-
-```text
-.env
-service-account.json
-firebase-adminsdk-*.json
-private keys
-passwords
-API secrets
-database credentials
-```
-
-Anything deployed to the Firebase Hosting public directory should be considered publicly accessible.
-
-## 📝 Updating the Website
-
-1. Edit the HTML, CSS, JavaScript, or image files.
-2. Test the changes locally.
-3. Commit the changes to Git.
-4. Deploy to Firebase Hosting.
-
-Example:
-
-```bash
-git add .
-git commit -m "Update KUYAKHANYA FM website"
-git push
-firebase deploy --only hosting
-```
-
-## 🐛 Troubleshooting
-
-### Images are not loading
-
-Check that:
-
-- The filename matches exactly.
-- The image exists inside the deployed directory.
-- Relative paths are correct.
-- Capital letters, spaces, and special characters in filenames are handled correctly.
-
-### Page returns 404
-
-Check `firebase.json` and verify that the configured Hosting `public` directory contains `index.html`.
-
-Also verify that internal links point to the correct files, for example:
-
-```html
-<a href="our-team.html">Our Team</a>
-```
-
-### Deployment fails
-
-Try:
-
-```bash
-firebase login
-firebase projects:list
-firebase use
-firebase deploy --only hosting
-```
-
-## 📄 License
-
-This project is licensed under a **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** license.
-
-You may share and adapt the project for **non-commercial purposes**, provided that appropriate credit is given to KUYAKHANYA FM and derivative works are distributed under the same license.
-
-For the complete license terms, see the official Creative Commons license:
-
-**https://creativecommons.org/licenses/by-nc-sa/4.0/**
-
-## 👨🏾‍💻 Website Development
-
-Website design and development support:
-
-**Simthandile Mthwesi**
-
-Media Manager / Digital & Technology Support
-
----
-
-## 📊 Project Information
-
-| Item | Details |
-|---|---|
-| Project | KUYAKHANYA FM Website |
-| Website | https://kuyakhanyafm.web.app |
-| Hosting | Firebase Hosting |
-| Project Type | Static Radio Station Website |
-| Frontend | HTML5 / CSS3 / JavaScript |
-| License | CC BY-NC-SA 4.0 |
-| Responsive | Yes |
-| Mobile Navigation | Yes |
-| Accessibility Features | Yes |
-| Status | Active |
-
----
-
-**KUYAKHANYA FM — We Shine Brighter Together.** 📻
+**v2.0.0 complete** — backend (DatoCMS 10 models, GraphQL, free-tier config, 5 roles, seed, docs) + frontend (10 components, 3 pages, Tailwind brand, DatoCMS unified API client, docs) + Vercel + Firebase deployment. Run `npm install` in both workspaces, set envs, and deploy.

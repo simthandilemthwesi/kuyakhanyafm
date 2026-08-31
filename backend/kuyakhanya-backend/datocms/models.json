@@ -1,0 +1,137 @@
+{
+  "projectId": "229086",
+  "domain": "kuyakhanya-fm.admin.datocms.com",
+  "models": [
+    {
+      "apiKey": "programme",
+      "name": "Programme",
+      "collection": true,
+      "fields": [
+        { "apiKey": "title", "label": "Title", "fieldType": "string", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "slug", "label": "Slug", "fieldType": "slug", "validators": { "required": {}, "slugTitleField": { "titleFieldId": "title" } }, "position": 2 },
+        { "apiKey": "description", "label": "Description", "fieldType": "text", "validators": { "required": {} }, "position": 3 },
+        { "apiKey": "schedule", "label": "Schedule", "fieldType": "string", "hint": "e.g. Mon 08:00–10:00", "position": 4 },
+        { "apiKey": "cover", "label": "Cover Image", "fieldType": "file", "validators": { "extension": { "extensions": ["jpg", "png", "webp"] } }, "position": 5 },
+        { "apiKey": "is_active", "label": "Active?", "fieldType": "boolean", "position": 6 },
+        { "apiKey": "presenters", "label": "Presenters", "fieldType": "link", "validators": { "itemTypes": ["presenter"] }, "position": 7 }
+      ]
+    },
+    {
+      "apiKey": "presenter",
+      "name": "Presenter",
+      "collection": true,
+      "fields": [
+        { "apiKey": "name", "label": "Name", "fieldType": "string", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "slug", "label": "Slug", "fieldType": "slug", "validators": { "slugTitleField": { "titleFieldId": "name" } }, "position": 2 },
+        { "apiKey": "bio", "label": "Bio", "fieldType": "text", "position": 3 },
+        { "apiKey": "show_name", "label": "Show Name", "fieldType": "string", "hint": "e.g. Elobukumkani", "position": 4 },
+        { "apiKey": "photo", "label": "Photo", "fieldType": "file", "position": 5 },
+        { "apiKey": "order", "label": "Order", "fieldType": "integer", "position": 6 },
+        { "apiKey": "programmes", "label": "Programmes", "fieldType": "link", "validators": { "itemTypes": ["programme"] }, "position": 7 }
+      ]
+    },
+    {
+      "apiKey": "management_team_member",
+      "name": "Management Team Member",
+      "collection": true,
+      "fields": [
+        { "apiKey": "name", "label": "Name", "fieldType": "string", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "role", "label": "Role", "fieldType": "string", "validators": { "required": {} }, "position": 2 },
+        { "apiKey": "bio", "label": "Bio", "fieldType": "text", "position": 3 },
+        { "apiKey": "photo", "label": "Photo", "fieldType": "file", "position": 4 },
+        { "apiKey": "order", "label": "Order", "fieldType": "integer", "position": 5 },
+        { "apiKey": "is_active", "label": "Active?", "fieldType": "boolean", "position": 6 }
+      ]
+    },
+    {
+      "apiKey": "technician",
+      "name": "Technician",
+      "collection": true,
+      "fields": [
+        { "apiKey": "name", "label": "Name", "fieldType": "string", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "role", "label": "Role", "fieldType": "string", "validators": { "required": {} }, "position": 2 },
+        { "apiKey": "bio", "label": "Bio", "fieldType": "text", "position": 3 },
+        { "apiKey": "photo", "label": "Photo", "fieldType": "file", "position": 4 },
+        { "apiKey": "is_active", "label": "Active?", "fieldType": "boolean", "position": 5 }
+      ]
+    },
+    {
+      "apiKey": "vision_mission",
+      "name": "Vision & Mission",
+      "collection": false,
+      "fields": [
+        { "apiKey": "vision", "label": "Vision Text", "fieldType": "text", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "mission_items", "label": "Mission Items", "fieldType": "json", "hint": "Array of strings", "position": 2 }
+      ]
+    },
+    {
+      "apiKey": "aims_objectives",
+      "name": "Aims & Objectives",
+      "collection": false,
+      "fields": [
+        { "apiKey": "title", "label": "Title", "fieldType": "string", "position": 1 },
+        { "apiKey": "objectives", "label": "Objectives", "fieldType": "json", "hint": "Array of strings", "position": 2 }
+      ]
+    },
+    {
+      "apiKey": "contact_info",
+      "name": "Contact Info",
+      "collection": false,
+      "fields": [
+        { "apiKey": "phone", "label": "Phone", "fieldType": "string", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "whatsapp", "label": "WhatsApp", "fieldType": "string", "position": 2 },
+        { "apiKey": "email", "label": "Email", "fieldType": "string", "validators": { "required": {} }, "position": 3 },
+        { "apiKey": "address", "label": "Address", "fieldType": "string", "position": 4 },
+        { "apiKey": "facebook", "label": "Facebook URL", "fieldType": "string", "position": 5 },
+        { "apiKey": "instagram", "label": "Instagram URL", "fieldType": "string", "position": 6 },
+        { "apiKey": "youtube", "label": "YouTube URL", "fieldType": "string", "position": 7 },
+        { "apiKey": "tiktok", "label": "TikTok URL", "fieldType": "string", "position": 8 },
+        { "apiKey": "whatsapp_link", "label": "WhatsApp Link", "fieldType": "string", "position": 9 },
+        { "apiKey": "google_form_url", "label": "Google Form URL", "fieldType": "string", "position": 10 }
+      ]
+    },
+    {
+      "apiKey": "about_us",
+      "name": "About Us",
+      "collection": false,
+      "fields": [
+        { "apiKey": "history", "label": "History", "fieldType": "structured_text", "position": 1 },
+        { "apiKey": "vision", "label": "Vision (short)", "fieldType": "text", "position": 2 },
+        { "apiKey": "mission", "label": "Mission (short)", "fieldType": "text", "position": 3 },
+        { "apiKey": "values", "label": "Values (JSON array)", "fieldType": "json", "position": 4 },
+        { "apiKey": "impact_metrics", "label": "Impact Metrics (JSON)", "fieldType": "json", "hint": "[{label, value, suffix}]", "position": 5 },
+        { "apiKey": "future_plans", "label": "Future Plans", "fieldType": "structured_text", "position": 6 },
+        { "apiKey": "hero_image", "label": "Hero Image", "fieldType": "file", "position": 7 }
+      ]
+    },
+    {
+      "apiKey": "news_update",
+      "name": "News & Update",
+      "collection": true,
+      "fields": [
+        { "apiKey": "title", "label": "Title", "fieldType": "string", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "slug", "label": "Slug", "fieldType": "slug", "validators": { "required": {}, "slugTitleField": { "titleFieldId": "title" } }, "position": 2 },
+        { "apiKey": "excerpt", "label": "Excerpt", "fieldType": "text", "position": 3 },
+        { "apiKey": "content", "label": "Content", "fieldType": "structured_text", "position": 4 },
+        { "apiKey": "author", "label": "Author", "fieldType": "string", "position": 5 },
+        { "apiKey": "date", "label": "Date", "fieldType": "date", "position": 6 },
+        { "apiKey": "cover_image", "label": "Cover Image", "fieldType": "file", "position": 7 },
+        { "apiKey": "is_featured", "label": "Featured?", "fieldType": "boolean", "position": 8 }
+      ]
+    },
+    {
+      "apiKey": "service",
+      "name": "Service",
+      "collection": true,
+      "fields": [
+        { "apiKey": "title", "label": "Title", "fieldType": "string", "validators": { "required": {} }, "position": 1 },
+        { "apiKey": "slug", "label": "Slug", "fieldType": "slug", "validators": { "slugTitleField": { "titleFieldId": "title" } }, "position": 2 },
+        { "apiKey": "description", "label": "Description", "fieldType": "text", "validators": { "required": {} }, "position": 3 },
+        { "apiKey": "long_description", "label": "Long Description", "fieldType": "structured_text", "position": 4 },
+        { "apiKey": "image", "label": "Image", "fieldType": "file", "position": 5 },
+        { "apiKey": "order", "label": "Order", "fieldType": "integer", "position": 6 },
+        { "apiKey": "is_active", "label": "Active?", "fieldType": "boolean", "position": 7 }
+      ]
+    }
+  ]
+}
