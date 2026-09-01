@@ -139,7 +139,7 @@ KUYAKHANYA FM airs programmes from Tuesday to Sunday.
 
 ## Featured News / Updates (recent)
 
-- KUYAKHANYA FM launched a new Morning Devotion slot (every weekday, 05:00–06:00).
+- KUYAKHANYA FM launched a new Friday LAtest Music slot (every friday, 18:00–19:00).
 - Community youth workshop on radio presenting and audio editing was a success with over 60 youth.
 - Churches and businesses are invited to partner with KUYAKHANYA FM for upcoming outreach events.
 

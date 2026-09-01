@@ -105,7 +105,7 @@ export default function Footer() {
             aria-label="Developed by Simthandile Mthwesi"
             className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/15 px-4 py-2 font-semibold text-white/90 hover:bg-white/10 hover:border-[#ffd700]/40 hover:text-[#ffd700] transition-colors"
           >
-            Developed By <span className="inline-flex items-center gap-1.5 text-[#ffd700]"><Image src="/simlogo.svg" alt="Simthandile Mthwesi" width={28} height={28} className="h-5 w-5 rounded bg-white" /> Simthandile Mthwesi</span>
+            Developed By <span className="text-[#ffd700]">Simthandile Mthwesi</span>
           </a>
         </div>
       </div>
