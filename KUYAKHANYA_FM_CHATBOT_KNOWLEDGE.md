@@ -172,3 +172,55 @@ A: Thembalethu, George, South Africa.
 
 **Q: Can I advertise or sponsor?**
 A: Yes. Contact the Media Manager (Mr Simthandile Mthwesi) for marketing and sponsorship partnerships.
+
+**Q: What time are shows on air?**
+A: Programmes run on weekday evenings and weekends. **Love & Life** (Tue), **Abafazi Bokholo** & **Inkwenkwezi Zethu** (Wed), **Ithemba Lokulila** (Thu), **Friday Vibes** (Fri), **Ezakwa Ntu** (Sat) and **Yizani Sakhe** (Sun), plus the weekday **Morning Devotion** (05:00–06:00). For the exact airtime of any show, contact the station.
+
+---
+
+## Troubleshooting
+
+### The live stream won't play (buffering / no sound / black player)
+1. **Refresh the page** — close the tab and reopen https://kuyakhanyafm.web.app, then click LISTEN LIVE again.
+2. **Check your internet connection** — try a fast app (e.g. YouTube) to confirm you are online; streaming needs a stable connection.
+3. **Try a different device/browser** — the stream works on phones, tablets, desktops, and SMART TVs. If one browser fails, try Chrome, Safari, or Edge, or a different device.
+4. **Lower the volume / check mute** — confirm the on-page player and your device volume are not muted.
+5. **Disable ad-blockers or VPNs** — these can block the audio stream; add the website to allowed/safe list or turn them off.
+6. **Update browser/OS** — older versions may not support the audio player.
+7. **Still not working?** — WhatsApp or call **063 978 0839** and our team will help. Mention whether you see the player and any error, and your device type.
+
+### The website is slow or won't load
+- Refresh, clear browser cache/cookies for the site, or try incognito mode.
+- Load during high-traffic live shows may be momentarily slow — wait a minute and refresh.
+- If the site fails entirely, contact us on WhatsApp **063 978 0839**.
+
+### The chatbot (me!) isn't responding or gives wrong answers
+- Refresh the page once.
+- If you still need help, contact the station directly via WhatsApp **063 978 0839** or email **info.kuyakhanyafm@gmail.com**.
+- I'm being continuously improved; if I got something wrong, please let the station know so we can update me.
+
+### I can't contact the station (email/WhatsApp issues)
+- Double-check the numbers/emails exactly as listed under **Contact Information**.
+- You can also direct-message our **Facebook** or **Instagram** pages — we monitor them regularly.
+
+---
+
+## Additional Help the Bot Can Provide
+
+**Show & Schedule Assistance**
+- Tell me what you'd like to hear (gospel, conversation, faith, music) and I'll recommend a show and presenter.
+- Ask "what's on today?" or "who hosts Love & Life?" and I'll guide you.
+
+**Finding the Right Person**
+- Want to become a **presenter** or **volunteer**? I'll explain next steps and who to contact.
+- Want to **advertise, sponsor, or partner**? I'll connect you with the Media Manager.
+- Want to **cover an event** or **report news/testimony**? I'll route you to the team.
+
+**Getting Involved / Youth Development**
+- Training, mentorship, presenting, audio editing and radio tech for young people — I can point you to the right contact.
+
+**Prayer & Encouragement**
+- Feeling like you need hope today? I'm happy to share an uplifting message and direct you to the Morning Devotion and Yizani Sakhe for more inspiration.
+
+**Quick directions**
+- Help me help you faster by sharing: what you need (stream help, show info, partnering, volunteering), your device if it's a technical issue, and your preferred contact (WhatsApp or email).
