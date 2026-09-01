@@ -107,8 +107,8 @@ export default function ListenLive() {
               <div className="min-w-0 flex-1 text-left">
                 <p className="font-heading text-base sm:text-lg font-black tracking-tight text-white leading-none">KUYAKHANYA FM Live Stream</p>
                 <p className="mt-1 flex flex-wrap items-center gap-2 text-xs text-white/60">
-                  <span className="hidden sm:inline">cast3.asurahosting.com • Premium 88.5 FM</span>
-                  <span className="sm:hidden">88.5 FM • Premium</span>
+                  <span className="hidden sm:inline">cast3.asurahosting.com • Online 24/7</span>
+                  <span className="sm:hidden">Online 24/7</span>
                   <span className="inline-flex items-center gap-1 rounded-full bg-[#FFD700]/15 border border-[#FFD700]/20 px-2 py-0.5 text-[10px] font-bold tracking-wide text-[#FFD700]">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#FFD700] animate-pulse" /> {isPlaying ? "LIVE NOW" : "READY TO PLAY"}
                   </span>
@@ -218,7 +218,7 @@ export default function ListenLive() {
                   <p className="text-sm text-white/70">with {currentShow.presenter} • {currentShow.day}</p>
                   <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-bold">
                     <span className="rounded-full bg-white text-[#1a0b2e] px-3 py-1.5">24/7 Live</span>
-                    <span className="rounded-full bg-[#FFD700] text-[#1a0b2e] px-3 py-1.5">88.5 FM</span>
+                    <span className="rounded-full bg-[#FFD700] text-[#1a0b2e] px-3 py-1.5">Online</span>
                     <span className="rounded-full bg-white/10 border border-white/15 text-white px-3 py-1.5">Thembalethu</span>
                   </div>
                 </div>

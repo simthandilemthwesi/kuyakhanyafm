@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useAudio } from "@/components/AudioProvider";
@@ -8,27 +8,6 @@ import { useAudio } from "@/components/AudioProvider";
 export default function Hero() {
   const { isPlaying, isLoading, togglePlay, currentShow, nowPlaying } = useAudio();
   const stageRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
-
-  useEffect(() => {
-    const el = stageRef.current;
-    if (!el) return;
-    // only enable tilt on pointer devices with hover
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-    const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      setTilt({ rx: -y * 10, ry: x * 12 });
-    };
-    const onLeave = () => setTilt({ rx: 0, ry: 0 });
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
 
   return (
     <section className="relative overflow-hidden bg-[#0b0a14] text-white">
@@ -100,7 +79,7 @@ export default function Hero() {
                 <div className="hidden sm:block h-10 w-px bg-white/15" />
                 <div className="hidden sm:block text-left">
                   <p className="text-[11px] font-bold tracking-[0.28em] text-[#FFD700]">COMMUNITY RADIO</p>
-                  <p className="text-xs text-white/60 font-medium">Thembalethu • George • 88.5 FM</p>
+                  <p className="text-xs text-white/60 font-medium">Thembalethu • George • Online</p>
                 </div>
               </div>
               <p className="sm:hidden text-[11px] font-bold tracking-[0.28em] text-[#FFD700]">COMMUNITY RADIO</p>
@@ -156,13 +135,12 @@ export default function Hero() {
           <div
             ref={stageRef}
             className="relative order-2 flex justify-center lg:justify-end"
-            style={{ perspective: "1200px" }}
           >
-            {/* Glowing purple/gold circular broadcast rings behind player — 3D depth */}
+            {/* Glowing purple/gold circular broadcast rings behind player — static 3D depth */}
             <div
               aria-hidden
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ transformStyle: "preserve-3d", transform: `translateZ(-40px) rotateX(${tilt.rx * 0.4}deg) rotateY(${tilt.ry * 0.4}deg)` }}
+              style={{ transformStyle: "preserve-3d", transform: "translateZ(-40px)" }}
             >
               <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[420px] w-[420px] sm:h-[480px] sm:w-[480px] rounded-full border border-[#FFD700]/15" style={{ transform: "translateZ(-30px)" }} />
               <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[360px] w-[360px] sm:h-[410px] sm:w-[410px] rounded-full border border-[#8a2be2]/20" style={{ transform: "translateZ(-18px)" }} />
@@ -171,14 +149,9 @@ export default function Hero() {
               <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[220px] w-[220px] rounded-full bg-[#FFD700]/10 blur-2xl animate-glow-pulse" style={{ transform: "translateZ(10px)" }} />
             </div>
 
-            {/* Feature card — glassmorphism 3D */}
+            {/* Feature card — glassmorphism */}
             <div
-              className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[28px] sm:rounded-[32px] glass-purple overflow-hidden hover-lift"
-              style={{
-                transformStyle: "preserve-3d",
-                transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)`,
-                transition: tilt.rx === 0 && tilt.ry === 0 ? "transform 0.6s ease" : "transform 0.08s linear",
-              }}
+              className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[28px] sm:rounded-[32px] glass-purple overflow-hidden"
             >
               {/* inner highlight */}
               <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
@@ -195,7 +168,7 @@ export default function Hero() {
                     </span>
                   </div>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FFD700] px-2.5 py-1 text-[10px] font-black tracking-widest text-[#1a0b2e]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#1a0b2e] animate-pulse" /> 88.5 FM
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#1a0b2e] animate-pulse" /> ONLINE
                   </span>
                 </div>
 
@@ -293,7 +266,7 @@ export default function Hero() {
                       />
                     ))}
                     <span className="ml-auto text-[10px] font-bold tracking-widest text-white/40">
-                      {isPlaying ? "LIVE • 88.5" : "TAP PLAY →"}
+                      {isPlaying ? "LIVE • 24/7" : "TAP PLAY →"}
                     </span>
                   </div>
                 </div>
@@ -310,19 +283,10 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* bottom gold accent */}
-              <div aria-hidden className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#FFD700]/50 to-transparent" />
+                {/* bottom gold accent */}
+                <div aria-hidden className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#FFD700]/50 to-transparent" />
+              </div>
             </div>
-
-            {/* floating badge — streaming 24/7 — 3D pop */}
-            <div
-              className="absolute -right-2 -top-3 hidden sm:flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-md shadow-xl"
-              style={{ transform: `translateZ(60px) rotateX(${tilt.rx * 0.3}deg) rotateY(${tilt.ry * 0.3}deg)`, transformStyle: "preserve-3d" }}
-            >
-              <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-xs font-bold tracking-wide pr-1">On Air • 24/7</span>
-            </div>
-          </div>
         </div>
       </div>
 

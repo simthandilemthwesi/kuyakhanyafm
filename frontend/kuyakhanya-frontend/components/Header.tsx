@@ -174,7 +174,7 @@ export default function Header() {
             ))}
             <div className="pt-4 mt-4 border-t border-white/10">
               <p className="px-4 text-[11px] tracking-[0.2em] font-bold text-[#FFD700]">ON AIR 24/7</p>
-              <p className="px-4 mt-1 text-sm text-white/60">Thembalethu • George • 88.5 FM</p>
+              <p className="px-4 mt-1 text-sm text-white/60">Thembalethu • George • Online</p>
             </div>
           </nav>
           <div className="p-5 border-t border-white/10">
