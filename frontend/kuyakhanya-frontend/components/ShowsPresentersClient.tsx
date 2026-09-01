@@ -228,16 +228,13 @@ function PresenterCardSP({ p }: { p: (typeof siteData.presenters)[number] }) {
         }}
       />
       <div className="relative">
-        <div className="relative mx-auto h-28 w-28 rounded-full p-[3px] bg-gradient-to-br from-[#FFD700] via-[#8a2be2] to-[#4B0082] shadow-[0_0_20px_rgba(255,215,0,0.3)]">
+        <div className="relative mx-auto h-32 w-32 rounded-full p-[3px] bg-gradient-to-br from-[#FFD700] via-[#8a2be2] to-[#4B0082] shadow-[0_0_20px_rgba(255,215,0,0.3)]">
           <div className="h-full w-full rounded-full overflow-hidden border-2 border-[#1a0b2e] bg-gradient-to-br from-[#1a0b2e] to-[#4B0082] grid place-items-center">
             <img src={p.photo} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
           </div>
         </div>
         <h3 className="mt-4 text-base font-black text-white">{p.name}</h3>
         <p className="mt-0.5 text-xs font-black tracking-[0.14em] text-[#FFD700] uppercase">{p.role}</p>
-        <p className="mt-2 text-sm leading-relaxed text-white/70">
-          Presenter • KUYAKHANYA FM • Faith, community and inspiration
-        </p>
         <div className="mt-4 flex justify-center">
           <ShareIcons
             item={p.name}
@@ -258,52 +255,6 @@ function PresenterCardSP({ p }: { p: (typeof siteData.presenters)[number] }) {
   );
 }
 
-const SOCIAL_BAR = [
-  { id: "facebook", label: "Facebook" },
-  { id: "x", label: "X" },
-  { id: "instagram", label: "Instagram" },
-  { id: "youtube", label: "YouTube" },
-  { id: "linkedin", label: "LinkedIn" },
-] as const;
-
-function VerticalSocialBar() {
-  return (
-    <aside
-      aria-label="Follow and share KUYAKHANYA FM"
-      className="fixed right-[40px] top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-3 md:right-[80px] md:flex"
-    >
-      {SOCIAL_BAR.map((s) => {
-        const url =
-          s.id === "youtube"
-            ? "https://www.youtube.com/@KuyakhanyaFM"
-            : s.id === "instagram"
-            ? "https://www.instagram.com/kuyakhanyafm/"
-            : s.id === "facebook"
-            ? "https://www.facebook.com/profile.php?id=61580413033664"
-            : SITE_URL;
-        return (
-          <a
-            key={s.id}
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={s.label}
-            title={s.label}
-            className="group flex h-12 w-12 items-center gap-3 overflow-hidden rounded-full bg-[#4B0082] text-white shadow-lg transition-all duration-300 ease-in-out hover:w-[160px] hover:bg-[#4B0082] hover:shadow-[0_0_20px_rgba(255,215,0,0.4)] sm:h-12 sm:w-12"
-          >
-            <span className="grid h-12 w-12 shrink-0 place-items-center transition-colors group-hover:bg-[#FFD700] group-hover:text-[#1a0b2e]">
-              <SocialIcon id={s.id} className="h-5 w-5" />
-            </span>
-            <span className="whitespace-nowrap font-bold text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {s.label}
-            </span>
-          </a>
-        );
-      })}
-    </aside>
-  );
-}
-
 export default function ShowsPresentersClient() {
   const [dayFilter, setDayFilter] = useState<(typeof DAYS)[number]>("All");
   const [view, setView] = useState<"grid" | "list">("grid");
@@ -316,8 +267,6 @@ export default function ShowsPresentersClient() {
 
   return (
     <>
-      <VerticalSocialBar />
-
       {/* SECTION 1 — SHOWS */}
       <section id="sp-shows" className="relative py-16 sm:py-24 overflow-hidden bg-[#0b0a14]">
         <div aria-hidden className="absolute top-10 left-1/4 h-[420px] w-[420px] rounded-full bg-[#4B0082]/18 blur-[110px]" />
