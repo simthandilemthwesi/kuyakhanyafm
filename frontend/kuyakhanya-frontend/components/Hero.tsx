@@ -58,9 +58,9 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 sm:gap-12 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-20 xl:py-24">
+        <div className="mx-auto grid items-center gap-10 sm:gap-12 py-12 sm:py-16 lg:h-[calc(100vh-176px)] lg:min-h-[600px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-0 xl:h-[640px] xl:min-h-0">
           {/* LEFT SIDE — per spec */}
-          <div className="text-center lg:text-left order-1">
+          <div className="text-center lg:text-left order-1 lg:self-center">
             <h2 className="font-heading text-[40px] leading-none sm:text-5xl lg:text-[56px] xl:text-[62px] font-black tracking-tight text-white">
               KUYAKHANYA <span className="text-[#FFD700]">FM</span>
             </h2>
@@ -107,33 +107,30 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* RIGHT SIDE — massive 3D glass dashboard with broadcast rings */}
+          {/* RIGHT SIDE — premium glass player */}
           <div
             ref={stageRef}
-            className="relative order-2 flex w-full justify-center lg:justify-end"
+            className="relative order-2 flex w-full items-center justify-center lg:h-full lg:justify-end"
           >
-            {/* Glowing purple/gold circular broadcast rings behind player — static 3D depth */}
+            {/* Subtle centered glow behind player (static) */}
             <div
               aria-hidden
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ transformStyle: "preserve-3d", transform: "translateZ(-40px)" }}
-            >
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[340px] w-[340px] sm:h-[420px] sm:w-[420px] rounded-full border border-[#FFD700]/15" style={{ transform: "translateZ(-30px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[290px] w-[290px] sm:h-[360px] sm:w-[360px] rounded-full border border-[#8a2be2]/20" style={{ transform: "translateZ(-18px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] rounded-full border border-dashed border-white/10" style={{ transform: "translateZ(-10px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[440px] w-[440px] sm:h-[500px] sm:w-[500px] rounded-full bg-gradient-to-br from-[#4B0082]/20 via-transparent to-[#FFD700]/10 blur-3xl" style={{ transform: "translateZ(-50px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[180px] w-[180px] rounded-full bg-[#FFD700]/10 blur-2xl animate-glow-pulse" style={{ transform: "translateZ(10px)" }} />
-            </div>
-
-            {/* Feature card — glassmorphism */}
+              className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#4B0082]/25 via-[#8a2be2]/10 to-[#FFD700]/10 blur-3xl"
+            />
             <div
-              className="relative w-full max-w-[380px] sm:max-w-[440px] rounded-[28px] sm:rounded-[32px] glass-purple overflow-hidden"
+              aria-hidden
+              className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#FFD700]/15"
+            />
+
+            {/* Feature card — glassmorphism, fixed height to match hero */}
+            <div
+              className="relative flex h-[620px] w-full max-w-[360px] flex-col overflow-hidden rounded-[28px] sm:h-[700px] sm:max-w-[440px] sm:rounded-[32px] glass-purple"
             >
               {/* inner highlight */}
               <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
               <div aria-hidden className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-[#FFD700]/10 blur-2xl" />
 
-              <div className="p-[18px] sm:p-6">
+              <div className="flex flex-1 flex-col p-[18px] sm:p-6">
                 {/* Header LIVE ON AIR */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
@@ -159,7 +156,7 @@ export default function Hero() {
                   aria-label="Play live stream — clicking here starts playback"
                   className="group relative mt-5 w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#1a0b2e] via-[#24114a] to-[#0f0a1f] text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD700] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a0b2e]"
                 >
-                  <div className="relative h-[132px] sm:h-[144px] overflow-hidden">
+                  <div className="relative h-[140px] sm:h-[196px] overflow-hidden">
                     {/* sliding waves — premium broadcast-wave graphics */}
                     <div className="absolute inset-0 flex items-center opacity-90">
                       <div className="w-[200%] h-full wave-slide flex" style={{ animationDuration: "5.5s", opacity: isPlaying ? 1 : 0.85 }}>
@@ -247,8 +244,8 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* easy action row */}
-                <div className="mt-4 flex items-center gap-2">
+                {/* easy action row — pinned to bottom of the 700px card */}
+                <div className="mt-auto flex items-center gap-2 pt-6">
                   <a href="https://wa.me/27639780839" target="_blank" rel="noreferrer" className="flex-1 inline-flex justify-center items-center gap-2 rounded-full bg-white text-[#1a0b2e] px-4 py-2.5 text-xs font-black hover:bg-white/90 transition">
                     <svg viewBox="0 0 24 24" className="h-4 w-4 fill-[#25D366]"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg>
                     Request Song
