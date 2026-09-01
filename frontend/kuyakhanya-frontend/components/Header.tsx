@@ -62,16 +62,16 @@ export default function Header() {
                 />
               </div>
               <div className="hidden sm:block min-w-0">
-                <p className="font-heading font-black leading-none text-white tracking-tight text-[16px] sm:text-[18px]">
+                <p className="font-logo font-black leading-none text-white tracking-tight text-[16px] sm:text-[18px]">
                   KUYAKHANYA <span className="text-[#FFD700]">FM</span>
                 </p>
-                <p className="mt-0.5 text-[9px] sm:text-[10px] font-semibold tracking-[0.28em] text-white/60 uppercase">
+                <p className="font-tagline mt-0.5 text-[10px] sm:text-[11px] font-bold tracking-[0.14em] text-white/70 uppercase">
                   We Shine Brighter Together
                 </p>
               </div>
               {/* mobile text */}
               <div className="sm:hidden min-w-0">
-                <p className="font-heading font-black leading-none text-white text-[15px]">
+                <p className="font-logo font-black leading-none text-white text-[15px]">
                   KUYAKHANYA <span className="text-[#FFD700]">FM</span>
                 </p>
               </div>

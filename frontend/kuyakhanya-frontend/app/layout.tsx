@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Inter, Geist_Mono } from "next/font/google";
+import { Poppins, Inter, Geist_Mono, Rubik, Bitter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -21,6 +21,18 @@ const inter = Inter({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+const rubik = Rubik({
+  variable: "--font-rubik",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+const bitter = Bitter({
+  variable: "--font-bitter",
+  subsets: ["latin"],
+  weight: ["400", "700", "800", "900"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -71,7 +83,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable} ${geistMono.variable} h-full scroll-smooth`}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable} ${geistMono.variable} ${rubik.variable} ${bitter.variable} h-full scroll-smooth`}>
       <body className="min-h-full flex flex-col bg-[#0b0a14] text-[#F8F8FF] antialiased overflow-x-hidden">
         <AudioProvider>
           {/* Broadcast ambient layers — fixed */}

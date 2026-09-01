@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useAudio } from "@/components/AudioProvider";
 
 export default function Hero() {
@@ -62,30 +61,7 @@ export default function Hero() {
         <div className="grid items-center gap-10 sm:gap-12 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-20 xl:py-24">
           {/* LEFT SIDE — per spec */}
           <div className="text-center lg:text-left order-1">
-            {/* Logo prominently + COMMUNITY RADIO */}
-            <div className="flex flex-col items-center lg:items-start gap-4">
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-2xl bg-[#FFD700]/25 blur-xl" />
-                  <Image
-                    src="/images/Kuyakhanya FM LOGO.png"
-                    alt="KUYAKHANYA FM"
-                    width={120}
-                    height={72}
-                    className="relative h-14 w-auto sm:h-16 object-contain drop-shadow-[0_4px_20px_rgba(255,215,0,0.25)]"
-                    priority
-                  />
-                </div>
-                <div className="hidden sm:block h-10 w-px bg-white/15" />
-                <div className="hidden sm:block text-left">
-                  <p className="text-[11px] font-bold tracking-[0.28em] text-[#FFD700]">COMMUNITY RADIO</p>
-                  <p className="text-xs text-white/60 font-medium">Thembalethu • George • Online</p>
-                </div>
-              </div>
-              <p className="sm:hidden text-[11px] font-bold tracking-[0.28em] text-[#FFD700]">COMMUNITY RADIO</p>
-            </div>
-
-            <h2 className="mt-7 font-heading text-[40px] leading-none sm:text-5xl lg:text-[56px] xl:text-[62px] font-black tracking-tight text-white">
+            <h2 className="font-heading text-[40px] leading-none sm:text-5xl lg:text-[56px] xl:text-[62px] font-black tracking-tight text-white">
               KUYAKHANYA <span className="text-[#FFD700]">FM</span>
             </h2>
             <h1 className="mt-3 font-heading text-[18px] sm:text-2xl lg:text-[22px] xl:text-[26px] font-black tracking-[0.14em] text-gradient-gold uppercase">
@@ -134,7 +110,7 @@ export default function Hero() {
           {/* RIGHT SIDE — massive 3D glass dashboard with broadcast rings */}
           <div
             ref={stageRef}
-            className="relative order-2 flex justify-center lg:justify-end"
+            className="relative order-2 flex w-full justify-center lg:justify-end"
           >
             {/* Glowing purple/gold circular broadcast rings behind player — static 3D depth */}
             <div
@@ -142,16 +118,16 @@ export default function Hero() {
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{ transformStyle: "preserve-3d", transform: "translateZ(-40px)" }}
             >
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[420px] w-[420px] sm:h-[480px] sm:w-[480px] rounded-full border border-[#FFD700]/15" style={{ transform: "translateZ(-30px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[360px] w-[360px] sm:h-[410px] sm:w-[410px] rounded-full border border-[#8a2be2]/20" style={{ transform: "translateZ(-18px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[300px] w-[300px] sm:h-[340px] sm:w-[340px] rounded-full border border-dashed border-white/10" style={{ transform: "translateZ(-10px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[520px] w-[520px] sm:h-[560px] sm:w-[560px] rounded-full bg-gradient-to-br from-[#4B0082]/20 via-transparent to-[#FFD700]/10 blur-3xl" style={{ transform: "translateZ(-50px)" }} />
-              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[220px] w-[220px] rounded-full bg-[#FFD700]/10 blur-2xl animate-glow-pulse" style={{ transform: "translateZ(10px)" }} />
+              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[340px] w-[340px] sm:h-[420px] sm:w-[420px] rounded-full border border-[#FFD700]/15" style={{ transform: "translateZ(-30px)" }} />
+              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[290px] w-[290px] sm:h-[360px] sm:w-[360px] rounded-full border border-[#8a2be2]/20" style={{ transform: "translateZ(-18px)" }} />
+              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] rounded-full border border-dashed border-white/10" style={{ transform: "translateZ(-10px)" }} />
+              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[440px] w-[440px] sm:h-[500px] sm:w-[500px] rounded-full bg-gradient-to-br from-[#4B0082]/20 via-transparent to-[#FFD700]/10 blur-3xl" style={{ transform: "translateZ(-50px)" }} />
+              <div className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 h-[180px] w-[180px] rounded-full bg-[#FFD700]/10 blur-2xl animate-glow-pulse" style={{ transform: "translateZ(10px)" }} />
             </div>
 
             {/* Feature card — glassmorphism */}
             <div
-              className="relative w-full max-w-[420px] sm:max-w-[440px] rounded-[28px] sm:rounded-[32px] glass-purple overflow-hidden"
+              className="relative w-full max-w-[380px] sm:max-w-[440px] rounded-[28px] sm:rounded-[32px] glass-purple overflow-hidden"
             >
               {/* inner highlight */}
               <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />

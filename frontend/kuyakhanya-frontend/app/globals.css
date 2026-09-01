@@ -41,6 +41,8 @@
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-poppins);
   --font-heading: var(--font-poppins);
+  --font-logo: var(--font-rubik);
+  --font-tagline: var(--font-bitter);
 }
 
 * {
@@ -95,6 +97,8 @@ h1, h2, h3, h4, h5, .font-display, .font-heading {
   font-weight: 800;
 }
 .font-sans { font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; }
+.font-logo { font-family: var(--font-rubik), var(--font-poppins), ui-sans-serif, system-ui, sans-serif; }
+.font-tagline { font-family: var(--font-bitter), var(--font-poppins), ui-sans-serif, system-ui, sans-serif; }
 
 /* Focus */
 a:focus-visible,
