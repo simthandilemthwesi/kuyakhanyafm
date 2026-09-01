@@ -14,7 +14,7 @@ function getCurrentShow(): ShowInfo {
     2: { day: "TUESDAY", title: "Love & Life", presenter: "Franky" },
     3: { day: "WEDNESDAY", title: "Abafazi Bokholo", presenter: "Mrs. Lolwana" },
     4: { day: "THURSDAY", title: "Ithemba Lokulila", presenter: "Mrs. Mati & Mrs. Panduva" },
-    5: { day: "FRIDAY", title: "Friday Vibes with Kay Cee", presenter: "Kay Cee" },
+    5: { day: "FRIDAY", title: "Friday Vibes", presenter: "Kay Cee" },
     6: { day: "SATURDAY", title: "Ezakwa Ntu", presenter: "DJ Toto" },
     0: { day: "SUNDAY", title: "Yizani Sakhe — Together We Revive", presenter: "Mrs. Mthwesi & Mrs. Ndziba" },
   };

@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import SearchBox from "@/components/SearchBox";
 
 const NAV = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT" },
-  { href: "/#shows", label: "SHOWS" },
-  { href: "/#presenters", label: "PRESENTERS" },
-  { href: "/#listen-live", label: "LISTEN LIVE" },
+  { href: "/shows-presenters", label: "SHOWS" },
+  { href: "/shows-presenters#sp-presenters", label: "PRESENTERS" },
   { href: "/news", label: "NEWS" },
   { href: "/contact", label: "CONTACT" },
 ];
@@ -102,6 +102,7 @@ export default function Header() {
 
             {/* Right gold button — desktop */}
             <div className="hidden lg:flex items-center gap-3">
+              <SearchBox />
               <Link
                 href="/#listen-live"
                 className="inline-flex items-center gap-2 rounded-full bg-[#FFD700] px-6 py-2.5 text-[13px] font-black tracking-wide text-[#1a0b2e] hover:bg-[#ffe873] transition-all shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.4)] hover:-translate-y-px"

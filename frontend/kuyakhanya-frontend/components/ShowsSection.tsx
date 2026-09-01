@@ -49,7 +49,7 @@ const SHOWS: Show[] = [
   },
   {
     day: "FRIDAY",
-    title: "FRIDAY VIBES WITH KAY CEE",
+    title: "FRIDAY VIBES",
     presenters: ["Kay Cee"],
     theme: "Music • Energy • Weekend Vibes",
     description:

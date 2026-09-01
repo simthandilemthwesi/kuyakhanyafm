@@ -3,7 +3,9 @@ import { Poppins, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot";
 import { AudioProvider } from "@/components/AudioProvider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -85,6 +87,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
         </AudioProvider>
+        <SpeedInsights />
+        <Chatbot />
       </body>
     </html>
   );

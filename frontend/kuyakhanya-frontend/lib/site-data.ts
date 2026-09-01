@@ -74,7 +74,7 @@ export const siteData = {
     { name: 'Mrs. Klass', role: 'Inkwenkwezi Zethu', photo: '/images/team7.jpg' },
     { name: 'Mrs. Mati', role: 'Ithemba Lokulila', photo: '/images/team9.jpg' },
     { name: 'Mrs. Panduva', role: 'Ithemba Lokulila', photo: '/images/team11.jpg' },
-    { name: 'Kay Cee Taurus', role: 'Friday Vibes with Kay Cee', photo: '/images/team8.jpg' },
+    { name: 'Kay Cee Taurus', role: 'Friday Vibes', photo: '/images/team8.jpg' },
     { name: 'DJ Toto', role: 'Ezakwa Ntu', photo: '/images/team10.jpg' },
     { name: 'Mrs. Mthwesi', role: 'Yizani Sakhe', photo: '/images/team17.jpg' },
     { name: 'Mrs. Ndziba', role: 'Yizani Sakhe', photo: '/images/team18.jpg' },
