@@ -86,6 +86,8 @@ To be the light of hope and transformation in Thembalethu and beyond, shining th
 
 KUYAKHANYA FM broadcasts online 24/7. The live stream is available on the official website: https://kuyakhanyafm.web.app — click "LISTEN LIVE". Streaming also works on desktop, tablet, mobile, and SMART TV / large screens.
 
+Our **embedded player on the website is the preferred** way to listen. As a backup only, a direct stream link is also available at **https://cast3.asurahosting.com/start/kuyakhan** (this opens the stream directly in a player; use it if the embedded player won't play).
+
 ## Weekly Shows & Presenters
 
 KUYAKHANYA FM airs programmes from Tuesday to Sunday.
@@ -187,7 +189,8 @@ A: Programmes run on weekday evenings and weekends. **Love & Life** (Tue), **Aba
 4. **Lower the volume / check mute** — confirm the on-page player and your device volume are not muted.
 5. **Disable ad-blockers or VPNs** — these can block the audio stream; add the website to allowed/safe list or turn them off.
 6. **Update browser/OS** — older versions may not support the audio player.
-7. **Still not working?** — WhatsApp or call **063 978 0839** and our team will help. Mention whether you see the player and any error, and your device type.
+7. **If the embedded player still won't play, use our direct stream backup** — our embedded player is the priority and preferred experience, but if it doesn't open or play for you, you can use our direct stream link: **https://cast3.asurahosting.com/start/kuyakhan**. It opens the stream directly in your browser/player.
+8. **Still not working?** — WhatsApp or call **063 978 0839** and our team will help. Mention whether you see the player and any error, and your device type.
 
 ### The website is slow or won't load
 - Refresh, clear browser cache/cookies for the site, or try incognito mode.
