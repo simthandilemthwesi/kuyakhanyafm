@@ -51,15 +51,17 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 min-w-0 group">
               <div className="relative">
-                <div className="absolute inset-0 rounded-xl bg-[#FFD700]/20 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
-                <Image
-                  src="/images/Kuyakhanya FM Icon.png"
-                  alt="KUYAKHANYA FM"
-                  width={56}
-                  height={56}
-                  className="relative h-10 w-10 sm:h-12 sm:w-12 rounded-xl object-cover shrink-0 border border-white/15 shadow-lg shadow-black/20 group-hover:border-[#FFD700]/40 group-hover:shadow-[0_0_0_4px_rgba(255,215,0,0.18)] transition"
-                  priority
-                />
+                <div className="absolute inset-0 rounded-lg bg-[#FFD700]/20 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-[#1a0b2e] to-[#4B0082] border-2 border-[#FFD700]/70 shadow-[0_0_14px_rgba(255,215,0,0.25)] group-hover:border-[#FFD700] transition">
+                  <Image
+                    src="/images/Kuyakhanya FM Icon.png"
+                    alt="KUYAKHANYA FM"
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-cover"
+                    priority
+                  />
+                </div>
               </div>
               <div className="hidden sm:block min-w-0">
                 <p className="font-logo font-black leading-none text-white tracking-tight text-[16px] sm:text-[18px]">
@@ -154,7 +156,9 @@ export default function Header() {
         >
           <div className="p-6 flex items-center justify-between border-b border-white/10">
             <div className="flex items-center gap-3">
-              <Image src="/images/Kuyakhanya FM Icon.png" alt="" width={36} height={36} className="h-9 w-9 rounded-lg object-cover border border-white/15" />
+              <div className="h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-[#1a0b2e] to-[#4B0082] border-2 border-[#FFD700]/70">
+                <Image src="/images/Kuyakhanya FM Icon.png" alt="" width={36} height={36} className="h-full w-full object-cover" />
+              </div>
               <span className="font-heading font-black text-sm">KUYAKHANYA FM</span>
             </div>
             <button onClick={() => setOpen(false)} className="h-9 w-9 grid place-items-center rounded-full bg-white/10 border border-white/10">
