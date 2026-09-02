@@ -3,11 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { siteData } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Services",
-  description: "Explore the services KUYAKHANYA FM offers — live streaming, outreach, event coverage, youth development, audio production and marketing.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Services | KUYAKHANYA FM",
+  description: "Services: live 24/7 streaming, community outreach, event coverage, youth development, audio production & marketing. Enquire now.",
+  path: "/services",
+  image: "/images/team_image.jpg",
+  imageAlt: "KUYAKHANYA FM Services — community & media",
+  keywords: ["Kuyakhanya services", "live streaming", "community outreach", "youth development"],
+});
 
 export default function ServicesPage() {
   const services = siteData.services;
@@ -25,7 +30,7 @@ export default function ServicesPage() {
           {services.length === 0 ? (
             <div className="rounded-[32px] grad-card border border-dashed border-zinc-300 bg-white p-16 text-center shadow-soft">
               <span className="text-3xl">🎙️</span>
-              <h2 className="mt-4 font-display text-2xl font-extrabold text-ink">Services coming soon</h2>
+              <h2 className="mt-4 font-display text-2xl font-extrabold text-[#1a0b2e]">Services coming soon</h2>
               <p className="mt-2 text-zinc-500 max-w-md mx-auto">We’re putting the finishing touches on our service lineup. Check back shortly!</p>
             </div>
           ) : (
@@ -43,7 +48,7 @@ export default function ServicesPage() {
                   </div>
                   <div className="flex flex-1 flex-col p-4">
                     <span className="text-[11px] font-bold tracking-[0.2em] text-[#6a0dad] uppercase">Service 0{i + 1}</span>
-                    <h2 className="mt-1.5 font-display text-xl font-extrabold tracking-tight text-ink">{s.title}</h2>
+                    <h2 className="mt-1.5 font-display text-xl font-extrabold tracking-tight text-[#1a0b2e]">{s.title}</h2>
                     <p className="mt-2 text-sm leading-relaxed text-zinc-600 flex-1">{s.description}</p>
                     <div className="mt-5 pt-4 border-t border-[#ede6f8] flex items-center justify-between">
                       <Link href="/contact" className="text-sm font-bold text-[#6a0dad] hover:text-[#4b0082] transition-colors">

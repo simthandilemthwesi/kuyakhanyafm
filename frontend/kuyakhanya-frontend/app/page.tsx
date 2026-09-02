@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import WeatherUpdates from "@/components/WeatherUpdates";
 import AboutSection from "@/components/AboutSection";
 import ShowsSection from "@/components/ShowsSection";
 import PresentersSection from "@/components/PresentersSection";
@@ -21,6 +22,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <WeatherUpdates />
       <AboutSection />
       <ShowsSection />
       <PresentersSection />

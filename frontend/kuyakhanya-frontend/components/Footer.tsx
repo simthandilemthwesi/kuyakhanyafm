@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { siteData } from "@/lib/site-data";
+import CATClock from "@/components/CATClock";
 import { FacebookIcon, InstagramIcon, YouTubeIcon, TikTokIcon, WebsiteIcon, WhatsAppIcon, MailIcon, PhoneIcon } from "@/components/SocialIcons";
 
 export default function Footer() {
@@ -96,14 +97,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm">
-          <p className="text-white/60">© {new Date().getFullYear()} KUYAKHANYA FM. All rights reserved.</p>
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm sm:flex-row sm:items-center sm:justify-between">
+          <CATClock />
           <a
             href="https://simthandilemthwesi.vercel.app"
             target="_blank"
             rel="noreferrer"
             aria-label="Developed by Simthandile Mthwesi"
-            className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/15 px-4 py-2 font-semibold text-white/90 hover:bg-white/10 hover:border-[#ffd700]/40 hover:text-[#ffd700] transition-colors"
+            className="inline-flex items-center gap-2 self-start sm:self-auto rounded-full bg-white/5 border border-white/15 px-4 py-2 font-semibold text-white/90 hover:bg-white/10 hover:border-[#ffd700]/40 hover:text-[#ffd700] transition-colors"
           >
             Developed By <span className="text-[#ffd700]">Simthandile Mthwesi</span>
           </a>

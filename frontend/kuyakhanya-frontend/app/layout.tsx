@@ -4,8 +4,9 @@ import "./globals.css";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Chatbot from "@/components/Chatbot";
+import JsonLd, { radioStationJsonLd } from "@/components/JsonLd";
 import { AudioProvider } from "@/components/AudioProvider";
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const poppins = Poppins({
@@ -17,6 +18,7 @@ const poppins = Poppins({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 const geistMono = Geist_Mono({
@@ -26,13 +28,13 @@ const geistMono = Geist_Mono({
 const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "700", "900"],
   display: "swap",
 });
 const bitter = Bitter({
   variable: "--font-bitter",
   subsets: ["latin"],
-  weight: ["400", "700", "800", "900"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -40,15 +42,20 @@ export const viewport: Viewport = {
   themeColor: "#0b0a14",
   width: "device-width",
   initialScale: 1,
+  colorScheme: "dark",
 };
+
+const SITE_URL = "https://kuyakhanyafm.web.app";
+const SITE_NAME = "KUYAKHANYA FM";
+const SITE_DESC =
+  "KUYAKHANYA FM — Online Christian radio from Thembalethu, George. Uplifting music, inspirational messages, and community programs bringing light through Christ. We Shine Brighter Together.";
 
 export const metadata: Metadata = {
   title: {
     default: "KUYAKHANYA FM — We Shine Brighter Together",
     template: "%s | KUYAKHANYA FM",
   },
-  description:
-    "KUYAKHANYA FM — Online Christian radio from Thembalethu, George. Uplifting music, inspirational messages, and community programs bringing light through Christ.",
+  description: SITE_DESC,
   keywords: [
     "Kuyakhanya FM",
     "online radio",
@@ -58,34 +65,84 @@ export const metadata: Metadata = {
     "South Africa",
     "gospel",
     "community radio",
+    "We Shine Brighter Together",
+    "live radio streaming",
+    "Western Cape radio",
+    "faith radio",
   ],
-  authors: [{ name: "Simthandile Mthwesi" }],
-  metadataBase: new URL("https://kuyakhanyafm.web.app"),
+  authors: [{ name: "Simthandile Mthwesi", url: "https://simthandilemthwesi.vercel.app" }],
+  creator: "Simthandile Mthwesi",
+  publisher: SITE_NAME,
+  category: "Music & Religion",
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+    languages: { "en-ZA": "/", "en": "/" },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_ZA",
-    url: "https://kuyakhanyafm.web.app",
-    siteName: "KUYAKHANYA FM",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     title: "KUYAKHANYA FM — We Shine Brighter Together",
     description:
-      "Bringing light to Thembalethu through Christ — uplifting music, inspirational messages, and community programs.",
-    images: [{ url: "/images/team_image.jpg", width: 1200, height: 630, alt: "KUYAKHANYA FM team" }],
+      "Bringing light to Thembalethu through Christ — live 24/7, presenters, shows, news & community. Listen live now.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "KUYAKHANYA FM — We Shine Brighter Together | Thembalethu, George",
+      },
+      { url: "/images/team_image.jpg", width: 1200, height: 630, alt: "KUYAKHANYA FM team — Thembalethu" },
+      { url: "/images/Kuyakhanya FM Icon.png", width: 512, height: 512, alt: "KUYAKHANYA FM Icon" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "KUYAKHANYA FM",
-    description: "We Shine Brighter Together — Thembalethu's light via radio.",
+    site: "@KuyakhanyaFM",
+    creator: "@KuyakhanyaFM",
+    title: "KUYAKHANYA FM — We Shine Brighter Together",
+    description: "Live Christian radio from Thembalethu, George. Music, shows, presenters & community — 24/7.",
+    images: ["/opengraph-image", "/images/team_image.jpg"],
   },
   verification: {
     google: "5xpY0V-DR-U_GmbHXTEE2ZceAvZB6ay2Kesnqzi7hI8",
   },
-  icons: { icon: "/images/Kuyakhanya FM Icon.png" },
+  icons: {
+    icon: [
+      { url: "/images/Kuyakhanya FM Icon.png", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: [{ url: "/images/Kuyakhanya FM Icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: { telephone: true, email: true, address: true },
+  applicationName: SITE_NAME,
+  referrer: "origin-when-cross-origin",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable} ${geistMono.variable} ${rubik.variable} ${bitter.variable} h-full scroll-smooth`}>
       <body className="min-h-full flex flex-col bg-[#0b0a14] text-[#F8F8FF] antialiased overflow-x-hidden">
+        <JsonLd data={radioStationJsonLd()} />
         <AudioProvider>
           {/* Broadcast ambient layers — fixed */}
           <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -101,8 +158,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </AudioProvider>
         <SpeedInsights />
-        <Chatbot />
-        {/* Chatbase AI chat bubble — Simbot (Mnj8LreLagzhOq40QMKDW) — keep script exactly as provided */}
+        <Analytics />
+        {/* Chatbase AI chat bubble — Simbot (Mnj8LreLagzhOq40QMKDW) — keep script exactly as provided, before </body> */}
         <Script id="chatbase-embed" strategy="afterInteractive">
           {`(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="Mnj8LreLagzhOq40QMKDW";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();`}
         </Script>

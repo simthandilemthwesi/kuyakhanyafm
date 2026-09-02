@@ -9,7 +9,7 @@ export default function TeamPreview() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Our Team</p>
-            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-ink">
+            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#1a0b2e]">
               The people behind the mic
             </h2>
             <div className="mt-5 rule" />
@@ -26,16 +26,16 @@ export default function TeamPreview() {
           {/* Managing Director */}
           <div className="sm:col-span-3 lg:col-span-1 rounded-[32px] grad-card border border-zinc-200 bg-white p-7 text-center shadow-soft">
             <div className="relative mx-auto h-32 w-32">
-              <div aria-hidden className="absolute inset-0 rounded-full bg-gradient-to-br from-[#6a0dad] to-[#ffd700] blur-lg opacity-40" />
+              <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#6a0dad] to-[#ffd700] blur-lg opacity-40" />
               <Image
                 src={siteData.managingDirector.photo}
                 alt={siteData.managingDirector.name}
                 width={200}
                 height={200}
-                className="relative mx-auto h-32 w-32 rounded-full object-cover border-4 border-[#ffd700] shadow-lg"
+                className="relative mx-auto h-32 w-32 rounded-2xl object-cover border-4 border-[#ffd700] shadow-lg"
               />
             </div>
-            <h3 className="mt-5 font-display font-extrabold text-ink text-lg">{siteData.managingDirector.name}</h3>
+            <h3 className="mt-5 font-display font-extrabold text-[#1a0b2e] text-lg">{siteData.managingDirector.name}</h3>
             <p className="text-xs font-bold tracking-[0.2em] text-[#6a0dad] uppercase mt-1">{siteData.managingDirector.role}</p>
             <p className="mt-3 text-sm leading-relaxed text-zinc-600 line-clamp-3 mx-auto max-w-[30ch]">{siteData.managingDirector.bio}</p>
           </div>
@@ -49,9 +49,9 @@ export default function TeamPreview() {
                   alt={m.name}
                   width={160}
                   height={160}
-                  className="mx-auto h-20 w-20 rounded-full object-cover border-4 border-[#ffd700]/70 shadow"
+                  className="mx-auto h-20 w-20 rounded-2xl object-cover border-4 border-[#ffd700]/70 shadow"
                 />
-                <p className="mt-4 font-display font-bold text-ink leading-tight">{m.name}</p>
+                <p className="mt-4 font-display font-bold text-[#1a0b2e] leading-tight">{m.name}</p>
                 <p className="text-[11px] font-bold tracking-widest text-[#6a0dad] uppercase mt-1">{m.role}</p>
               </div>
             ))}
@@ -62,9 +62,9 @@ export default function TeamPreview() {
         <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3">
           {siteData.presenters.slice(0, 10).map((p) => (
             <div key={p.name} className="flex items-center gap-3 rounded-2xl grad-card border border-zinc-200 bg-white p-3 shadow-soft">
-              <Image src={p.photo} alt={p.name} width={56} height={56} className="h-11 w-11 rounded-full object-cover shrink-0 border-2 border-[#ffd700]/60" />
+              <Image src={p.photo} alt={p.name} width={56} height={56} className="h-11 w-11 rounded-xl object-cover shrink-0 border-2 border-[#ffd700]/60" />
               <div className="min-w-0">
-                <p className="text-xs font-bold leading-tight text-ink truncate">{p.name}</p>
+                <p className="text-xs font-bold leading-tight text-[#1a0b2e] truncate">{p.name}</p>
                 <p className="text-[11px] text-zinc-500 truncate">{p.role}</p>
               </div>
             </div>

@@ -26,3 +26,4 @@ Thumbs.db
 npm-debug.log*
 
 dev-server*.log
+dev-server*.log.err

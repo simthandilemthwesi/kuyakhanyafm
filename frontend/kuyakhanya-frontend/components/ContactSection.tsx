@@ -86,6 +86,21 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
+
+        {/* Location Map — moved from footer */}
+        <div className="mt-10 overflow-hidden rounded-[24px] border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d826.916314961269!2d22.482814791010206!3d-34.001130845652355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dd61b005ffa49d7%3A0x273e4a0b0c6f9d47!2sKuyakhanya%20FM!5e0!3m2!1sen!2sza!4v1788294598860!5m2!1sen!2sza"
+            width={400}
+            height={300}
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+            title="Kuyakhanya FM Location — Thembalethu, George"
+            className="block w-full h-[300px] sm:h-[340px]"
+          />
+        </div>
       </div>
     </section>
   );

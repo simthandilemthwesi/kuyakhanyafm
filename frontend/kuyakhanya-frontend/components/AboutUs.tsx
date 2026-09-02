@@ -8,7 +8,7 @@ export default function AboutUs() {
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
           <div>
             <p className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">About Us</p>
-            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-ink">
+            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#1a0b2e]">
               A beacon of hope in <span className="text-gradient-purple">Thembalethu & beyond</span>
             </h2>
             <div className="mt-5 rule" />
@@ -24,7 +24,7 @@ export default function AboutUs() {
               ].map((f) => (
                 <div key={f.title} className="rounded-2xl grad-card bg-white border border-zinc-100 p-5 shadow-soft">
                   <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#6a0dad] to-[#8a2be2] text-[#ffd700] text-lg">{f.icon}</span>
-                  <p className="mt-3 font-bold text-ink text-[15px]">{f.title}</p>
+                  <p className="mt-3 font-bold text-[#1a0b2e] text-[15px]">{f.title}</p>
                   <p className="mt-0.5 text-sm text-zinc-500 leading-snug">{f.desc}</p>
                 </div>
               ))}
@@ -44,7 +44,7 @@ export default function AboutUs() {
                 loading="lazy"
               />
               <div className="p-5 sm:p-6">
-                <p className="font-display font-extrabold text-ink">We Shine Brighter Together</p>
+                <p className="font-display font-extrabold text-[#1a0b2e]">We Shine Brighter Together</p>
                 <p className="text-sm text-zinc-500">Thembalethu • George • Western Cape</p>
               </div>
             </div>

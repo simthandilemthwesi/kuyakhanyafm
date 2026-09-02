@@ -65,8 +65,8 @@ function PresenterCard({ p }: { p: (typeof siteData.presenters)[number] }) {
 }
 
 export default function PresentersSection() {
-  // New presenter list only — 9 presenters per updated site-data
-  const featured = siteData.presenters;
+  // Home shows only the first 3 presenters — the full list lives on /team
+  const featured = siteData.presenters.slice(0, 3);
 
   return (
     <section id="presenters" className="relative py-16 sm:py-24 overflow-hidden">
@@ -93,7 +93,7 @@ export default function PresentersSection() {
         </div>
 
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60">
-          Professional presenters guiding every show. Elegant circular frames, glass panels and gold rings — your uploaded portraits will slot in perfectly, undistorted.
+          The voices guiding each KUYAKHANYA FM show — faith, community and inspiration for Thembalethu.
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
@@ -109,10 +109,6 @@ export default function PresentersSection() {
             View All {siteData.presenters.length} Presenters →
           </Link>
         </div>
-
-        <p className="mt-8 text-center text-xs text-white/35">
-          Placeholder silhouettes shown now — real presenter photos you upload later will preserve facial identity, removed background, placed in circular glass frames with natural proportions.
-        </p>
       </div>
     </section>
   );

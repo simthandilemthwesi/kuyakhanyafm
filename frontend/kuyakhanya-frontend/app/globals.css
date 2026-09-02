@@ -208,16 +208,16 @@ select:focus-visible {
   box-shadow: 0 0 40px rgba(106,13,173,0.35), 0 0 80px rgba(106,13,173,0.15);
 }
 
-/* Circular portrait frame — premium broadcast ring */
+/* Curved-rounded-square portrait frame — premium broadcast ring */
 .circular-frame {
   position: relative;
-  border-radius: 50%;
+  border-radius: 1.5rem;
   padding: 3px;
   background: linear-gradient(135deg, #ffd700, #ffb300, #6a0dad, #8a2be2, #ffd700);
   box-shadow: 0 0 20px rgba(255,215,0,0.3), 0 0 40px rgba(106,13,173,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 .circular-frame-inner {
-  border-radius: 50%;
+  border-radius: calc(1.5rem - 3px);
   overflow: hidden;
   background: #1a0b2e;
   border: 3px solid rgba(255,255,255,0.95);

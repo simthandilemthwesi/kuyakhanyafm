@@ -151,7 +151,7 @@ function Card({ show }: { show: Show }) {
 
         <div className="mt-auto pt-6 flex justify-center">
           <Link
-            href="/#listen-live"
+            href="/shows-presenters"
             className="inline-flex items-center justify-center rounded-full bg-[#FFD700] px-6 py-2.5 text-xs font-black tracking-wide text-[#1a0b2e] hover:bg-[#ffe873] transition shadow-[0_8px_20px_rgba(255,215,0,0.25)]"
           >
             VIEW SHOW
@@ -186,18 +186,23 @@ export default function ShowsSection() {
           <div className="mx-auto mt-6 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#FFD700] to-[#ffb300] shadow-[0_0_12px_rgba(255,215,0,0.35)]" />
         </div>
 
-        {/* 3D grid — massive beautiful */}
+        {/* 3D grid — home shows only 3 featured shows; full lineup lives on /shows-presenters & /programmes */}
         <div className="mt-12 grid gap-6 sm:gap-7 sm:grid-cols-2 lg:grid-cols-3" style={{ perspective: "1400px" } as React.CSSProperties}>
-          {SHOWS.map((s) => (
+          {SHOWS.slice(0, 3).map((s) => (
             <div key={s.title} style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
               <Card show={s} />
             </div>
           ))}
         </div>
 
-        <p className="mt-10 text-center text-xs text-white/40">
-          Presenter photos are placeholders — your uploaded portraits will appear inside the gold glowing rings, undistorted, with natural proportions.
-        </p>
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/shows-presenters"
+            className="inline-flex items-center rounded-full bg-white/10 border border-white/15 backdrop-blur px-6 py-3 text-sm font-bold text-white hover:bg-white/15 hover:border-[#FFD700]/30 transition"
+          >
+            View All {SHOWS.length} Shows →
+          </Link>
+        </div>
       </div>
     </section>
   );

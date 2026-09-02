@@ -6,7 +6,7 @@ export default function Introduction() {
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Introduction</p>
-          <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-ink">
+          <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#1a0b2e]">
             More than radio — <span className="text-gradient-purple">a movement</span>
           </h2>
           <div className="mx-rule mt-5 rule" />

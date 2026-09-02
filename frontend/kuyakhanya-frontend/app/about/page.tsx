@@ -3,11 +3,16 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { siteData } from "@/lib/site-data";
 import { fetchAboutUnified, fetchVisionMissionUnified, fetchAimsUnified } from "@/lib/api";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description: "Who we are and what we believe — the story, vision, mission, aims and values of KUYAKHANYA FM.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "About Us | KUYAKHANYA FM",
+  description: "Who we are and what we believe — the story, vision, mission, aims and values of KUYAKHANYA FM. Born from a God-given vision for Thembalethu.",
+  path: "/about",
+  image: "/images/team_image.jpg",
+  imageAlt: "About KUYAKHANYA FM — story, vision & values",
+  keywords: ["about Kuyakhanya FM", "Thembalethu story", "vision", "mission", "Christian radio"],
+});
 
 export default async function AboutPage() {
   const [about, vm, ao] = await Promise.all([
@@ -38,7 +43,7 @@ export default async function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div>
               <p className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Our Story</p>
-              <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-ink">Born from a God-given vision</h2>
+              <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#1a0b2e]">Born from a God-given vision</h2>
               <div className="mt-5 rule" />
               <p className="mt-6 text-[15px] sm:text-lg leading-relaxed text-zinc-600">{history}</p>
               <p className="mt-4 text-[15px] sm:text-lg leading-relaxed text-zinc-600">{siteData.introduction}</p>
@@ -79,7 +84,7 @@ export default async function AboutPage() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Our Values</p>
-            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-ink">What we stand for</h2>
+            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#1a0b2e]">What we stand for</h2>
             <div className="mx-rule mt-5 rule" />
           </div>
           <div className="mt-12 grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
@@ -116,7 +121,7 @@ export default async function AboutPage() {
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Aims & Objectives</p>
-            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-ink">Why we do what we do</h2>
+            <h2 className="mt-3 text-3xl sm:text-5xl font-display font-extrabold tracking-tight text-[#1a0b2e]">Why we do what we do</h2>
             <div className="mx-rule mt-5 rule" />
           </div>
           <div className="mx-auto mt-12 grid max-w-4xl gap-3">
@@ -136,7 +141,7 @@ export default async function AboutPage() {
           <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
             <div className="rounded-[32px] grad-card border border-zinc-200 bg-white p-8 sm:p-12 shadow-lift">
               <p className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Looking Ahead</p>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-ink">The future of KUYAKHANYA FM</h2>
+              <h2 className="mt-3 text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-[#1a0b2e]">The future of KUYAKHANYA FM</h2>
               <div className="mt-5 rule" />
               <p className="mt-6 text-[15px] sm:text-lg leading-relaxed text-zinc-600">{futurePlans}</p>
               <Link href="/contact" className="mt-8 inline-flex rounded-full bg-[#6a0dad] px-7 py-3.5 text-sm font-bold text-white hover:bg-[#4b0082] transition-colors shadow-md">

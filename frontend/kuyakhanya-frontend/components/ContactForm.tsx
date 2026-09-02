@@ -39,7 +39,7 @@ export default function ContactForm() {
   }
 
   const inputCls =
-    "w-full rounded-xl border border-[#e6ddf5] bg-[#faf8ff] px-4 py-3 text-sm text-ink placeholder:text-zinc-400 outline-none transition focus:border-[#6a0dad] focus:ring-2 focus:ring-[#6a0dad]/20 focus:bg-white";
+    "w-full rounded-xl border border-[#e6ddf5] bg-[#faf8ff] px-4 py-3 text-sm text-[#1a0b2e] placeholder:text-zinc-400 outline-none transition focus:border-[#6a0dad] focus:ring-2 focus:ring-[#6a0dad]/20 focus:bg-white";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

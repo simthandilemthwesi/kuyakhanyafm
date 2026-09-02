@@ -4,11 +4,17 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { siteData } from "@/lib/site-data";
 import { fetchManagementTeam, fetchTechnicians, fetchPresenters } from "@/lib/api";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Team",
-  description: "Meet the dedicated team behind KUYAKHANYA FM — management, technicians, and presenters.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Our Team | KUYAKHANYA FM",
+  description: "Meet the dedicated team behind KUYAKHANYA FM — Managing Director, managers, technician & 9 presenters from Thembalethu. Shareable profiles.",
+  path: "/team",
+  image: "/images/team1.jpg",
+  imageAlt: "KUYAKHANYA FM Team — presenters & management",
+  keywords: ["Kuyakhanya team", "presenters", "Thembalethu", "radio team"],
+  type: "profile",
+});
 
 function Card({
   name,
@@ -30,18 +36,18 @@ function Card({
       }`}
     >
       <div className={`relative mx-auto ${featured ? "h-36 w-36" : "h-28 w-28"}`}>
-        <div aria-hidden className="absolute inset-0 rounded-full bg-gradient-to-br from-[#6a0dad] to-[#ffd700] blur-lg opacity-40" />
+        <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#6a0dad] to-[#ffd700] blur-lg opacity-40" />
         <Image
           src={photo}
           alt={name}
           width={240}
           height={240}
-          className={`relative mx-auto rounded-full object-cover border-4 shadow ${
+          className={`relative mx-auto rounded-2xl object-cover border-4 shadow ${
             featured ? "h-36 w-36 border-[#ffd700]" : "h-28 w-28 border-[#ffd700]/60"
           }`}
         />
       </div>
-      <h3 className={`mt-4 font-display font-bold leading-tight ${featured ? "text-xl text-[#4b0082]" : "text-[15px] text-ink"}`}>
+      <h3 className={`mt-4 font-display font-bold leading-tight ${featured ? "text-xl text-[#4b0082]" : "text-[15px] text-[#1a0b2e]"}`}>
         {name}
       </h3>
       <p className="mt-1 text-xs font-bold tracking-[0.15em] text-[#6a0dad] uppercase">{role}</p>

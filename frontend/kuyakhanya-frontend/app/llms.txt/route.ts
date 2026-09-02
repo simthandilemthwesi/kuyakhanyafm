@@ -1,0 +1,72 @@
+import type { NextRequest } from "next/server";
+
+const SITE_URL = "https://kuyakhanyafm.web.app";
+
+export const runtime = "edge";
+
+const LLMS = `# KUYAKHANYA FM
+
+> Bringing light to Thembalethu — We Shine Brighter Together.
+
+KUYAKHANYA FM is an online Christian radio station based in Thembalethu, George, Western Cape, South Africa. We stream uplifting gospel music, inspirational messages and community programmes 24/7, carrying a message of hope, faith and transformation.
+
+## About
+
+KUYAKHANYA FM was birthed from a God-given vision to bring light to the people of Thembalethu. The station exists to uplift, inspire and transform lives by spreading the light of Christ, especially to those walking in spiritual darkness. It is more than radio — it is a movement of hope, unity and empowerment for the community.
+
+## Key Details
+
+- Name: KUYAKHANYA FM
+- Slogan: We Shine Brighter Together
+- Location: Thembalethu, George, Western Cape, South Africa (en-ZA)
+- Format: Online Christian / gospel radio — live 24/7
+- Stream: https://cast3.asurahosting.com/proxy/kuyakhan/stream
+- Contact: 063 978 0839 (phone/WhatsApp) | info.kuyakhanyafm@gmail.com
+
+## Pages
+
+- [Home](https://kuyakhanyafm.web.app/): Live player, shows, presenters, news, weather and contact.
+- [About](https://kuyakhanyafm.web.app/about): Story, vision, mission, values, aims and future plans.
+- [Shows & Presenters](https://kuyakhanyafm.web.app/shows-presenters): All shows and presenters.
+- [Programmes](https://kuyakhanyafm.web.app/programmes): Programme schedule by show.
+- [News](https://kuyakhanyafm.web.app/news): News, announcements and weather updates for George & 7 SA cities.
+- [Team](https://kuyakhanyafm.web.app/team): Managing Director, management, technician and presenters.
+- [Services](https://kuyakhanyafm.web.app/services): Live streaming, outreach, event coverage, youth development, audio production, marketing.
+- [Contact](https://kuyakhanyafm.web.app/contact): Contact form, map and socials.
+
+## Shows & Presenters
+
+- Love & Life — Franky
+- Abafazi Bokholo — Mrs. Lolwana
+- Inkwenkwezi Zethu — Mrs. Klass
+- Ithemba Lokulila — Mrs. Mati, Mrs. Panduva
+- Friday Vibes — Kay Cee Taurus
+- Ezakwa Ntu — DJ Toto
+- Yizani Sakhe — Mrs. Mthwesi, Mrs. Ndziba
+
+## Team
+
+- Managing Director: Mr Mzoxolo Panduva
+- Station Manager: Mr Zolani Fulani
+- Media Manager: Mr Simthandile Mthwesi
+- Senior Technician: Mr Anthon Skweyiya
+
+## Social
+
+- Facebook: https://www.facebook.com/profile.php?id=61580413033664
+- Instagram: https://www.instagram.com/kuyakhanyafm/
+- YouTube: https://www.youtube.com/@KuyakhanyaFM
+- TikTok: https://www.tiktok.com/@kuyakhanyafm
+
+## Developer
+
+- Developed by Simthandile Mthwesi — https://simthandilemthwesi.vercel.app
+
+For the full, detailed guide, see https://kuyakhanyafm.web.app/llms-full.txt
+`;
+
+export function GET(_req: NextRequest) {
+  return new Response(LLMS, {
+    headers: { "content-type": "text/plain; charset=utf-8" },
+  });
+}

@@ -106,10 +106,6 @@ export default function TeamSection() {
             <StaffCard name="TECHNICIAN" role="VACANCY" isVacancy vacancyDesc="Support technical and broadcast operations — studio, streaming and live events." />
           </div>
         </div>
-
-        <p className="mt-6 text-center text-xs text-white/35">
-          Managing Director & Media Manager preserved from existing KUYAKHANYA FM info • Station Manager & Technician shown as vacancies per instruction — no invented names.
-        </p>
       </div>
     </section>
   );

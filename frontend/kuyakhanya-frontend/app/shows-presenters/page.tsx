@@ -1,26 +1,16 @@
 import type { Metadata } from "next";
 import ShowsPresentersClient from "@/components/ShowsPresentersClient";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Shows & Presenters | KUYAKHANYA FM",
   description:
-    "Explore all KUYAKHANYA FM programmes and meet the presenters — from Love & Life to Friday Vibes, Ezakwa Ntu and Yizani Sakhe. WE SHINE BRIGHTER TOGETHER.",
-  openGraph: {
-    title: "Shows & Presenters | KUYAKHANYA FM",
-    description:
-      "Explore all KUYAKHANYA FM programmes and meet the presenters — every show, every host, every day.",
-    url: "/shows-presenters",
-    siteName: "KUYAKHANYA FM",
-    images: [{ url: "/images/Kuyakhanya FM LOGO.png", width: 800, height: 800, alt: "KUYAKHANYA FM" }],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shows & Presenters | KUYAKHANYA FM",
-    description: "Every show, every host — KUYAKHANYA FM programmes and presenters.",
-    images: ["/images/Kuyakhanya FM LOGO.png"],
-  },
-};
+    "All 8 programmes & 9 presenters — Love & Life, Abafazi Bokholo, Friday Vibes, Ezakwa Ntu, Yizani Sakhe & more. Share any show card.",
+  path: "/shows-presenters",
+  image: "/images/Kuyakhanya FM LOGO.png",
+  imageAlt: "KUYAKHANYA FM Shows & Presenters — shareable cards",
+  keywords: ["shows", "presenters", "Love & Life", "Friday Vibes", "Ezakwa Ntu"],
+});
 
 export default function ShowsPresentersPage() {
   return <ShowsPresentersClient />;

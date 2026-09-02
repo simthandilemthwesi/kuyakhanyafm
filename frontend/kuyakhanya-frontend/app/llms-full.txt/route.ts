@@ -1,0 +1,128 @@
+import type { NextRequest } from "next/server";
+
+const SITE_URL = "https://kuyakhanyafm.web.app";
+
+export const runtime = "edge";
+
+const LLMS_FULL = `# KUYAKHANYA FM — Full Guide
+
+> Bringing light to Thembalethu — We Shine Brighter Together.
+
+## 1. Overview
+
+KUYAKHANYA FM is an online Christian radio station based in Thembalethu, George, Western Cape, South Africa. It streams uplifting gospel music, inspirational messages and community programmes 24/7, carrying a message of hope, faith and transformation. The station is a community-driven movement, not just a broadcast.
+
+## 2. Core Details
+
+- Name: KUYAKHANYA FM
+- Slogan: We Shine Brighter Together
+- Format: Online Christian / gospel radio (live 24/7)
+- Language: English and isiXhosa (en-ZA)
+- Location: Thembalethu, George, Western Cape, South Africa
+- Live stream: https://cast3.asurahosting.com/proxy/kuyakhan/stream
+- Contact phone / WhatsApp: 063 978 0839
+- Contact email: info.kuyakhanyafm@gmail.com
+
+## 3. Our Story
+
+KUYAKHANYA FM began as a dream — a call to bring light to Thembalethu during a time of spiritual darkness. What started as a small online stream has grown into a community movement. Through a God-given vision, the station was created to uplift, inspire and transform lives by spreading the light of Christ, especially to those walking in spiritual darkness.
+
+## 4. Vision
+
+To be the light of hope and transformation in Thembalethu and beyond, shining the love of God through radio broadcasting, inspiring positive change, and uniting the community to walk in truth, purpose and spiritual growth.
+
+## 5. Mission
+
+- To spread the light of Christ to those living in spiritual darkness, bringing encouragement, faith and restoration.
+- To provide uplifting music, inspiring messages and community-driven programs that empower individuals and families.
+- To be a voice of unity, hope and transformation, helping people discover their God-given potential.
+- To create a platform that promotes local talent, culture and testimonies of God's goodness.
+
+## 6. Aims & Objectives
+
+- To serve as a platform of spiritual empowerment for the Thembalethu community.
+- To promote local talent, creativity and culture through radio programming.
+- To create opportunities for dialogue, education and positive social change.
+- To encourage youth development through skills training, mentorship and exposure.
+- To build strong partnerships with churches, organizations and the wider community to shine brighter together.
+
+## 7. Values
+
+Faith, Community, Excellence, Integrity, Service.
+
+## 8. Impact
+
+- 5000+ listeners
+- 15+ presenters
+- 8 programmes
+- 2+ years serving
+
+## 9. Shows & Presenters
+
+- Love & Life — Franky
+- Abafazi Bokholo — Mrs. Lolwana
+- Inkwenkwezi Zethu — Mrs. Klass
+- Ithemba Lokulila — Mrs. Mati, Mrs. Panduva
+- Friday Vibes — Kay Cee Taurus
+- Ezakwa Ntu — DJ Toto
+- Yizani Sakhe — Mrs. Mthwesi, Mrs. Ndziba
+
+## 10. Management & Team
+
+- Managing Director: Mr Mzoxolo Panduva
+- Station Manager: Mr Zolani Fulani
+- Media Manager: Mr Simthandile Mthwesi
+- Senior Technician: Mr Anthon Skweyiya
+
+## 11. Services
+
+- Live Radio Streaming — 24/7 online streaming of uplifting gospel music and inspirational programmes.
+- Community Outreach — on-the-ground programmes supporting youth, families and churches.
+- Event Coverage — live coverage of church events, crusades and community gatherings.
+- Youth Development — training, mentorship and exposure for young presenters and technicians.
+- Audio Production — professional recording, editing and podcast production for local talent.
+- Marketing & Sponsorship — brand partnerships that shine brighter together.
+
+## 12. News
+
+- Kuyakhanya FM Launches New Morning Devotion Slot — prayer and praise 05:00–06:00 every weekday.
+- Community Youth Workshop a Success — over 60 youth attended a skills workshop on presenting and audio editing.
+- Partner with Us — churches and businesses invited to partner for outreach events.
+
+## 13. Future Plans
+
+Expand to FM broadcast, build a youth training studio, and launch a mobile app for offline listening.
+
+## 14. Social Media
+
+- Facebook: https://www.facebook.com/profile.php?id=61580413033664
+- Instagram: https://www.instagram.com/kuyakhanyafm/
+- YouTube: https://www.youtube.com/@KuyakhanyaFM
+- TikTok: https://www.tiktok.com/@kuyakhanyafm
+
+## 15. Weather Service
+
+The site displays live weather for George and 7 major South African cities (Johannesburg, Cape Town, Durban, Pretoria, Gqeberha, East London, Bloemfontein), refreshed every 10 minutes via OpenWeatherMap.
+
+## 16. Developer
+
+Developed by Simthandile Mthwesi — https://simthandilemthwesi.vercel.app
+
+## 17. Links
+
+- Home: https://kuyakhanyafm.web.app/
+- About: https://kuyakhanyafm.web.app/about
+- Shows & Presenters: https://kuyakhanyafm.web.app/shows-presenters
+- Programmes: https://kuyakhanyafm.web.app/programmes
+- News: https://kuyakhanyafm.web.app/news
+- Team: https://kuyakhanyafm.web.app/team
+- Services: https://kuyakhanyafm.web.app/services
+- Contact: https://kuyakhanyafm.web.app/contact
+- Sitemap: https://kuyakhanyafm.web.app/sitemap.xml
+`;
+
+export function GET(_req: NextRequest) {
+  return new Response(LLMS_FULL, {
+    headers: { "content-type": "text/plain; charset=utf-8" },
+  });
+}

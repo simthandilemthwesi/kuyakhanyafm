@@ -10,23 +10,9 @@ export default function ListenLive() {
   const stageRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
 
+  // Player card stays static — no tilt/drag so it never moves around
   useEffect(() => {
-    const el = stageRef.current;
-    if (!el) return;
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-    const onMove = (e: MouseEvent) => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      setTilt({ rx: -y * 8, ry: x * 10 });
-    };
-    const onLeave = () => setTilt({ rx: 0, ry: 0 });
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
-    return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
-    };
+    setTilt({ rx: 0, ry: 0 });
   }, []);
 
   const handleShare = async () => {

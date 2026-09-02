@@ -3,11 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { siteData } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Programmes",
-  description: "Browse the programmes, shows and presenters on KUYAKHANYA FM — uplifting gospel content for the Thembalethu community.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Programmes | KUYAKHANYA FM",
+  description: "Browse programmes, shows & presenters on KUYAKHANYA FM — Love & Life, Abafazi Bokholo, Friday Vibes, Ezakwa Ntu & more. Share any show.",
+  path: "/programmes",
+  image: "/images/Kuyakhanya FM LOGO.png",
+  imageAlt: "KUYAKHANYA FM Programmes — shows & presenters",
+  keywords: ["Kuyakhanya programmes", "radio shows", "presenters", "Thembalethu"],
+});
 
 export default function ProgrammesPage() {
   // Group presenters by their show (role)
@@ -31,7 +36,7 @@ export default function ProgrammesPage() {
           {shows.length === 0 ? (
             <div className="rounded-[32px] grad-card border border-dashed border-zinc-300 bg-white p-16 text-center shadow-soft">
               <span className="text-3xl">📻</span>
-              <h2 className="mt-4 font-display text-2xl font-extrabold text-ink">Programme schedule coming soon</h2>
+              <h2 className="mt-4 font-display text-2xl font-extrabold text-[#1a0b2e]">Programme schedule coming soon</h2>
               <p className="mt-2 text-zinc-500 max-w-md mx-auto">We’re preparing our full show line-up. Tune in soon for devotionals, praise and community programmes!</p>
             </div>
           ) : (
@@ -47,9 +52,9 @@ export default function ProgrammesPage() {
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">
                     {show.presenters.map((p) => (
                       <div key={p.name} className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-3 hover:border-[#6a0dad]/40 transition-colors">
-                        <Image src={p.photo} alt={p.name} width={56} height={56} className="h-12 w-12 rounded-full object-cover border-2 border-[#ffd700]/70 shrink-0" />
+                        <Image src={p.photo} alt={p.name} width={56} height={56} className="h-12 w-12 rounded-xl object-cover border-2 border-[#ffd700]/70 shrink-0" />
                         <div className="min-w-0">
-                          <p className="text-sm font-bold leading-tight text-ink truncate">{p.name}</p>
+                          <p className="text-sm font-bold leading-tight text-[#1a0b2e] truncate">{p.name}</p>
                           <p className="text-[11px] text-zinc-500 truncate">Presenter</p>
                         </div>
                       </div>

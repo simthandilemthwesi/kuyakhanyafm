@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Link from "next/link";
 import { siteData } from "@/lib/site-data";
 import { shareTarget, SHARE_NETWORKS, SITE_URL } from "@/lib/share";
 import {
@@ -198,12 +197,6 @@ function ShowCard({ show }: { show: Show }) {
             title={`${show.title} — KUYAKHANYA FM`}
             description={`${show.day} • ${show.time} • Host: ${show.host}. ${show.theme}.`}
           />
-          <Link
-            href="/#listen-live"
-            className="rounded-full bg-[#FFD700] px-4 py-1.5 text-xs font-black text-[#1a0b2e] hover:bg-[#ffe873] transition"
-          >
-            LISTEN
-          </Link>
         </div>
       </div>
     </article>
@@ -353,12 +346,6 @@ export default function ShowsPresentersClient() {
                       title={`${s.title} — KUYAKHANYA FM`}
                       description={`${s.day} • ${s.time} • ${s.host}.`}
                     />
-                    <Link
-                      href="/#listen-live"
-                      className="rounded-full bg-[#FFD700] px-4 py-1.5 text-xs font-black text-[#1a0b2e] hover:bg-[#ffe873] transition"
-                    >
-                      LISTEN
-                    </Link>
                   </div>
                 </article>
               ))}
