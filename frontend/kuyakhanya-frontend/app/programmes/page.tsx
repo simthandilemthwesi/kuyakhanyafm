@@ -33,15 +33,8 @@ export default function ProgrammesPage() {
 
       <section className="py-16 sm:py-24 bg-[#faf8ff]">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-          {shows.length === 0 ? (
-            <div className="rounded-[32px] grad-card border border-dashed border-zinc-300 bg-white p-16 text-center shadow-soft">
-              <span className="text-3xl">📻</span>
-              <h2 className="mt-4 font-display text-2xl font-extrabold text-[#1a0b2e]">Programme schedule coming soon</h2>
-              <p className="mt-2 text-zinc-500 max-w-md mx-auto">We’re preparing our full show line-up. Tune in soon for devotionals, praise and community programmes!</p>
-            </div>
-          ) : (
-            <div className="grid gap-6 lg:grid-cols-2">
-              {shows.map((show) => (
+          <div className="grid gap-6 lg:grid-cols-2">
+            {shows.map((show) => (
                 <div key={show.name} className="rounded-[32px] grad-card border border-zinc-200 bg-white p-7 shadow-soft hover:-translate-y-1 hover:shadow-lift transition duration-300">
                   <div className="flex items-center justify-between gap-3">
                     <h2 className="font-display text-xl sm:text-2xl font-extrabold tracking-tight text-gradient-purple">{show.name}</h2>
@@ -63,7 +56,6 @@ export default function ProgrammesPage() {
                 </div>
               ))}
             </div>
-          )}
         </div>
       </section>
     </>

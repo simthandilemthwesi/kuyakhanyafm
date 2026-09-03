@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { siteData } from "@/lib/site-data";
 
 type Show = {
   day: string;
@@ -77,20 +79,33 @@ const SHOWS: Show[] = [
   },
 ];
 
-function PlaceholderPortrait({ name }: { name: string }) {
-  const initials = name
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+function presenterPhoto(name: string): string | undefined {
+  const p = siteData.presenters.find((d) => d.name.toLowerCase() === name.toLowerCase());
+  return p?.photo;
+}
+
+function PresenterPortrait({ name, photo }: { name: string; photo?: string }) {
   return (
     <div className="circular-frame h-24 w-24 sm:h-28 sm:w-28 mx-auto">
-      <div className="circular-frame-inner h-full w-full grid place-items-center bg-gradient-to-br from-[#1a0b2e] via-[#2e0b56] to-[#4B0082] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30 dotted" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-        <span className="relative text-xl sm:text-2xl font-black tracking-wide text-[#FFD700]">{initials}</span>
-        <span className="absolute bottom-1 text-[8px] tracking-[0.2em] font-bold text-white/50">PHOTO SOON</span>
+      <div className="circular-frame-inner h-full w-full relative overflow-hidden">
+        {photo ? (
+          <Image
+            src={photo}
+            alt={name}
+            width={112}
+            height={112}
+            className="object-cover w-full h-full"
+          />
+        ) : (
+          <span className="grid h-full w-full place-items-center text-xl font-black tracking-wide text-[#FFD700]">
+            {name
+              .split(" ")
+              .map((w) => w[0])
+              .join("")
+              .slice(0, 2)
+              .toUpperCase()}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -130,7 +145,7 @@ function Card({ show }: { show: Show }) {
               className="relative"
               style={{ transform: "translateZ(24px)", transformStyle: "preserve-3d" } as React.CSSProperties}
             >
-              <PlaceholderPortrait name={p} />
+              <PresenterPortrait name={p} photo={presenterPhoto(p)} />
               {/* gold dash ring behind */}
               <div aria-hidden className="absolute inset-0 rounded-full border border-dashed border-[#FFD700]/20 scale-[1.12] pointer-events-none" />
             </div>

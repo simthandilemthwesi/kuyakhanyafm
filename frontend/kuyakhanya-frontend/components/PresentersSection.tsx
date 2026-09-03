@@ -1,24 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteData } from "@/lib/site-data";
-
-function PresenterPlaceholder({ name }: { name: string }) {
-  const initials = name
-    .split(" ")
-    .slice(-2)
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-  return (
-    <div className="circular-frame h-28 w-28 sm:h-32 sm:w-32 mx-auto">
-      <div className="circular-frame-inner h-full w-full grid place-items-center bg-gradient-to-br from-[#1a0b2e] via-[#2e0b56] to-[#4B0082] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20 dotted" />
-        <span className="relative text-2xl font-black tracking-wide text-[#FFD700]">{initials}</span>
-        <span className="absolute bottom-1.5 text-[8px] tracking-[0.18em] font-bold text-white/45">UPLOAD SOON</span>
-      </div>
-    </div>
-  );
-}
 
 function PresenterCard({ p }: { p: (typeof siteData.presenters)[number] }) {
   return (
@@ -28,8 +10,17 @@ function PresenterCard({ p }: { p: (typeof siteData.presenters)[number] }) {
 
       <div className="p-6 sm:p-7 flex flex-col flex-1">
         <div className="relative" style={{ transform: "translateZ(20px)" } as React.CSSProperties}>
-          {/* For now placeholders only — preserve real face when uploaded, no distortion. If p.photo exists but spec says placeholders until upload, we still show placeholder to avoid fake identities. */}
-          <PresenterPlaceholder name={p.name} />
+          <div className="circular-frame h-28 w-28 sm:h-32 sm:w-32 mx-auto">
+            <div className="circular-frame-inner h-full w-full relative overflow-hidden">
+              <Image
+                src={p.photo}
+                alt={p.name}
+                width={128}
+                height={128}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
           <div aria-hidden className="absolute inset-0 mx-auto h-28 w-28 sm:h-32 sm:w-32 rounded-full border border-dashed border-[#FFD700]/20 scale-[1.08] pointer-events-none" />
         </div>
 
@@ -39,7 +30,7 @@ function PresenterCard({ p }: { p: (typeof siteData.presenters)[number] }) {
           Presenter • KUYAKHANYA FM • Faith, community and inspiration
         </p>
 
-        {/* Social icons — placeholder where applicable */}
+        {/* Social icons */}
         <div className="mt-4 flex justify-center gap-2">
           {[
             { label: "Facebook", d: "M14 8h2V6c0-.7-.4-1-1-1h-1V3h2c1.6 0 2 1 2 2v2h2l-1 2h-1v6h-2v-6h-2z" },

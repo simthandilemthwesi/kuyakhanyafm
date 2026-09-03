@@ -69,15 +69,15 @@ export const siteData = {
     photo: '/images/team4.jpg',
   },
   presenters: [
-    { name: 'Franky', role: 'Love & Life', photo: '/images/team5.jpg' },
-    { name: 'Mrs. Lolwana', role: 'Abafazi Bokholo', photo: '/images/team6.jpg' },
+    { name: 'Franky', role: 'Love & Life', photo: '/images/presenter-franky.png' },
+    { name: 'Mrs. Lolwana', role: 'Abafazi Bokholo', photo: '/images/presenter-mrs-lolwana.png' },
     { name: 'Mrs. Klass', role: 'Inkwenkwezi Zethu', photo: '/images/team7.jpg' },
-    { name: 'Mrs. Mati', role: 'Ithemba Lokulila', photo: '/images/team9.jpg' },
+    { name: 'Mrs. Mati', role: 'Ithemba Lokulila', photo: '/images/presenter-mrs-mati.png' },
     { name: 'Mrs. Panduva', role: 'Ithemba Lokulila', photo: '/images/team11.jpg' },
     { name: 'Kay Cee Taurus', role: 'Friday Vibes', photo: '/images/team8.jpg' },
-    { name: 'DJ Toto', role: 'Ezakwa Ntu', photo: '/images/team10.jpg' },
-    { name: 'Mrs. Mthwesi', role: 'Yizani Sakhe', photo: '/images/team17.jpg' },
-    { name: 'Mrs. Ndziba', role: 'Yizani Sakhe', photo: '/images/team18.jpg' },
+    { name: 'DJ Toto', role: 'Ezakwa Ntu', photo: '/images/presenter-dj-toto.png' },
+    { name: 'Mrs. Mthwesi', role: 'Yizani Sakhe', photo: '/images/presenter-mrs-mthwesi.png' },
+    { name: 'Mrs. Ndziba', role: 'Yizani Sakhe', photo: '/images/presenter-mrs-ndziba.png' },
   ],
   // v2 additions — fallback for DatoCMS models
   services: [
