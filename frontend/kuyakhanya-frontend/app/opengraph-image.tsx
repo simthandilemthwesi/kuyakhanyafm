@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 export const alt = "KUYAKHANYA FM — We Shine Brighter Together";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -28,11 +28,11 @@ export default async function Image() {
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div style={{ width: 64, height: 64, borderRadius: 16, background: "#FFD700", display: "flex", alignItems: "center", justifyContent: "center", color: "#1a0b2e", fontSize: 28, fontWeight: 900 }}>K</div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 36, fontWeight: 900, letterSpacing: -1, lineHeight: 1 }}>KUYAKHANYA <span style={{ color: "#FFD700" }}>FM</span></div>
+            <div style={{ fontSize: 36, fontWeight: 900, letterSpacing: -1, lineHeight: 1, display: "flex" }}>KUYAKHANYA <span style={{ color: "#FFD700" }}>FM</span></div>
             <div style={{ fontSize: 14, letterSpacing: 5, color: "#FFD700", fontWeight: 700, marginTop: 4 }}>WE SHINE BRIGHTER TOGETHER</div>
           </div>
         </div>
-        <div style={{ marginTop: 32, fontSize: 54, fontWeight: 900, lineHeight: 0.95, maxWidth: 900 }}>
+        <div style={{ marginTop: 32, fontSize: 54, fontWeight: 900, lineHeight: 0.95, maxWidth: 900, display: "flex", flexDirection: "column" }}>
           Bringing Light to Thembalethu
           <br />
           <span style={{ color: "#FFD700" }}>Live 24/7 • Music • Shows • Community</span>

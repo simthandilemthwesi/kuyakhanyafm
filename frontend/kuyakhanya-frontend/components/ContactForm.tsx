@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { supabaseClient } from "@/lib/supabase";
 
 type Status = { type: "idle" | "success" | "error"; message?: string } | null;
 
@@ -18,24 +19,20 @@ export default function ContactForm() {
     e.preventDefault();
     setSending(true);
     setStatus(null);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (res.ok && data.ok) {
-        setStatus({ type: "success", message: "Thank you! Your message has been sent — we’ll be in touch soon." });
-        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-      } else {
-        setStatus({ type: "error", message: data.error || "Something went wrong. Please try again." });
-      }
-    } catch {
-      setStatus({ type: "error", message: "Network error. Please try again." });
-    } finally {
+
+    const res = await supabaseClient()
+      ?.from("contact_submissions")
+      .insert({ name: form.name, email: form.email, phone: form.phone || null, subject: form.subject || null, message: form.message });
+
+    if (res?.error) {
+      setStatus({ type: "error", message: "We couldn't save your message. Please try again." });
       setSending(false);
+      return;
     }
+
+    setStatus({ type: "success", message: "Thank you! Your message has been sent — we’ll be in touch soon." });
+    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+    setSending(false);
   }
 
   const inputCls =

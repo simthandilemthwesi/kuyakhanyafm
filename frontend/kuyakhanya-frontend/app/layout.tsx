@@ -6,8 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd, { radioStationJsonLd } from "@/components/JsonLd";
 import { AudioProvider } from "@/components/AudioProvider";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -144,6 +142,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col bg-[#0b0a14] text-[#F8F8FF] antialiased overflow-x-hidden">
         <JsonLd data={radioStationJsonLd()} />
         <AudioProvider>
+          {/* Google AdSense */}
+          <Script id="adsense"
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6092968632954371"
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
           {/* Broadcast ambient layers — fixed */}
           <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
             <div className="absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-[#4B0082]/30 blur-[120px] animate-glow-pulse" />
@@ -157,8 +162,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
         </AudioProvider>
-        <SpeedInsights />
-        <Analytics />
         {/* Chatbase AI chat bubble — Simbot (Mnj8LreLagzhOq40QMKDW) — keep script exactly as provided, before </body> */}
         <Script id="chatbase-embed" strategy="afterInteractive">
           {`(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="Mnj8LreLagzhOq40QMKDW";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();`}

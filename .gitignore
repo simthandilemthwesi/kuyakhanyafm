@@ -22,6 +22,16 @@ Thumbs.db
 # vercel
 .vercel
 
+# firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+*.firebaserc.local
+
+# firebase service account keys (SENSITIVE - never commit)
+*-firebase-adminsdk-*.json
+serviceAccountKey.json
+
 # logs
 npm-debug.log*
 

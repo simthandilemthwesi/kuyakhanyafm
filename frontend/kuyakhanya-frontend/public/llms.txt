@@ -1,10 +1,4 @@
-import type { NextRequest } from "next/server";
-
-const SITE_URL = "https://kuyakhanyafm.web.app";
-
-export const runtime = "edge";
-
-const LLMS = `# KUYAKHANYA FM
+# KUYAKHANYA FM
 
 > Bringing light to Thembalethu — We Shine Brighter Together.
 
@@ -63,10 +57,3 @@ KUYAKHANYA FM was birthed from a God-given vision to bring light to the people o
 - Developed by Simthandile Mthwesi — https://simthandilemthwesi.vercel.app
 
 For the full, detailed guide, see https://kuyakhanyafm.web.app/llms-full.txt
-`;
-
-export function GET(_req: NextRequest) {
-  return new Response(LLMS, {
-    headers: { "content-type": "text/plain; charset=utf-8" },
-  });
-}

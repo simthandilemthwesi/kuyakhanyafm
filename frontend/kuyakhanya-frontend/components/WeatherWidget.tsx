@@ -1,31 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-type WeatherData = {
-  ok: boolean;
-  location: { name: string; province: string; country: string; lat: number; lon: number };
-  current: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    humidity: number;
-    pressure: number;
-    description: string;
-    main: string;
-    icon: string;
-    iconUrl: string;
-    clouds: number | null;
-    wind_speed: number | null;
-    wind_deg: number | null;
-    visibility: number | null;
-    dt: number;
-    sunrise: number | null;
-    sunset: number | null;
-    timezone: number;
-  };
-};
+import { fetchGeorgeWeather, type WeatherData } from "@/lib/weather-client";
 
 function formatTime(unix: number | null, tzOffsetSec: number) {
   if (!unix) return "—";
@@ -49,9 +25,7 @@ export default function WeatherWidget() {
     async function fetchWeather() {
       try {
         setLoading(true);
-        const res = await fetch("/api/weather", { cache: "no-store" });
-        const json = await res.json();
-        if (!res.ok || !json.ok) throw new Error(json.error || "Weather unavailable");
+        const json = await fetchGeorgeWeather();
         if (!cancelled) {
           setData(json);
           setError(null);

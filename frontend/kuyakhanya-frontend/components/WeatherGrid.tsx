@@ -3,11 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import WeatherCard from "./WeatherCard";
-
-type CityWeather = {
-  location: { name: string; province: string; blurb: string; country: string; lat: number; lon: number };
-  current: { description: string; iconUrl: string; temp: number; humidity: number; wind_speed: number | null };
-};
+import { fetchAllCitiesWeather, type CityWeather } from "@/lib/weather-client";
 
 export default function WeatherGrid() {
   const [data, setData] = useState<CityWeather[]>([]);
@@ -19,11 +15,9 @@ export default function WeatherGrid() {
     async function load() {
       try {
         setLoading(true);
-        const res = await fetch("/api/weather?all=1", { cache: "no-store" });
-        const json = await res.json();
-        if (!res.ok || !json.ok) throw new Error(json.error || "Weather unavailable");
+        const json = await fetchAllCitiesWeather();
         if (!cancelled) {
-          setData(json.data as CityWeather[]);
+          setData(json.data);
           setError(null);
         }
       } catch (e) {

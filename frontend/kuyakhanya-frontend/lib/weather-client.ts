@@ -1,8 +1,3 @@
-import { NextResponse } from "next/server";
-
-export const runtime = "nodejs";
-export const revalidate = 600; // cache 10 minutes
-
 export type CityMeta = { name: string; province: string; country: string; lat: number; lon: number; blurb: string };
 
 export const CITIES: CityMeta[] = [
@@ -19,12 +14,7 @@ export const CITIES: CityMeta[] = [
 const GEORGE = CITIES.find((c) => c.name === "George")!;
 
 function getApiKey(): string | null {
-  return (
-    process.env.OPENWEATHER_API_KEY ||
-    process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY ||
-    "1c2f27d04bef0373186c51c2f7a1b79d" ||
-    null
-  );
+  return process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY || "1c2f27d04bef0373186c51c2f7a1b79d" || null;
 }
 
 function shapeCity(data: Record<string, unknown>, meta: CityMeta) {
@@ -41,7 +31,6 @@ function shapeCity(data: Record<string, unknown>, meta: CityMeta) {
       country: (sys.country as unknown as string) || meta.country,
       lat: meta.lat,
       lon: meta.lon,
-      coord: data.coord,
     },
     current: {
       temp: Math.round(main.temp),
@@ -63,57 +52,40 @@ function shapeCity(data: Record<string, unknown>, meta: CityMeta) {
       sunset: sys.sunset ?? null,
       timezone: data.timezone as number,
     },
-    raw: data,
   };
 }
 
-async function fetchCity(meta: CityMeta, apiKey: string) {
+async function fetchCityRaw(meta: CityMeta, apiKey: string) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${meta.lat}&lon=${meta.lon}&appid=${apiKey}&units=metric&lang=en`;
-  const res = await fetch(url, { next: { revalidate: 600 } });
+  const res = await fetch(url);
   const data = await res.json();
   if (!res.ok) throw new Error(data?.message || `Failed ${meta.name}`);
   return shapeCity(data, meta);
 }
 
-export async function GET(req: Request) {
+export type WeatherData = { ok: boolean; location: { name: string; province: string; country: string; lat: number; lon: number }; current: { temp: number; feels_like: number; temp_min: number; temp_max: number; humidity: number; pressure: number; description: string; main: string; icon: string; iconUrl: string; clouds: number | null; wind_speed: number | null; wind_deg: number | null; visibility: number | null; dt: number; sunrise: number | null; sunset: number | null; timezone: number } };
+
+export type CityWeather = { location: { name: string; province: string; blurb: string; country: string; lat: number; lon: number }; current: { description: string; iconUrl: string; temp: number; humidity: number; wind_speed: number | null } };
+
+export async function fetchGeorgeWeather(): Promise<WeatherData> {
   const apiKey = getApiKey();
-  if (!apiKey) {
-    return NextResponse.json({ ok: false, error: "Weather API key not configured. Set OPENWEATHER_API_KEY in .env.local" }, { status: 500 });
-  }
+  if (!apiKey) throw new Error("Weather API key not configured");
+  const result = await fetchCityRaw(GEORGE, apiKey);
+  return { ok: true, ...result } as WeatherData;
+}
 
-  const { searchParams } = new URL(req.url);
-  const cityParam = searchParams.get("city");
-  const allParam = searchParams.get("all") || searchParams.get("cities");
-
-  try {
-    // Single city requested
-    if (cityParam) {
-      const meta = CITIES.find((c) => c.name.toLowerCase() === cityParam.toLowerCase());
-      if (!meta) return NextResponse.json({ ok: false, error: `City ${cityParam} not supported` }, { status: 404 });
-      const result = await fetchCity(meta, apiKey);
-      return NextResponse.json({ ok: true, ...result }, { headers: { "Cache-Control": "public, s-maxage=600, stale-while-revalidate=60" } });
-    }
-
-    // All cities requested
-    if (allParam === "1" || allParam === "true" || allParam === "all") {
-      const results = await Promise.all(CITIES.map((c) => fetchCity(c, apiKey).catch((e) => ({ error: (e as Error).message, location: { name: c.name, province: c.province, country: c.country, lat: c.lat, lon: c.lon }, current: null }))));
-      // filter out hard failures but keep partial
-      const okData = results.filter((r) => (r as { current: unknown }).current !== null);
-      return NextResponse.json(
-        { ok: true, count: okData.length, data: okData, cities: CITIES },
-        { headers: { "Cache-Control": "public, s-maxage=600, stale-while-revalidate=60" } }
-      );
-    }
-
-    // Default: single George for backward compat
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${GEORGE.lat}&lon=${GEORGE.lon}&appid=${apiKey}&units=metric&lang=en`;
-    const res = await fetch(url, { next: { revalidate: 600 } });
-    const data = await res.json();
-    if (!res.ok) return NextResponse.json({ ok: false, error: data?.message || "OpenWeather error", code: data?.cod }, { status: res.status });
-    const shaped = shapeCity(data, GEORGE);
-    return NextResponse.json({ ok: true, ...shaped }, { headers: { "Cache-Control": "public, s-maxage=600, stale-while-revalidate=60" } });
-  } catch (e) {
-    console.error("[weather] fetch failed", e);
-    return NextResponse.json({ ok: false, error: "Failed to fetch weather" }, { status: 500 });
-  }
+export async function fetchAllCitiesWeather(): Promise<{ ok: boolean; count: number; data: CityWeather[] }> {
+  const apiKey = getApiKey();
+  if (!apiKey) throw new Error("Weather API key not configured");
+  const results = await Promise.all(
+    CITIES.map((c) =>
+      fetchCityRaw(c, apiKey).catch((e) => ({
+        error: (e as Error).message,
+        location: { name: c.name, province: c.province, country: c.country, lat: c.lat, lon: c.lon, blurb: c.blurb },
+        current: null,
+      }))
+    )
+  );
+  const okData = results.filter((r) => (r as { current: unknown }).current !== null);
+  return { ok: true, count: okData.length, data: okData as CityWeather[] };
 }

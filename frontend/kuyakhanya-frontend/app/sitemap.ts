@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const SITE_URL = "https://kuyakhanyafm.web.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
