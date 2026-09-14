@@ -1,6 +1,6 @@
 # DEPLOYING — KUYAKHANYA FM (Next.js → Vercel)
 
-This guide covers deploying the KUYAKHANYA FM website to **Vercel** (free Hobby tier). The frontend is a Next.js 16 App Router app in `frontend/kuyakhanya-frontend`. `vercel.json` already sets the correct **Root Directory** and **framework**, so Vercel auto-detects everything.
+This guide covers deploying the KUYAKHANYA FM website to **Vercel** (free Hobby tier). The frontend is a Next.js 16 App Router app in `frontend/kuyakhanya-frontend`. `vercel.json` sets the **framework** to `nextjs`. The **Root Directory** is configured in the Vercel dashboard (see step 3 below).
 
 > Canonical domain: **https://kuyakhanyafm.web.app** (all SEO, sitemap, robots, llms.txt and metadata point here). DNS-serve this via Vercel (see [Custom domain](#-custom-domain-and-dns) below).
 
@@ -29,11 +29,9 @@ Create these in the Vercel project **Settings → Environment Variables** (Produ
 
 1. Go to **https://vercel.com** → **Add New… → Project**.
 2. Click **Import** next to the `kuyakhanyafm` GitHub repo.
-3. Vercel reads `vercel.json` automatically:
-   - **Root Directory:** `frontend/kuyakhanya-frontend`
-   - **Framework:** `Next.js`
-   - **Build Command:** `npm run build` (default)
-   - **Output Directory:** `.next` (default)
+3. Vercel reads `vercel.json` (framework: `nextjs`). Then **set the Root Directory** in the dashboard:
+   - Go to **Project Settings → General → Root Directory**
+   - Set it to `frontend/kuyakhanya-frontend`
 4. Under **Environment Variables**, add the ones from [section 2](#2-one-time-environment-variables).
 5. Click **Deploy**. Vercel builds and hosts the site (e.g. `https://kuyakhanya-xyz.vercel.app`).
 6. Every future `git push` to `main` triggers an automatic redeploy.
@@ -54,7 +52,7 @@ cd frontend/kuyakhanya-frontend
 vercel env add OPENWEATHER_API_KEY
 vercel env add NEXT_PUBLIC_SITE_URL
 
-# production deploy (reads vercel.json for root directory)
+# production deploy (set root directory in dashboard first: Settings → Root Directory → frontend/kuyakhanya-frontend)
 vercel --prod
 ```
 
