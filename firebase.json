@@ -1,25 +1,32 @@
 {
-  "hosting": {
-    "site": "kuyakhanyafm",
-    "public": "frontend/kuyakhanya-frontend/out",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "headers": [
-      { "source": "/images/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000" }] },
-      { "source": "/opengraph-image", "headers": [{ "key": "Content-Type", "value": "image/png" }] },
-      { "source": "/**", "headers": [{ "key": "X-Frame-Options", "value": "SAMEORIGIN" }] }
-    ],
-    "rewrites": [
-      { "source": "**", "destination": "/index.html" }
-    ],
-    "cleanUrls": true
-  },
-  "hosting-admin": {
-    "site": "admin-kuyakhanyafm",
-    "public": "frontend/kuyakhanya-frontend/out",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      { "source": "/**", "destination": "/index.html" }
-    ],
-    "cleanUrls": true
-  }
+  "hosting": [
+    {
+      "site": "kuyakhanyafm",
+      "public": "frontend/kuyakhanya-frontend/out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "headers": [
+        { "source": "/images/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000" }] },
+        { "source": "/opengraph-image", "headers": [{ "key": "Content-Type", "value": "image/png" }] },
+        { "source": "/**", "headers": [{ "key": "X-Frame-Options", "value": "SAMEORIGIN" }] }
+      ],
+      "rewrites": [
+        { "source": "**", "destination": "/index.html" }
+      ],
+      "cleanUrls": true
+    },
+    {
+      "site": "admin-kuyakhanyafm",
+      "public": "frontend/kuyakhanya-frontend/out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "headers": [
+        { "source": "/images/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000" }] },
+        { "source": "/opengraph-image", "headers": [{ "key": "Content-Type", "value": "image/png" }] },
+        { "source": "/**", "headers": [{ "key": "X-Frame-Options", "value": "SAMEORIGIN" }] }
+      ],
+      "rewrites": [
+        { "source": "**", "destination": "/index.html" }
+      ],
+      "cleanUrls": true
+    }
+  ]
 }
