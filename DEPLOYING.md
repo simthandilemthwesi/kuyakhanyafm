@@ -114,3 +114,8 @@ Verify on the live URLs:
 - [ ] `/sitemap.xml`, `/robots.txt`, `/llms.txt` return 200
 
 > When you upload real team/presenter photos later, drop them into `frontend/kuyakhanya-frontend/public/images/` and update the paths in `lib/site-data.ts` — then rebuild and redeploy.
+
+## 8) Admin dashboard + app popup
+
+- **Admin:** open `/admin` (or `admin-kuyakhanyafm.web.app/admin`). Passcode gate — set `NEXT_PUBLIC_ADMIN_CODE` in `.env.local` (default `shine2026`). Shows live contact messages from Supabase, stream check, consoles.
+- **Download-app popup:** `components/AppDownloadPopup.tsx`. Disable instantly with `SHOW_APP_POPUP = false`, or delete the file + remove `<AppDownloadPopup />` from `app/layout.tsx`. Update `IOS_APP_URL` / `ANDROID_APP_URL` inside when store links go live.

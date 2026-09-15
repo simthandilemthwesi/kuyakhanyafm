@@ -202,7 +202,7 @@ export async function gql<T>(query: string, variables?: Record<string, unknown>)
 }
 
 // Helpers for UI
-export function strapiImage(url?: string | null, fallback = '/images/team_image.jpg'): string {
+export function strapiImage(url?: string | null, fallback = '/images/team 1.png'): string {
   if (!url) return fallback;
   return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
 }

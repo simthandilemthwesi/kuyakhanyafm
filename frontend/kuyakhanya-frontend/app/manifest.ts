@@ -17,8 +17,9 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "en-ZA",
     dir: "ltr",
     icons: [
-      { src: "/images/Kuyakhanya FM Icon.png", sizes: "192x192", type: "image/png", purpose: "any" },
-      { src: "/images/Kuyakhanya FM Icon.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+      { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+      { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+      { src: "/icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
       { src: "/images/Kuyakhanya FM Icon.png", sizes: "512x512", type: "image/png", purpose: "any" },
     ],
   };

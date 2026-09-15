@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const SITE_URL = "https://kuyakhanyafm.web.app";
 const SITE_NAME = "KUYAKHANYA FM";
 const DEFAULT_OG = "/opengraph-image";
-const FALLBACK_IMG = "/images/team_image.jpg";
+const FALLBACK_IMG = "/images/team 1.png";
 const ICON = "/images/Kuyakhanya FM Icon.png";
 
 type PageOpts = {

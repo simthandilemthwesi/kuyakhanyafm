@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd, { radioStationJsonLd } from "@/components/JsonLd";
 import { AudioProvider } from "@/components/AudioProvider";
+import AppDownloadPopup from "@/components/AppDownloadPopup";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -103,7 +104,7 @@ export const metadata: Metadata = {
         height: 630,
         alt: "KUYAKHANYA FM — We Shine Brighter Together | Thembalethu, George",
       },
-      { url: "/images/team_image.jpg", width: 1200, height: 630, alt: "KUYAKHANYA FM team — Thembalethu" },
+      { url: "/images/team 1.png", width: 1200, height: 630, alt: "KUYAKHANYA FM team — Thembalethu" },
       { url: "/images/Kuyakhanya FM Icon.png", width: 512, height: 512, alt: "KUYAKHANYA FM Icon" },
     ],
   },
@@ -113,17 +114,20 @@ export const metadata: Metadata = {
     creator: "@KuyakhanyaFM",
     title: "KUYAKHANYA FM — We Shine Brighter Together",
     description: "Live Christian radio from Thembalethu, George. Music, shows, presenters & community — 24/7.",
-    images: ["/opengraph-image", "/images/team_image.jpg"],
+    images: ["/opengraph-image", "/images/team 1.png"],
   },
   verification: {
-    google: "5xpY0V-DR-U_GmbHXTEE2ZceAvZB6ay2Kesnqzi7hI8",
+    google: "WYqd-jCyaCfFiV0lY5ugrmAlbOoDJFCaRae4Od6pvAo",
+  },
+  other: {
+    "google-adsense-account": "ca-pub-6092968632954371",
   },
   icons: {
     icon: [
       { url: "/images/Kuyakhanya FM Icon.png", type: "image/png" },
       { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: [{ url: "/images/Kuyakhanya FM Icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
@@ -140,8 +144,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable} ${geistMono.variable} ${rubik.variable} ${bitter.variable} h-full scroll-smooth`}>
       <body className="min-h-full flex flex-col bg-[#0b0a14] text-[#F8F8FF] antialiased overflow-x-hidden">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PT746VX5"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <JsonLd data={radioStationJsonLd()} />
         <AudioProvider>
+          {/* Google Tag Manager */}
+          <Script id="gtm" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PT746VX5');`}
+          </Script>
+          {/* Google tag (gtag.js) — GA4 Kuyakhanya FM */}
+          <Script async src="https://www.googletagmanager.com/gtag/js?id=G-VED5B4WH4B" strategy="afterInteractive" />
+          <Script id="gtag-config" strategy="afterInteractive">
+            {`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-VED5B4WH4B');`}
+          </Script>
           {/* Google AdSense */}
           <Script id="adsense"
             async
@@ -161,6 +183,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <AppDownloadPopup />
         </AudioProvider>
         {/* Chatbase AI chat bubble — Simbot (Mnj8LreLagzhOq40QMKDW) — keep script exactly as provided, before </body> */}
         <Script id="chatbase-embed" strategy="afterInteractive">
