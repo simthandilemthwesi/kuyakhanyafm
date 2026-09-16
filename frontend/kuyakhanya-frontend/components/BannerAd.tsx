@@ -27,7 +27,7 @@ export default function BannerAd({
       <a
         href={link}
         aria-label={title}
-        className="block overflow-hidden rounded-2xl border border-white/10 bg-[#110a1f] transition hover:border-[#FFD700]/40"
+        className="block overflow-hidden rounded-2xl border border-[#FFD700]/25 bg-gradient-to-br from-[#4B0082] via-[#2e0b56] to-[#1a0b2e] transition hover:border-[#FFD700]/50"
       >
         <Image
           src={image}
@@ -35,7 +35,7 @@ export default function BannerAd({
           width={970}
           height={250}
           sizes="(max-width: 768px) 100vw, 728px"
-          className="h-auto max-h-44 w-full bg-white object-contain sm:max-h-56"
+          className="h-auto max-h-44 w-full object-contain sm:max-h-56"
           loading="lazy"
         />
       </a>

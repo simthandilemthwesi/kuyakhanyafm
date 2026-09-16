@@ -346,6 +346,8 @@ select:focus-visible {
 .animate-slide-in-bottom { animation: slide-in-bottom 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .animate-fade-in { animation: fade-in 0.35s ease both; }
 .eq-bar { animation: freqBar ease-in-out infinite; transform-origin: bottom; }
+@keyframes waveDash { to { stroke-dashoffset: -280; } }
+.wave-dash { animation: waveDash linear infinite; }
 .wave-slide { animation: waveSlide linear infinite; }
 .wave-slide-rev { animation: waveSlideRev linear infinite; }
 .freq-bar { animation: freqBar ease-in-out infinite; transform-origin: bottom; }

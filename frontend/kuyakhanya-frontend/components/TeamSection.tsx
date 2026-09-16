@@ -1,58 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
 import { siteData } from "@/lib/site-data";
-
-function StaffCard({
-  name,
-  role,
-  bio,
-  photo,
-}: {
-  name: string;
-  role: string;
-  bio?: string;
-  photo?: string;
-}) {
-  const initials = name
-    .split(" ")
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
-
-  return (
-    <div className="group relative flex h-full flex-col rounded-[28px] glass-purple overflow-hidden hover-lift text-center">
-      <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      <div className="p-7 sm:p-8 flex flex-col flex-1">
-        <div className="circular-frame h-28 w-28 sm:h-32 sm:w-32 mx-auto">
-          {photo ? (
-            <div className="circular-frame-inner h-full w-full relative overflow-hidden">
-              <Image
-                src={photo}
-                alt={name}
-                width={128}
-                height={128}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          ) : (
-            <div className="circular-frame-inner h-full w-full grid place-items-center bg-gradient-to-br from-[#1a0b2e] to-[#4B0082] relative overflow-hidden">
-              <div className="absolute inset-0 opacity-25 dotted" />
-              <span className="relative text-xl font-black tracking-wide text-[#FFD700]">{initials}</span>
-            </div>
-          )}
-        </div>
-        <h3 className="mt-5 font-heading text-lg font-black leading-tight text-white line-clamp-1">{name}</h3>
-        <p className="mt-1 text-xs font-black tracking-[0.16em] text-[#FFD700] line-clamp-1">{role}</p>
-        {bio && <p className="mt-3 text-sm leading-relaxed text-white/65 line-clamp-3">{bio}</p>}
-        <div className="mt-4 flex justify-center gap-2 opacity-60 group-hover:opacity-100 transition">
-          <span className="h-7 w-7 grid place-items-center rounded-full bg-white/10 border border-white/10 text-white text-xs">↗</span>
-        </div>
-      </div>
-      <div aria-hidden className="h-[2px] w-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-[#FFD700]/30 transition" />
-    </div>
-  );
-}
+import ProfileCard from "@/components/ProfileCard";
 
 export default function TeamSection() {
   const staff = [
@@ -82,8 +29,8 @@ export default function TeamSection() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
           {staff.map((p) => (
-            <div key={p.name} style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
-              <StaffCard name={p.name} role={p.role} bio={p.bio} photo={p.photo} />
+            <div key={p.name} className="h-full" style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
+              <ProfileCard name={p.name} role={p.role} bio={p.bio} photo={p.photo ?? ""} sharePath="/team" />
             </div>
           ))}
         </div>

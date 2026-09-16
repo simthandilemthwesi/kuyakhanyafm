@@ -70,7 +70,7 @@ export default function PopupAd({
   useEffect(() => {
     const t = setTimeout(() => {
       if (shouldShow()) setOpen(true);
-    }, 1200);
+    }, 3000);
     return () => clearTimeout(t);
   }, []);
 

@@ -33,7 +33,7 @@ export default function CookieBanner() {
 
   useEffect(() => {
     if (load() === null) {
-      const t = setTimeout(() => setVisible(true), 1500);
+      const t = setTimeout(() => setVisible(true), 1000);
       return () => clearTimeout(t);
     }
   }, []);
@@ -53,10 +53,10 @@ export default function CookieBanner() {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie consent"
-      className="fixed inset-x-0 bottom-0 z-[80] p-3 sm:p-5"
+      className="fixed bottom-0 left-3 right-3 z-[80] p-3 sm:left-6 sm:right-auto sm:w-[26rem] sm:max-w-[calc(100vw-3rem)] sm:p-0"
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
     >
-      <div className="mx-auto max-h-[70dvh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-[#FFD700]/30 bg-[#1a0b2e]/97 p-5 shadow-2xl backdrop-blur animate-slide-in-bottom">
+      <div className="mx-auto max-h-[70dvh] w-full overflow-y-auto rounded-2xl border border-[#FFD700]/30 bg-[#1a0b2e]/97 p-5 shadow-2xl backdrop-blur animate-slide-in-bottom">
         <p className="text-sm font-extrabold text-white">We value your privacy 🍪</p>
         <p className="mt-1 text-xs leading-relaxed text-white/65">
           This website uses cookies to ensure you get the best experience on our website.

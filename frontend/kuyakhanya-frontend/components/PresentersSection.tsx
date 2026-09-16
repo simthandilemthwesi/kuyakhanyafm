@@ -1,63 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { siteData } from "@/lib/site-data";
-
-function PresenterCard({ p }: { p: (typeof siteData.presenters)[number] }) {
-  return (
-    <div className="group relative flex h-full flex-col rounded-[28px] glass-purple overflow-hidden hover-lift text-center">
-      <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-      <div aria-hidden className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[#FFD700]/8 blur-2xl group-hover:bg-[#FFD700]/12 transition" />
-
-      <div className="p-6 sm:p-7 flex flex-col flex-1">
-        <div className="relative" style={{ transform: "translateZ(20px)" } as React.CSSProperties}>
-          <div className="circular-frame h-28 w-28 sm:h-32 sm:w-32 mx-auto">
-            <div className="circular-frame-inner h-full w-full relative overflow-hidden">
-              <Image
-                src={p.photo}
-                alt={p.name}
-                width={128}
-                height={128}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-          <div aria-hidden className="absolute inset-0 mx-auto h-28 w-28 sm:h-32 sm:w-32 rounded-full border border-dashed border-[#FFD700]/20 scale-[1.08] pointer-events-none" />
-        </div>
-
-        <h3 className="mt-5 font-heading text-[15px] sm:text-base font-black leading-tight text-white line-clamp-1">{p.name}</h3>
-        <p className="mt-1 text-xs font-black tracking-[0.14em] text-[#FFD700] uppercase line-clamp-1">{p.role}</p>
-        <p className="mt-2 text-sm leading-relaxed text-white/65 line-clamp-2">
-          Presenter • KUYAKHANYA FM • Faith, community and inspiration
-        </p>
-
-        {/* Social icons */}
-        <div className="mt-4 flex justify-center gap-2">
-          {[
-            { label: "Facebook", d: "M14 8h2V6c0-.7-.4-1-1-1h-1V3h2c1.6 0 2 1 2 2v2h2l-1 2h-1v6h-2v-6h-2z" },
-            { label: "Instagram", d: "M12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm4-9a1 1 0 110 2 1 1 0 010-2z" },
-          ].map((s) => (
-            <span key={s.label} className="grid h-8 w-8 place-items-center rounded-full bg-white/10 border border-white/10 text-white/70 group-hover:text-[#FFD700] group-hover:border-[#FFD700]/30 group-hover:bg-[#FFD700]/10 transition">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d={s.d} />
-              </svg>
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-auto pt-5">
-          <span className="inline-flex rounded-full bg-white/10 border border-white/10 px-3 py-1 text-[10px] font-bold tracking-[0.16em] text-white/60">
-            VIEW PROFILE
-          </span>
-        </div>
-      </div>
-      <div aria-hidden className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#FFD700]/30 to-transparent" />
-    </div>
-  );
-}
+import ProfileCard from "@/components/ProfileCard";
 
 export default function PresentersSection() {
-  // Home shows only the first 3 presenters — the full list lives on /team
-  const featured = siteData.presenters.slice(0, 3);
+  // Home shows the first 4 presenters — the full list lives on /team
+  const featured = siteData.presenters.slice(0, 4);
 
   return (
     <section id="presenters" className="relative py-16 sm:py-24 overflow-hidden">
@@ -90,7 +37,7 @@ export default function PresentersSection() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
           {featured.map((p) => (
             <div key={p.name} className="h-full" style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
-              <PresenterCard p={p} />
+              <ProfileCard name={p.name} role={p.role} photo={p.photo} sharePath="/shows-presenters#sp-presenters" />
             </div>
           ))}
         </div>

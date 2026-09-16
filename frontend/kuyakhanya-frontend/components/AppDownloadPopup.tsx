@@ -17,7 +17,7 @@ export default function AppDownloadPopup() {
     if (!SHOW_APP_POPUP) return;
     try { if (localStorage.getItem(DISMISS_KEY) === "1") return; } catch {}
     setPlatform(detectPlatform());
-    const t = setTimeout(() => setVisible(true), 2500);
+    const t = setTimeout(() => setVisible(true), 5000);
     return () => clearTimeout(t);
   }, []);
 

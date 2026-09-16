@@ -67,7 +67,7 @@ export default function VignetteAd({
 
   // Trigger 1: initial page load
   useEffect(() => {
-    maybeShow(2000);
+    maybeShow(4000);
   }, []);
 
   // Trigger 2: route change (between page loads in the SPA)

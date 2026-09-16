@@ -161,21 +161,12 @@ export default function Hero() {
                         </svg>
                       </div>
                     </div>
-                    {/* live equalizer — bounces while streaming, rests when paused */}
-                    <div aria-hidden className="absolute inset-x-6 bottom-3 flex h-11 items-end justify-center gap-[3px] opacity-90 sm:inset-x-10">
-                      {Array.from({ length: 32 }).map((_, i) => (
-                        <span
-                          key={i}
-                          className="eq-bar w-1 shrink-0 rounded-full bg-gradient-to-t from-[#a66cff] via-[#8a2be2] to-[#FFD700] motion-reduce:animate-none"
-                          style={{
-                            height: `${26 + ((i * 37) % 68)}%`,
-                            animationDuration: `${(0.65 + ((i * 53) % 10) / 16).toFixed(2)}s`,
-                            animationDelay: `${(-(i * 0.13) % 1).toFixed(2)}s`,
-                            animationPlayState: isPlaying ? "running" : "paused",
-                            opacity: isPlaying ? 1 : 0.45,
-                          }}
-                        />
-                      ))}
+                    {/* flowing-dash waveform — dashes stream along a static wave */}
+                    <div aria-hidden className="absolute inset-0 flex items-center opacity-70">
+                      <svg viewBox="0 0 600 120" className="h-full w-full motion-reduce:animate-none" preserveAspectRatio="none">
+                        <path d="M0 60 Q 45 18 90 60 T 180 60 T 270 60 T 360 60 T 450 60 T 540 60 T 600 60" fill="none" stroke="#a66cff" strokeWidth="2" strokeDasharray="16 12" className="wave-dash" style={{ animationDuration: "2.8s", animationPlayState: isPlaying ? "running" : "paused", opacity: isPlaying ? 1 : 0.5 }} />
+                        <path d="M0 60 Q 45 18 90 60 T 180 60 T 270 60 T 360 60 T 450 60 T 540 60 T 600 60" fill="none" stroke="#FFD700" strokeWidth="1.2" strokeDasharray="6 22" className="wave-dash" style={{ animationDuration: "1.9s", animationPlayState: isPlaying ? "running" : "paused", opacity: isPlaying ? 0.9 : 0.35 }} />
+                      </svg>
                     </div>
 
                     {/* Center play/pause — gold, premium */}

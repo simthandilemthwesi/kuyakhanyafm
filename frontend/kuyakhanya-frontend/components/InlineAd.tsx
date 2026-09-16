@@ -26,14 +26,14 @@ export default function InlineAd({
       <a
         href={link}
         aria-label={title}
-        className="flex items-center gap-4 rounded-2xl border border-white/10 bg-[#110a1f] p-3 transition hover:border-[#FFD700]/40"
+        className="flex items-center gap-4 rounded-2xl border border-[#FFD700]/25 bg-gradient-to-br from-[#4B0082] via-[#2e0b56] to-[#1a0b2e] p-3 transition hover:border-[#FFD700]/50"
       >
         <Image
           src={image}
           alt={title}
           width={240}
           height={120}
-          className="h-16 w-28 shrink-0 rounded-xl object-cover"
+          className="h-16 w-28 shrink-0 rounded-xl object-contain"
           loading="lazy"
         />
         <span className="text-sm font-extrabold text-white">

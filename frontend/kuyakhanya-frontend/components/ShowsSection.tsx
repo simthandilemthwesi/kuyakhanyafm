@@ -210,9 +210,9 @@ export default function ShowsSection() {
           <div className="mx-auto mt-6 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#FFD700] to-[#ffb300] shadow-[0_0_12px_rgba(255,215,0,0.35)]" />
         </div>
 
-        {/* Home grid — featured shows only: Youth Spotlight, Inkwenkwezi Zethu, Friday Vibes */}
+        {/* Home grid — featured shows only: Ithemba Lokulila, Ezakwa Ntu, Yizani Sakhe */}
         <div className="mt-12 grid gap-6 sm:gap-7 sm:grid-cols-2 lg:grid-cols-3" style={{ perspective: "1400px" } as React.CSSProperties}>
-          {["YOUTH SPOTLIGHT", "FRIDAY VIBES", "INKWENKWEZI ZETHU"]
+          {["ITHEMBA LOKULILA", "EZAKWA NTU", "YIZANI SAKHE"]
             .map((t) => SHOWS.find((s) => s.title === t))
             .filter((s): s is Show => Boolean(s))
             .map((s) => (
