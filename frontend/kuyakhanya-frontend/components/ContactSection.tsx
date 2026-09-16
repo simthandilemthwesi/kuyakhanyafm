@@ -49,7 +49,6 @@ export default function ContactSection() {
 
             <div className="rounded-2xl glass-purple p-5">
               <p className="text-xs font-bold tracking-[0.2em] text-[#FFD700] uppercase">Follow Us</p>
-              <p className="mt-1 text-xs text-white/55">Premium vector icons — official brand SVGs</p>
               <div className="mt-4 grid grid-cols-5 gap-2.5">
                 {[
                   { label: "Facebook", href: c.facebook, Icon: FacebookIcon },

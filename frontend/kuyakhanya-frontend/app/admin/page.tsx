@@ -22,6 +22,16 @@ type Message = {
   created_at: string;
 };
 
+type AppDownload = {
+  id: number;
+  platform: string | null;
+  device: string | null;
+  user_agent: string | null;
+  referrer: string | null;
+  version: string | null;
+  created_at: string;
+};
+
 const CONSOLE_LINKS = [
   { name: "Firebase Console", href: "https://console.firebase.google.com/project/kuyakhanyafm/overview" },
   { name: "Hosting", href: "https://console.firebase.google.com/project/kuyakhanyafm/hosting/sites" },
@@ -41,6 +51,9 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [streamState, setStreamState] = useState<"idle" | "checking" | "reachable" | "unreachable">("idle");
+  const [downloads, setDownloads] = useState<AppDownload[]>([]);
+  const [loadingDownloads, setLoadingDownloads] = useState(false);
+  const [downloadsError, setDownloadsError] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -73,8 +86,39 @@ export default function AdminPage() {
     }
   }
 
+  async function loadDownloads() {
+    setLoadingDownloads(true);
+    setDownloadsError(null);
+    try {
+      const supa = supabaseClient();
+      if (!supa) {
+        setDownloadsError("Supabase is not configured (missing NEXT_PUBLIC_SUPABASE_URL / ANON_KEY).");
+        return;
+      }
+      const { data, error: err } = await supa
+        .from("app_downloads")
+        .select("id,platform,device,user_agent,referrer,version,created_at")
+        .order("created_at", { ascending: false })
+        .limit(25);
+      if (err) throw err;
+      setDownloads((data as AppDownload[]) || []);
+    } catch (e) {
+      setDownloadsError(
+        (e instanceof Error ? e.message : "Failed to load downloads") +
+          ' — run supabase/setup.sql in the Supabase SQL editor to create the "app_downloads" table.'
+      );
+    } finally {
+      setLoadingDownloads(false);
+    }
+  }
+
   useEffect(() => {
     if (unlocked) loadMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [unlocked]);
+
+  useEffect(() => {
+    if (unlocked) loadDownloads();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unlocked]);
 
@@ -102,6 +146,7 @@ export default function AdminPage() {
     setUnlocked(false);
     setCode("");
     setMessages([]);
+    setDownloads([]);
   }
 
   async function checkStream() {
@@ -152,7 +197,7 @@ export default function AdminPage() {
       </div>
 
       {/* Stats */}
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-2xl border border-white/10 bg-[#110a1f] p-5">
           <p className="text-[10px] font-bold tracking-widest text-white/50 uppercase">Contact messages</p>
           <p className="mt-1 font-display text-3xl font-extrabold text-white">{loading ? "…" : messages.length}</p>
@@ -164,6 +209,11 @@ export default function AdminPage() {
             {streamState === "reachable" ? "● Live" : streamState === "unreachable" ? "● Down" : streamState === "checking" ? "…" : "● ?"}
           </p>
           <button onClick={checkStream} className="mt-2 text-xs font-bold text-[#ffd700] hover:underline">Check stream ↻</button>
+        </div>
+        <div className="rounded-2xl border border-white/10 bg-[#110a1f] p-5">
+          <p className="text-[10px] font-bold tracking-widest text-white/50 uppercase">App downloads</p>
+          <p className="mt-1 font-display text-3xl font-extrabold text-white">{loadingDownloads ? "…" : downloads.length}</p>
+          <button onClick={loadDownloads} className="mt-2 text-xs font-bold text-[#ffd700] hover:underline">Refresh ↻</button>
         </div>
         <div className="rounded-2xl border border-white/10 bg-[#110a1f] p-5">
           <p className="text-[10px] font-bold tracking-widest text-white/50 uppercase">Weather cities</p>
@@ -195,6 +245,32 @@ export default function AdminPage() {
         </div>
       </div>
 
+      {/* App downloads */}
+      <div className="mt-6 rounded-2xl border border-white/10 bg-[#110a1f] p-5 sm:p-6">
+        <h2 className="font-display text-xl font-extrabold text-white">Latest app downloads</h2>
+        <p className="mt-1 text-xs text-white/50">Tracks every tap on "Download APK" — sent from the popup on the website.</p>
+        {downloadsError && <p className="mt-2 rounded-xl border border-red-300/30 bg-red-500/10 p-3 text-sm text-red-200">{downloadsError}</p>}
+        {!downloadsError && downloads.length === 0 && !loadingDownloads && (
+          <p className="mt-2 text-sm text-white/55">No downloads yet. They appear here the moment a visitor taps the download button.</p>
+        )}
+        <div className="mt-4 space-y-3">
+          {downloads.map((d) => (
+            <div key={d.id} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <p className="text-sm font-extrabold text-white">
+                  {d.platform === "android" ? "🤖" : d.platform === "ios" ? "🍎" : "💻"} {d.device || d.platform || "Unknown"}
+                  {d.version && <span className="ml-2 rounded-full bg-[#ffd700]/10 px-2 py-0.5 text-[10px] font-bold text-[#ffd700]">v{d.version}</span>}
+                </p>
+                <p className="text-[11px] text-white/40">{new Date(d.created_at).toLocaleString("en-ZA")}</p>
+              </div>
+              <p className="mt-1 line-clamp-1 text-xs text-white/50" title={d.referrer || ""}>
+                Referrer: {d.referrer || "direct"}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Quick links */}
       <div className="mt-6 rounded-2xl border border-white/10 bg-[#110a1f] p-5 sm:p-6">
         <h2 className="font-display text-xl font-extrabold text-white">Consoles & quick links</h2>
@@ -210,6 +286,8 @@ export default function AdminPage() {
           <p>Stream: <a className="text-[#ffd700] hover:underline" href={STREAM_URL} target="_blank" rel="noopener noreferrer">test stream ↗</a></p>
           <p>Health: <a className="text-[#ffd700] hover:underline" href="https://kuyakhanyafm.web.app/sitemap.xml">sitemap.xml</a> • <a className="text-[#ffd700] hover:underline" href="https://kuyakhanyafm.web.app/robots.txt">robots.txt</a></p>
           <p>Countdown: <a className="text-[#ffd700] hover:underline" href="/coming-soon">/coming-soon</a> (auto-hides after 20 Oct 2026)</p>
+          <p>APK download: <a className="text-[#ffd700] hover:underline" href="https://kuyakhanyafm.web.app/downloads/kuyakhanya-fm.apk" target="_blank" rel="noopener noreferrer">kuyakhanya-fm.apk ↗</a> (drop the file in <code>public/downloads/</code>)</p>
+          <p>SQL setup: <code>supabase/setup.sql</code> — run once in the Supabase SQL editor if tables are missing</p>
         </div>
       </div>
     </div>

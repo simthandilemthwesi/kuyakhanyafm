@@ -7,7 +7,7 @@ export const metadata: Metadata = pageMetadata({
   title: "Contact Us | KUYAKHANYA FM",
   description: "Get in touch with KUYAKHANYA FM — phone 0639780839, WhatsApp, email info.kuyakhanyafm@gmail.com, Thembalethu George, and live map.",
   path: "/contact",
-  image: "/images/team_image.jpg",
+  image: "/images/kuyakhanya_radio_day.jpg",
   imageAlt: "Contact KUYAKHANYA FM — Thembalethu, George",
   keywords: ["contact Kuyakhanya FM", "Thembalethu radio contact", "WhatsApp", "George"],
 });

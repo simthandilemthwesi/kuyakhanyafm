@@ -10,18 +10,18 @@ type ShowInfo = { title: string; presenter: string; day: string };
 function getCurrentShow(): ShowInfo {
   const day = new Date().getDay(); // 0 Sun - 6 Sat
   const map: Record<number, ShowInfo> = {
-    1: { day: "MONDAY", title: "Community Worship", presenter: "KUYAKHANYA FM Team" }, // Mon filler
+    1: { day: "MONDAY", title: "Youth Spotlight", presenter: "Sbu Hamza" }, // Mon 19:00–20:00
     2: { day: "TUESDAY", title: "Love & Life", presenter: "Franky" },
-    3: { day: "WEDNESDAY", title: "Abafazi Bokholo", presenter: "Mrs. Lolwana" },
-    4: { day: "THURSDAY", title: "Ithemba Lokulila", presenter: "Mrs. Mati & Mrs. Panduva" },
+    3: { day: "WEDNESDAY", title: "Abafazi Bokholo", presenter: "Mrs Lolwana" },
+    4: { day: "THURSDAY", title: "Ithemba Lokulila", presenter: "Mrs Mati" },
     5: { day: "FRIDAY", title: "Friday Vibes", presenter: "Kay Cee" },
     6: { day: "SATURDAY", title: "Ezakwa Ntu", presenter: "DJ Toto" },
-    0: { day: "SUNDAY", title: "Yizani Sakhe — Together We Revive", presenter: "Mrs. Mthwesi & Mrs. Ndziba" },
+    0: { day: "SUNDAY", title: "Yizani Sakhe — Together We Revive", presenter: "Mrs Ndziba" },
   };
   // Wednesday has two shows, alternate by hour: morning = Bokholo, afternoon = Nkwenkwezi
   if (day === 3) {
     const h = new Date().getHours();
-    if (h >= 12) return { day: "WEDNESDAY", title: "Inkwenkwezi Zethu", presenter: "Mrs. Klass" };
+    if (h >= 12) return { day: "WEDNESDAY", title: "Inkwenkwezi Zethu", presenter: "Mrs Klaas" };
   }
   return map[day] ?? map[1];
 }

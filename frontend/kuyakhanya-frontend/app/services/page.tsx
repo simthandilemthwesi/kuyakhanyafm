@@ -9,8 +9,8 @@ export const metadata: Metadata = pageMetadata({
   title: "Services | KUYAKHANYA FM",
   description: "Services: live 24/7 streaming, community outreach, event coverage, youth development, audio production & marketing. Enquire now.",
   path: "/services",
-  image: "/images/team_image.jpg",
-  imageAlt: "KUYAKHANYA FM Services — community & media",
+  image: "/images/Kuyakhanya FM LOGO.png",
+  imageAlt: "KUYAKHANYA FM Services — streaming, outreach, events",
   keywords: ["Kuyakhanya services", "live streaming", "community outreach", "youth development"],
 });
 

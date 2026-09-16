@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Our Team | KUYAKHANYA FM",
-  description: "Meet the dedicated team behind KUYAKHANYA FM — Managing Director, managers, technician & 9 presenters from Thembalethu. Shareable profiles.",
+  description: "Meet the dedicated team behind KUYAKHANYA FM — Managing Director, managers, technician & 8 presenters from Thembalethu. Shareable profiles.",
   path: "/team",
   image: "/images/team1.jpg",
   imageAlt: "KUYAKHANYA FM Team — presenters & management",
@@ -29,29 +29,30 @@ function Card({
   photo: string;
   featured?: boolean;
 }) {
+  const body = bio ?? `Host of ${role} on KUYAKHANYA FM — presenting faith, community and inspiration from Thembalethu.`;
   return (
     <div
-      className={`rounded-[28px] grad-card border bg-white p-5 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift ${
+      className={`flex h-full flex-col rounded-[28px] grad-card border bg-white p-5 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift ${
         featured ? "border-[#ffd700]" : "border-zinc-200"
       }`}
     >
-      <div className={`relative mx-auto ${featured ? "h-36 w-36" : "h-28 w-28"}`}>
+      <div className="relative mx-auto h-28 w-28">
         <div aria-hidden className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#6a0dad] to-[#ffd700] blur-lg opacity-40" />
         <Image
           src={photo}
           alt={name}
           width={240}
           height={240}
-          className={`relative mx-auto rounded-2xl object-cover border-4 shadow ${
-            featured ? "h-36 w-36 border-[#ffd700]" : "h-28 w-28 border-[#ffd700]/60"
+          className={`relative mx-auto h-28 w-28 rounded-2xl object-cover border-4 shadow ${
+            featured ? "border-[#ffd700]" : "border-[#ffd700]/60"
           }`}
         />
       </div>
-      <h3 className={`mt-4 font-display font-bold leading-tight ${featured ? "text-xl text-[#4b0082]" : "text-[15px] text-[#1a0b2e]"}`}>
+      <h3 className="mt-4 flex min-h-[38px] items-center justify-center font-display text-[15px] font-bold leading-tight text-[#1a0b2e] line-clamp-2">
         {name}
       </h3>
-      <p className="mt-1 text-xs font-bold tracking-[0.15em] text-[#6a0dad] uppercase">{role}</p>
-      {bio && <p className="mt-2 text-sm leading-relaxed text-zinc-600">{bio}</p>}
+      <p className="mt-1 text-xs font-bold tracking-[0.15em] text-[#6a0dad] uppercase line-clamp-1">{role}</p>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600 line-clamp-2">{body}</p>
     </div>
   );
 }
@@ -129,7 +130,7 @@ export default async function TeamPage() {
 
         <div className="mt-12 text-center">
           <Link href="/contact" className="inline-flex rounded-full bg-[#6a0dad] px-7 py-3.5 text-sm font-bold text-white hover:bg-[#4b0082] transition-colors shadow-md">
-            Want to join us? Contact us →
+            Partner, advertise or get in touch →
           </Link>
         </div>
       </div>

@@ -2,9 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  turbopack: {
-    root: __dirname,
-  },
+  turbopack: { root: __dirname },
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -19,8 +17,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
-  env: {
-    NEXT_PUBLIC_STRAPI_URL: process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337",
+  env: { NEXT_PUBLIC_STRAPI_URL: process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337" },
+  async redirects() {
+    return [{ source: "/services", destination: "/media-centre", permanent: true }];
   },
 };
 

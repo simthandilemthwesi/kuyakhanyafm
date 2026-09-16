@@ -4,7 +4,7 @@ import { useState } from "react";
 import ScrollRevealWrapper from "@/components/ScrollRevealWrapper";
 
 const PROFILE_DATA = [
-  { name: "Franky", role: "Love & Life", bio: "Warm, welcoming conversation around love, life and relationships." },
+  { name: "Franky", role: "Presenter", bio: "Warm, welcoming conversation around love, life and relationships." },
   { name: "Mrs. Lolwana", role: "Abafazi Bokholo", bio: "Celebrating women of faith, resilience, wisdom and purpose." },
   { name: "DJ Toto", role: "Ezakwa Ntu", bio: "A proudly African celebration of culture, heritage and roots." },
 ];

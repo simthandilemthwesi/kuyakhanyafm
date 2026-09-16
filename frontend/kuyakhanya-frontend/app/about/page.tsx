@@ -9,8 +9,8 @@ export const metadata: Metadata = pageMetadata({
   title: "About Us | KUYAKHANYA FM",
   description: "Who we are and what we believe — the story, vision, mission, aims and values of KUYAKHANYA FM. Born from a God-given vision for Thembalethu.",
   path: "/about",
-  image: "/images/team_image.jpg",
-  imageAlt: "About KUYAKHANYA FM — story, vision & values",
+  image: "/images/kuyakhanya_launch.jpg",
+  imageAlt: "KUYAKHANYA FM official launch — Thembalethu, George",
   keywords: ["about Kuyakhanya FM", "Thembalethu story", "vision", "mission", "Christian radio"],
 });
 

@@ -17,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/", "/private/"],
       },
     ],
-    sitemap: "https://kuyakhanyafm.web.app/sitemap.xml",
+    sitemap: ["https://kuyakhanyafm.web.app/sitemap.xml", "https://kuyakhanyafm.web.app/image-sitemap.xml"],
     host: "https://kuyakhanyafm.web.app",
   };
 }

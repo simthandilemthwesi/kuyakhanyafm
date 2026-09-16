@@ -26,20 +26,20 @@ type Show = {
 const SHOWS: Show[] = [
   {
     day: "Monday",
-    title: "Community Worship",
-    time: "06:00 pm – 08:00 pm",
-    host: "KUYAKHANYA FM Team",
-    image: "/images/team_image.jpg",
-    theme: "Worship • Unity • Community",
-    description: "A gathering of praise and worship to start the week, uniting the community in faith.",
-    accent: "#4B0082",
+    title: "Youth Spotlight",
+    time: "07:00 pm – 08:00 pm",
+    host: "Sbu Hamza",
+    image: "/images/team 5.png",
+    theme: "Youth • Growth • Spotlight",
+    description: "Every Monday, 19:00–20:00 — a platform that puts the youth in the spotlight, featuring young voices, talent and real conversations.",
+    accent: "#FFD700",
   },
   {
     day: "Tuesday",
     title: "Love & Life",
     time: "06:00 pm – 08:00 pm",
     host: "Franky",
-    image: "/images/team5.jpg",
+    image: "/images/team 6.png",
     theme: "Love • Life • Relationships",
     description: "Warm conversation around love, life and relationships — real stories and heartfelt advice.",
     accent: "#e91e8c",
@@ -48,8 +48,8 @@ const SHOWS: Show[] = [
     day: "Wednesday",
     title: "Abafazi Bokholo",
     time: "10:00 am – 12:00 pm",
-    host: "Mrs. Lolwana",
-    image: "/images/team6.jpg",
+    host: "Mrs Lolwana",
+    image: "/images/team 9.png",
     theme: "Wisdom • Strength • Purpose",
     description: "Celebrating women of faith, resilience, wisdom and purpose — powerful testimonies and honest dialogue.",
     accent: "#8a2be2",
@@ -58,8 +58,8 @@ const SHOWS: Show[] = [
     day: "Wednesday",
     title: "Inkwenkwezi Zethu",
     time: "12:00 pm – 02:00 pm",
-    host: "Mrs. Klass",
-    image: "/images/team7.jpg",
+    host: "Mrs Klaas",
+    image: "/images/team 7.png",
     theme: "Inspiration • Empowerment • Faith",
     description: "Inspiration that connects — stories of empowerment, faith and hope that uplift our community.",
     accent: "#FFD700",
@@ -68,8 +68,8 @@ const SHOWS: Show[] = [
     day: "Thursday",
     title: "Ithemba Lokulila",
     time: "06:00 pm – 08:00 pm",
-    host: "Mrs. Mati & Mrs. Panduva",
-    image: "/images/team9.jpg",
+    host: "Mrs Mati & Mrs Panduva",
+    image: "/images/Tag_team 1.png",
     theme: "Faith • Hope • Encouragement",
     description: "Faith, hope and encouragement for the journey — a space where community finds healing and prayer.",
     accent: "#4B0082",
@@ -79,7 +79,7 @@ const SHOWS: Show[] = [
     title: "Friday Vibes",
     time: "06:00 pm – 10:00 pm",
     host: "Kay Cee",
-    image: "/images/team8.jpg",
+    image: "/images/team 10.png",
     theme: "Music • Energy • Weekend Vibes",
     description: "Feel the weekend energy! Music, conversation and vibrant vibes — louder, brighter, made to move you.",
     accent: "#ff2e8a",
@@ -89,7 +89,7 @@ const SHOWS: Show[] = [
     title: "Ezakwa Ntu",
     time: "04:00 pm – 08:00 pm",
     host: "DJ Toto",
-    image: "/images/team10.jpg",
+    image: "/images/team 11.png",
     theme: "Culture • Heritage • Roots",
     description: "A proudly African celebration of culture, heritage and roots — music, language and stories.",
     accent: "#FFD700",
@@ -98,8 +98,8 @@ const SHOWS: Show[] = [
     day: "Sunday",
     title: "Yizani Sakhe",
     time: "10:00 am – 02:00 pm",
-    host: "Mrs. Mthwesi & Mrs. Ndziba",
-    image: "/images/team17.jpg",
+    host: "Mrs Mthwesi & Mrs Ndziba",
+    image: "/images/Tag_team 2.png",
     theme: "Faith • Restoration • Revival",
     description: "An inspirational Sunday gathering of faith, restoration and revival — to be restored and sent out to shine.",
     accent: "#a66cff",
@@ -169,7 +169,7 @@ function ShowCard({ show }: { show: Show }) {
   };
   return (
     <article
-      className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#110a1f] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_0_1px_rgba(255,215,0,0.5),0_20px_50px_-12px_rgba(255,215,0,0.25)] hover:border-[#FFD700]/60"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#110a1f] transition-all duration-300 hover:-translate-y-2 hover:border-[#FFD700]/40 hover:shadow-[0_20px_50px_-12px_rgba(255,215,0,0.25)]"
       style={{ transformStyle: "preserve-3d" }}
     >
       <div className="relative h-48" style={bg}>
@@ -187,7 +187,7 @@ function ShowCard({ show }: { show: Show }) {
 
       <div className="relative p-5">
         <h3 className="text-base font-black uppercase tracking-tight text-white">{show.title}</h3>
-        <p className="mt-0.5 text-xs font-bold text-[#FFD700]">{show.host}</p>
+        <p className="mt-0.5 text-xs font-bold text-[#FFD700]">with {show.host}</p>
         <p className="mt-1 text-[11px] font-semibold tracking-wide text-white/50">{show.theme}</p>
         <p className="mt-2 text-sm leading-relaxed text-white/75 line-clamp-3">{show.description}</p>
 
@@ -211,7 +211,7 @@ function PresenterCardSP({ p }: { p: (typeof siteData.presenters)[number] }) {
     .join("")
     .toUpperCase();
   return (
-    <article className="group relative overflow-hidden rounded-[24px] glass-purple p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,215,0,0.15)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-[24px] glass-purple p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,215,0,0.15)]">
       {/* 3D wave overlay on hover */}
       <div
         className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -337,7 +337,7 @@ export default function ShowsPresentersClient() {
                       <span className="text-xs font-bold text-white/60">{s.time}</span>
                     </div>
                     <h3 className="mt-1.5 text-base font-black uppercase text-white">{s.title}</h3>
-                    <p className="text-xs font-bold text-[#FFD700]">{s.host}</p>
+                    <p className="text-xs font-bold text-[#FFD700]">with {s.host}</p>
                     <p className="mt-1 text-sm text-white/65 line-clamp-2">{s.description}</p>
                   </div>
                   <div className="flex items-center sm:items-end sm:flex-col justify-between gap-3 sm:justify-center">

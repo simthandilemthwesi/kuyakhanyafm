@@ -1,7 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabaseClient } from "@/lib/supabase";
+
+/* Contact form
+ * - Primary delivery: Web3Forms → emails the message to info.kuyakhanyafm@gmail.com
+ * - Mirror: also saved to Supabase `contact_submissions` → seen live in /admin
+ * - Subject + phone are embedded IN the message body so nothing is ever lost,
+ *   even if the email client drops extra fields.
+ * - hCaptcha (Web3Forms zero-config, free plan): enable "hCaptcha" as the Block
+ *   Spam option in the dashboard at app.web3forms.com to make it mandatory.
+ */
+
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const ACCESS_KEY = "b78c3899-e55f-4ff4-96d0-5186c49c2982";
 
 type Status = { type: "idle" | "success" | "error"; message?: string } | null;
 
@@ -15,17 +27,77 @@ export default function ContactForm() {
       setForm((f) => ({ ...f, [field]: e.target.value }));
   }
 
+  // Load Web3Forms' zero-config hCaptcha proxy script once (renders the widget in .h-captcha)
+  useEffect(() => {
+    if (document.querySelector('script[src="https://web3forms.com/client/script.js"]')) return;
+    const s = document.createElement("script");
+    s.src = "https://web3forms.com/client/script.js";
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+  }, []);
+
+  function buildMessage() {
+    const lines = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Phone: ${form.phone || "—"}`,
+      `Subject: ${form.subject || "General Enquiry"}`,
+      "",
+      form.message,
+    ];
+    return lines.join("\n");
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSending(true);
     setStatus(null);
 
-    const res = await supabaseClient()
-      ?.from("contact_submissions")
-      .insert({ name: form.name, email: form.email, phone: form.phone || null, subject: form.subject || null, message: form.message });
+    const body = buildMessage();
 
-    if (res?.error) {
-      setStatus({ type: "error", message: "We couldn't save your message. Please try again." });
+    // 1) Web3Forms → email delivery
+    const fd = new FormData();
+    fd.append("access_key", ACCESS_KEY);
+    fd.append("name", form.name);
+    fd.append("email", form.email);
+    fd.append("from_name", `${form.name} (kuyakhanyafm.web.app)`);
+    fd.append("subject", `${form.subject || "General Enquiry"} — Kuyakhanya FM contact form`);
+    fd.append("message", body);
+    fd.append("botcheck", "");
+
+    // hCaptcha token (Web3Forms zero-config proxy renders into .h-captcha and fills a hidden textarea)
+    const capEl = e.currentTarget?.querySelector<HTMLTextAreaElement | HTMLInputElement>('textarea[name="h-captcha-response"], input[name="h-captcha-response"]');
+    const token = capEl?.value;
+    if (!token) {
+      setStatus({ type: "error", message: "Please complete the captcha and try again." });
+      setSending(false);
+      return;
+    }
+    fd.append("h-captcha-response", token);
+    fd.append("g-recaptcha-response", token); // web3forms accepts either name
+
+    let emailed = false;
+    try {
+      const res = await fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: fd });
+      const data = await res.json();
+      emailed = Boolean(res.ok && data?.success);
+      if (!emailed && data?.message) throw new Error(data.message);
+    } catch (err) {
+      console.error("Web3Forms failed:", err);
+    }
+
+    // 2) Supabase → admin dashboard mirror (best-effort)
+    try {
+      await supabaseClient()
+        ?.from("contact_submissions")
+        .insert({ name: form.name, email: form.email, phone: form.phone || null, subject: form.subject || null, message: body });
+    } catch (err) {
+      console.error("Supabase mirror failed:", err);
+    }
+
+    if (!emailed) {
+      setStatus({ type: "error", message: "We couldn't send your message. Please try again later." });
       setSending(false);
       return;
     }
@@ -57,12 +129,12 @@ export default function ContactForm() {
           <input className={inputCls} value={form.phone} onChange={update("phone")} placeholder="Optional" />
         </div>
         <div>
-          <label className="mb-1.5 block text-xs font-bold tracking-wide text-zinc-600 uppercase">Subject</label>
-          <select className={inputCls} value={form.subject} onChange={update("subject")}>
+          <label className="mb-1.5 block text-xs font-bold tracking-wide text-zinc-600 uppercase">Subject *</label>
+          <select required className={inputCls} value={form.subject} onChange={update("subject")}>
             <option value="">Select a topic</option>
             <option value="General Enquiry">General Enquiry</option>
             <option value="Partnership">Partnership / Sponsorship</option>
-            <option value="Join the Team">Join the Team</option>
+            <option value="Get Involved">Get Involved</option>
             <option value="Song Request">Song Request</option>
             <option value="Testimony">Testimony</option>
             <option value="Feedback">Feedback</option>
@@ -73,7 +145,14 @@ export default function ContactForm() {
       <div>
         <label className="mb-1.5 block text-xs font-bold tracking-wide text-zinc-600 uppercase">Message *</label>
         <textarea required rows={5} className={`${inputCls} resize-none`} value={form.message} onChange={update("message")} placeholder="How can we help you?" />
+        <p className="mt-1.5 text-[11px] text-zinc-500">Your name, email, phone and topic are added automatically to your message so nothing is lost.</p>
       </div>
+
+      <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+
+      {/* hCaptcha (Web3Forms zero-config) — enable in dashboard → Settings → Block Spam */}
+      <div className="h-captcha" data-captcha="true" />
+      <p className="text-[11px] text-zinc-500">Verify you are human to submit.</p>
 
       {status && (
         <div

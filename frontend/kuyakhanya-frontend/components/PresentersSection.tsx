@@ -4,7 +4,7 @@ import { siteData } from "@/lib/site-data";
 
 function PresenterCard({ p }: { p: (typeof siteData.presenters)[number] }) {
   return (
-    <div className="group relative flex flex-col rounded-[28px] glass-purple overflow-hidden hover-lift text-center">
+    <div className="group relative flex h-full flex-col rounded-[28px] glass-purple overflow-hidden hover-lift text-center">
       <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
       <div aria-hidden className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[#FFD700]/8 blur-2xl group-hover:bg-[#FFD700]/12 transition" />
 
@@ -89,7 +89,7 @@ export default function PresentersSection() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
           {featured.map((p) => (
-            <div key={p.name} style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
+            <div key={p.name} className="h-full" style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
               <PresenterCard p={p} />
             </div>
           ))}

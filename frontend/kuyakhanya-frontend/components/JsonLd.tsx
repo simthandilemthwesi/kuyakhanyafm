@@ -4,6 +4,34 @@ export default function JsonLd({ data }: Props) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
+export function organizationJsonLd() {
+  const site = "https://kuyakhanyafm.web.app";
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "KUYAKHANYA FM",
+    url: site,
+    logo: `${site}/images/Kuyakhanya%20FM%20Icon.png`,
+    sameAs: [
+      "https://www.facebook.com/profile.php?id=61580413033664",
+      "https://www.instagram.com/kuyakhanyafm/",
+      "https://www.youtube.com/@KuyakhanyaFM",
+      "https://www.tiktok.com/@kuyakhanyafm",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "info.kuyakhanyafm@gmail.com",
+      telephone: "+27-63-978-0839",
+      contactType: "customer service",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "George",
+      containedInPlace: { "@type": "State", name: "Western Cape", containedInPlace: { "@type": "Country", name: "South Africa" } },
+    },
+  };
+}
+
 export function radioStationJsonLd() {
   const site = "https://kuyakhanyafm.web.app";
   return {

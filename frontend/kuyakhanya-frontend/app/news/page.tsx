@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import WeatherGrid from "@/components/WeatherGrid";
+import NewsCard from "@/components/NewsCard";
 import { siteData } from "@/lib/site-data";
 import { pageMetadata } from "@/lib/seo";
 
@@ -10,19 +9,11 @@ export const metadata: Metadata = pageMetadata({
   title: "News & Updates | KUYAKHANYA FM",
   description: "Latest news, announcements, weather updates for George & 7 SA cities, and stories from KUYAKHANYA FM studio in Thembalethu.",
   path: "/news",
-  image: "/images/team_image.jpg",
-  imageAlt: "KUYAKHANYA FM News & Weather Updates",
+  image: "/images/kuyakhanya_radio_day.jpg",
+  imageAlt: "KUYAKHANYA FM News — listeners celebrating World Radio Day",
   keywords: ["Kuyakhanya news", "George weather", "South Africa weather", "radio news"],
   type: "website",
 });
-
-function formatDate(d: string) {
-  try {
-    return new Date(d).toLocaleDateString("en-ZA", { year: "numeric", month: "long", day: "numeric" });
-  } catch {
-    return d;
-  }
-}
 
 export default function NewsPage() {
   const items = siteData.news;
@@ -64,30 +55,7 @@ export default function NewsPage() {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {items.map((n) => (
-                <article key={n.slug} className="group rounded-[32px] grad-card border border-zinc-200 bg-white overflow-hidden shadow-soft hover:-translate-y-1.5 hover:shadow-lift transition duration-300 flex flex-col">
-                  <div className="overflow-hidden">
-                    <Image
-                      src={n.coverImage}
-                      alt={n.title}
-                      width={600}
-                      height={400}
-                      className="h-52 w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] text-[#6a0dad] uppercase">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#ffd700]" />
-                      {formatDate(n.date)} • {n.author}
-                    </p>
-                    <h2 className="mt-3 font-display text-xl font-extrabold leading-snug tracking-tight text-[#1a0b2e]">{n.title}</h2>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 line-clamp-3 flex-1">{n.excerpt}</p>
-                    <div className="mt-5 pt-4 border-t border-[#ede6f8]">
-                      <Link href="/contact" className="text-sm font-bold text-[#6a0dad] hover:text-[#4b0082] transition-colors">
-                        Read more →
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+                <NewsCard key={n.slug} article={n} variant="light" />
               ))}
             </div>
           )}

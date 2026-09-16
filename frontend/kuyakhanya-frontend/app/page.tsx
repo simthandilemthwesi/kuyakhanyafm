@@ -9,7 +9,6 @@ import AimsObjectives from "@/components/AimsObjectives";
 import ListenLive from "@/components/ListenLive";
 import NewsSection from "@/components/NewsSection";
 import EventsSection from "@/components/EventsSection";
-import ContactSection from "@/components/ContactSection";
 import { fetchVisionMission, fetchAimsObjectives } from "@/lib/api";
 
 // Home — massive premium 3D broadcast experience
@@ -32,7 +31,6 @@ export default async function HomePage() {
       <ListenLive />
       <NewsSection />
       <EventsSection />
-      <ContactSection />
-    </>
+      </>
   );
 }

@@ -77,22 +77,12 @@ export default function Hero() {
 
             {/* CTAs — per spec */}
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-              <button
-                onClick={togglePlay}
-                aria-label={isPlaying ? "Pause live stream" : "Play live stream"}
-                className="group inline-flex w-full sm:w-auto justify-center items-center gap-2.5 rounded-full bg-[#FFD700] px-8 py-4 text-sm font-black tracking-wide text-[#1a0b2e] hover:bg-[#ffe873] transition-all shadow-[0_0_22px_rgba(255,215,0,0.35)] hover:shadow-[0_0_34px_rgba(255,215,0,0.45)] hover:-translate-y-px"
-              >
-                <span className={`grid h-7 w-7 place-items-center rounded-full bg-[#1a0b2e] text-[#FFD700] transition ${isPlaying ? "scale-105" : "group-hover:scale-105"}`}>
-                  {isLoading ? (
-                    <span className="h-3 w-3 rounded-full border-2 border-[#FFD700] border-t-transparent animate-spin" />
-                  ) : isPlaying ? (
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="2" width="3" height="8" rx="1"/><rect x="7" y="2" width="3" height="8" rx="1"/></svg>
-                  ) : (
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" className="ml-0.5"><path d="M3 2l7 4-7 4z"/></svg>
-                  )}
+<a href="/download" aria-label="Download the KUYAKHANYA FM app" className="group inline-flex w-full sm:w-auto justify-center items-center gap-2.5 rounded-full bg-[#FFD700] px-8 py-4 text-sm font-black tracking-wide text-[#1a0b2e] hover:bg-[#ffe873] transition-all shadow-[0_0_22px_rgba(255,215,0,0.35)] hover:shadow-[0_0_34px_rgba(255,215,0,0.45)] hover:-translate-y-px">
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-[#1a0b2e] text-[#FFD700] transition group-hover:scale-105">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" className="ml-0.5"><path d="M6 1v6m0 0L3 4m3 3l3-3"/><path d="M2 9h8"/></svg>
                 </span>
-                {isPlaying ? "PAUSE LIVE" : "LISTEN LIVE"}
-              </button>
+                DOWNLOAD OUR APP
+              </a>
               <Link
                 href="/#shows"
                 className="inline-flex w-full sm:w-auto justify-center items-center rounded-full bg-white/[0.07] backdrop-blur border border-[#FFD700]/40 px-8 py-4 text-sm font-bold tracking-wide text-white hover:bg-white/[0.10] hover:border-[#FFD700]/60 hover:text-[#FFD700] transition-all"
@@ -103,7 +93,7 @@ export default function Hero() {
 
             {/* easy hint */}
             <p className="mt-3 text-center lg:text-left text-[11px] tracking-wide text-white/45">
-              Tap <span className="text-[#FFD700]">LISTEN LIVE</span> or the player → stream starts instantly • Space to toggle • M to mute
+              Download our app to listen anywhere • Or press play in the player to stream live • Space to toggle • M to mute
             </p>
           </div>
 

@@ -12,6 +12,7 @@ const NAV = [
   { href: "/shows-presenters", label: "SHOWS" },
   { href: "/shows-presenters#sp-presenters", label: "PRESENTERS" },
   { href: "/news", label: "NEWS" },
+  { href: "/media-centre", label: "MEDIA CENTRE" },
   { href: "/contact", label: "CONTACT" },
 ];
 

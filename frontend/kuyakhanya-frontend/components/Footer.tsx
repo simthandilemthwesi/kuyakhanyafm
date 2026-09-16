@@ -33,7 +33,7 @@ export default function Footer() {
             <h4 className="font-bold text-[#ffd700] mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-sm text-white/85">
               <li><Link href="/about" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>About Us</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Services</Link></li>
+              <li><Link href="/media-centre" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Media Centre</Link></li>
               <li><Link href="/programmes" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Programmes</Link></li>
               <li><Link href="/news" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>News & Updates</Link></li>
               <li><Link href="/team" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Our Team</Link></li>

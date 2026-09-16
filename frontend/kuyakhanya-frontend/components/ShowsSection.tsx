@@ -14,6 +14,15 @@ type Show = {
 
 const SHOWS: Show[] = [
   {
+    day: "MONDAY",
+    title: "YOUTH SPOTLIGHT",
+    presenters: ["Sbu Hamza"],
+    theme: "Youth • Growth • Spotlight",
+    description:
+      "A weekly platform that puts the youth in the spotlight — young voices, talent and real conversations, every Monday.",
+    accent: "default",
+  },
+  {
     day: "TUESDAY",
     title: "LOVE & LIFE",
     presenters: ["Franky"],
@@ -25,7 +34,7 @@ const SHOWS: Show[] = [
   {
     day: "WEDNESDAY",
     title: "ABAFazi BOKHOLO",
-    presenters: ["Mrs. Lolwana"],
+    presenters: ["Mrs Lolwana"],
     theme: "Wisdom • Strength • Purpose",
     description:
       "Celebrating women of faith, resilience, wisdom and purpose — powerful testimonies and honest dialogue that uplifts abafazi bokholo in family, church and community.",
@@ -34,7 +43,7 @@ const SHOWS: Show[] = [
   {
     day: "WEDNESDAY",
     title: "INKWENKWEZI ZETHU",
-    presenters: ["Mrs. Klass"],
+    presenters: ["Mrs Klaas"],
     theme: "Inspiration • Empowerment • Faith",
     description:
       "Inspiration that connects — stories of empowerment, faith and hope that uplift, inspire and remind our community that we shine brighter together.",
@@ -43,7 +52,7 @@ const SHOWS: Show[] = [
   {
     day: "THURSDAY",
     title: "ITHEMBA LOKULILA",
-    presenters: ["Mrs. Mati", "Mrs. Panduva"],
+    presenters: ["Mrs Mati"],
     theme: "Faith • Hope • Encouragement • Community",
     description:
       "Faith, hope and encouragement for the journey — a compassionate space where community finds healing, prayer and strength to keep believing.",
@@ -71,7 +80,7 @@ const SHOWS: Show[] = [
     day: "SUNDAY",
     title: "YIZANI SAKHE",
     subtitle: "TOGETHER WE REVIVE",
-    presenters: ["Mrs. Mthwesi", "Mrs. Ndziba"],
+    presenters: ["Mrs Ndziba"],
     theme: "Faith • Restoration • Community • Revival",
     description:
       "An inspirational Sunday gathering of faith, restoration and revival — a sacred community moment to be restored, revived and sent out to shine.",
@@ -118,7 +127,7 @@ function Card({ show }: { show: Show }) {
 
   return (
     <div
-      className={`group relative flex flex-col rounded-[28px] glass-purple overflow-hidden hover-lift border-glow`}
+      className={`group relative flex h-full flex-col rounded-[28px] glass-purple overflow-hidden hover-lift border-glow`}
       style={{ transformStyle: "preserve-3d" } as React.CSSProperties}
     >
       {/* accent glow */}
@@ -201,13 +210,16 @@ export default function ShowsSection() {
           <div className="mx-auto mt-6 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#FFD700] to-[#ffb300] shadow-[0_0_12px_rgba(255,215,0,0.35)]" />
         </div>
 
-        {/* 3D grid — home shows only 3 featured shows; full lineup lives on /shows-presenters & /programmes */}
+        {/* Home grid — featured shows only: Youth Spotlight, Inkwenkwezi Zethu, Friday Vibes */}
         <div className="mt-12 grid gap-6 sm:gap-7 sm:grid-cols-2 lg:grid-cols-3" style={{ perspective: "1400px" } as React.CSSProperties}>
-          {SHOWS.slice(0, 3).map((s) => (
-            <div key={s.title} style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
-              <Card show={s} />
-            </div>
-          ))}
+          {["YOUTH SPOTLIGHT", "FRIDAY VIBES", "INKWENKWEZI ZETHU"]
+            .map((t) => SHOWS.find((s) => s.title === t))
+            .filter((s): s is Show => Boolean(s))
+            .map((s) => (
+              <div key={s.title} style={{ transformStyle: "preserve-3d" } as React.CSSProperties} className="h-full">
+                <Card show={s} />
+              </div>
+            ))}
         </div>
 
         <div className="mt-10 flex justify-center">

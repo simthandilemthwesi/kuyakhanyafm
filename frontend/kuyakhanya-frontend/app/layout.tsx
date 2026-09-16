@@ -4,7 +4,7 @@ import "./globals.css";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import JsonLd, { radioStationJsonLd } from "@/components/JsonLd";
+import JsonLd, { radioStationJsonLd, organizationJsonLd } from "@/components/JsonLd";
 import { AudioProvider } from "@/components/AudioProvider";
 import AppDownloadPopup from "@/components/AppDownloadPopup";
 
@@ -125,7 +125,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/images/Kuyakhanya FM Icon.png", type: "image/png" },
-      { url: "/favicon.ico", type: "image/x-icon" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
@@ -154,6 +153,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </noscript>
         <JsonLd data={radioStationJsonLd()} />
+        <JsonLd data={organizationJsonLd()} />
         <AudioProvider>
           {/* Google Tag Manager */}
           <Script id="gtm" strategy="afterInteractive">

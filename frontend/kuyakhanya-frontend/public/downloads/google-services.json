@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "180614000931",
+    "firebase_url": "https://kuyakhanyafm-default-rtdb.firebaseio.com",
+    "project_id": "kuyakhanyafm",
+    "storage_bucket": "kuyakhanyafm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180614000931:android:3457ee2840b4c189389c96",
+        "android_client_info": {
+          "package_name": "com.kuyakhanya.KuyakhanyaFM"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8DqqvUyU9YOkE9qDoK8wk1hadEa3mYWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
