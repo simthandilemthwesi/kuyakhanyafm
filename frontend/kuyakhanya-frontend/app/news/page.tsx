@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import WeatherGrid from "@/components/WeatherGrid";
 import NewsCard from "@/components/NewsCard";
+import InlineAd from "@/components/InlineAd";
 import { siteData } from "@/lib/site-data";
 import { pageMetadata } from "@/lib/seo";
 
@@ -16,7 +17,9 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function NewsPage() {
-  const items = siteData.news;
+  const items = [...siteData.news].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <>
@@ -45,7 +48,7 @@ export default function NewsPage() {
 
       <section className="py-16 sm:py-24 bg-[#faf8ff]">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-
+          <InlineAd />
           {items.length === 0 ? (
             <div className="rounded-[32px] grad-card border border-dashed border-zinc-300 bg-white p-16 text-center shadow-soft">
               <span className="text-3xl">📰</span>

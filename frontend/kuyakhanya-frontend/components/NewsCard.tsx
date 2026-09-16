@@ -7,6 +7,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import InlineAd from "./InlineAd";
 
 export type Article = {
   title: string;
@@ -137,6 +138,7 @@ export default function NewsCard({ article, variant = "dark" }: Props) {
             {article.content && (
               <div className="mt-5 whitespace-pre-line text-sm leading-relaxed text-white/80 sm:text-[15px]">{article.content}</div>
             )}
+            <InlineAd />
             <button
               onClick={() => setOpen(false)}
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#FFD700] px-6 py-3 text-sm font-extrabold text-[#1a0b2e] transition hover:bg-[#ffe873]"

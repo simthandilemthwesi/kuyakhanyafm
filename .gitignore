@@ -10,6 +10,12 @@ out/
 dist/
 build/
 
+# apk / webapk binaries (large files — never commit)
+webapk/*.apk
+webapk/*.conf
+public/downloads/*.apk
+downloads/
+
 # env
 .env.local
 .env*.local
@@ -37,3 +43,6 @@ npm-debug.log*
 
 dev-server*.log
 dev-server*.log.err
+
+# generated / cache
+image-sitemap.xml

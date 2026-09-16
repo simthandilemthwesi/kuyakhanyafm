@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { siteData } from "@/lib/site-data";
 import NewsCard from "./NewsCard";
+import BannerAd from "./BannerAd";
 
 const CATEGORIES = ["Breaking News", "Community Updates", "Events", "Interviews", "Station Announcements"] as const;
 
 export default function NewsSection() {
-  const news = siteData.news;
+  const news = [...siteData.news].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <section id="news" className="relative py-16 sm:py-24 overflow-hidden">
@@ -37,6 +40,8 @@ export default function NewsSection() {
             <NewsCard key={n.slug} article={n} variant="dark" />
           ))}
         </div>
+
+        <BannerAd />
 
         <div className="mt-8 sm:hidden text-center">
           <Link href="/news" className="inline-flex rounded-full bg-white/10 border border-white/15 px-6 py-3 text-sm font-bold text-white">View All News →</Link>

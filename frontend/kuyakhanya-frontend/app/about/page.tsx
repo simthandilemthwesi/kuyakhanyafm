@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import BannerAd from "@/components/BannerAd";
 import { siteData } from "@/lib/site-data";
 import { fetchAboutUnified, fetchVisionMissionUnified, fetchAimsUnified } from "@/lib/api";
 import { pageMetadata } from "@/lib/seo";
@@ -50,9 +51,9 @@ export default async function AboutPage() {
             </div>
             <div className="relative">
               <div aria-hidden className="absolute -inset-4 rounded-[40px] bg-gradient-to-br from-[#6a0dad]/20 via-transparent to-[#ffd700]/20 blur-2xl" />
-              <div className="relative rounded-[32px] overflow-hidden border border-zinc-200 shadow-lift">
+              <div className="relative mx-auto aspect-square w-full max-w-[440px] overflow-hidden rounded-[32px] border border-zinc-200 bg-white p-8 shadow-lift sm:p-12">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={siteData.aboutUs.heroImage} alt="Kuyakhanya FM" className="h-[340px] w-full object-cover sm:h-[440px]" loading="lazy" />
+                <img src="/images/Kuyakhanya FM LOGO.svg" alt="KUYAKHANYA FM logo" className="h-full w-full object-contain" loading="lazy" />
               </div>
             </div>
           </div>
@@ -78,6 +79,8 @@ export default async function AboutPage() {
           </div>
         </div>
       </section>
+
+      <BannerAd />
 
       {/* Values */}
       <section className="py-16 sm:py-24 bg-white">
@@ -115,6 +118,8 @@ export default async function AboutPage() {
           </div>
         </div>
       </section>
+
+      <BannerAd />
 
       {/* Aims & objectives */}
       <section className="py-16 sm:py-24 bg-white">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
+import BannerAd from "@/components/BannerAd";
 
 export const metadata: Metadata = pageMetadata({
   title: "Our Mobile Applications | KUYAKHANYA FM",
@@ -32,49 +33,22 @@ export default function DownloadPage() {
 
       <section className="relative py-16 sm:py-24 bg-[#faf8ff]">
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-          {/* Store icons */}
-          <div className="mx-auto mb-12 grid max-w-lg grid-cols-3 gap-6 sm:gap-8">
-            {/* Google Play */}
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative h-20 w-20 overflow-hidden rounded-2xl border-2 border-[#ffd700]/40 bg-white shadow-sm">
-                <Image
-                  src="/images/store_icons.jpg"
-                  alt="Google Play"
-                  width={120}
-                  height={120}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <p className="text-[11px] font-bold tracking-[0.14em] text-[#FFD700] uppercase">Google Play</p>
-              <span className="inline-flex rounded-full bg-[#ffd700] px-3 py-1 text-[10px] font-black tracking-wide text-[#1a0b2e]">Coming Soon</span>
+          {/* Store badges — single image, Coming Soon on top */}
+          <div className="mx-auto mb-12 max-w-xl">
+            <div className="mb-4 flex justify-center">
+              <span className="rounded-full bg-[#1a0b2e] px-4 py-1.5 text-[11px] font-black tracking-[0.2em] text-[#FFD700] uppercase">
+                Coming Soon
+              </span>
             </div>
-            {/* App Store */}
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative h-20 w-20 overflow-hidden rounded-2xl border-2 border-[#ffd700]/40 bg-white shadow-sm">
-                <Image
-                  src="/images/store_icons.jpg"
-                  alt="App Store"
-                  width={120}
-                  height={120}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <p className="text-[11px] font-bold tracking-[0.14em] text-[#FFD700] uppercase">App Store</p>
-              <span className="inline-flex rounded-full bg-[#ffd700] px-3 py-1 text-[10px] font-black tracking-wide text-[#1a0b2e]">Coming Soon</span>
-            </div>
-            {/* AppGallery */}
-            <div className="flex flex-col items-center gap-3">
-              <div className="relative h-20 w-20 overflow-hidden rounded-2xl border-2 border-[#ffd700]/40 bg-white shadow-sm">
-                <Image
-                  src="/images/store_icons.jpg"
-                  alt="AppGallery"
-                  width={120}
-                  height={120}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <p className="text-[11px] font-bold tracking-[0.14em] text-[#FFD700] uppercase">AppGallery</p>
-              <span className="inline-flex rounded-full bg-[#ffd700] px-3 py-1 text-[10px] font-black tracking-wide text-[#1a0b2e]">Coming Soon</span>
+            <div className="overflow-hidden rounded-[28px] border-2 border-[#ffd700]/40 bg-white shadow-sm">
+              <Image
+                src="/images/store_icons.jpg"
+                alt="Google Play, App Store and AppGallery — coming soon"
+                width={900}
+                height={300}
+                sizes="(max-width: 640px) 100vw, 576px"
+                className="h-auto w-full object-cover"
+              />
             </div>
           </div>
 
@@ -92,6 +66,7 @@ export default function DownloadPage() {
           </div>
         </div>
       </section>
+      <BannerAd />
     </>
   );
 }

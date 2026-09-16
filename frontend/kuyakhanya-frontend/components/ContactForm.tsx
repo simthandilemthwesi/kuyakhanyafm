@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { supabaseClient } from "@/lib/supabase";
 
 /* Contact form
- * - Primary delivery: Web3Forms → emails the message to info.kuyakhanyafm@gmail.com
+ * - Primary delivery: Web3Forms → info.kuyakhanyafm@gmail.com
+ * - Subject template: "New Form Submission - {field:subject} - {field:phone}"
+ *   (standalone subject/phone fields feed the dashboard template variables)
+ * - Sender: "Kuyakhanya FM Notifications" · redirect: /thank-you
  * - Mirror: also saved to Supabase `contact_submissions` → seen live in /admin
- * - Subject + phone are embedded IN the message body so nothing is ever lost,
- *   even if the email client drops extra fields.
- * - hCaptcha (Web3Forms zero-config, free plan): enable "hCaptcha" as the Block
- *   Spam option in the dashboard at app.web3forms.com to make it mandatory.
+ * - hCaptcha (Web3Forms zero-config, free plan): enabled in the dashboard
+ *   at app.web3forms.com → Block Spam → hCaptcha (Strict).
  */
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
@@ -57,12 +58,17 @@ export default function ContactForm() {
     const body = buildMessage();
 
     // 1) Web3Forms → email delivery
+    // Dashboard subject template: "New Form Submission - {field:subject} - {field:phone}".
+    // Standalone `subject` + `phone` fields feed those template variables;
+    // `redirect` is the dashboard fallback (AJAX submit navigates client-side below).
     const fd = new FormData();
     fd.append("access_key", ACCESS_KEY);
     fd.append("name", form.name);
     fd.append("email", form.email);
-    fd.append("from_name", `${form.name} (kuyakhanyafm.web.app)`);
-    fd.append("subject", `${form.subject || "General Enquiry"} — Kuyakhanya FM contact form`);
+    fd.append("phone", form.phone || "—");
+    fd.append("from_name", "Kuyakhanya FM Notifications");
+    fd.append("subject", `New Form Submission - ${form.subject || "General Enquiry"} - ${form.phone || "no phone"}`);
+    fd.append("redirect", "https://kuyakhanyafm.web.app/thank-you");
     fd.append("message", body);
     fd.append("botcheck", "");
 
@@ -102,9 +108,12 @@ export default function ContactForm() {
       return;
     }
 
-    setStatus({ type: "success", message: "Thank you! Your message has been sent — we’ll be in touch soon." });
+    setStatus({ type: "success", message: "Thank you! Taking you to our confirmation page…" });
     setForm({ name: "", email: "", phone: "", subject: "", message: "" });
     setSending(false);
+    window.setTimeout(() => {
+      window.location.href = "/thank-you";
+    }, 900);
   }
 
   const inputCls =

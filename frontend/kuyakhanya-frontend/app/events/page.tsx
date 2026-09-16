@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
+import BannerAd from "@/components/BannerAd";
 
 export const metadata: Metadata = pageMetadata({
   title: "Events | KUYAKHANYA FM",
@@ -86,6 +87,7 @@ export default function EventsPage() {
           </div>
         </div>
       </section>
+      <BannerAd />
     </>
   );
 }

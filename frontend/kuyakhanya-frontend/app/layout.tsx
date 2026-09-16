@@ -7,6 +7,11 @@ import Footer from "@/components/Footer";
 import JsonLd, { radioStationJsonLd, organizationJsonLd } from "@/components/JsonLd";
 import { AudioProvider } from "@/components/AudioProvider";
 import AppDownloadPopup from "@/components/AppDownloadPopup";
+import PopupAd from "@/components/PopupAd";
+import SidebarAd from "@/components/SidebarAd";
+import VignetteAd from "@/components/VignetteAd";
+import CookieBanner from "@/components/CookieBanner";
+import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -181,9 +186,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="absolute top-[42%] left-0 h-[1px] w-[55%] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[-8deg]" />
           </div>
           <Header />
+          <SidebarAd image="/images/octotel_sidebar.png" title="Octotel ISP" link="https://octotel.co.za/isp/" />
           <main className="flex-1">{children}</main>
           <Footer />
           <AppDownloadPopup />
+          <PopupAd image="/images/octotel_pop_up.png" title="Octotel ISP" link="https://octotel.co.za/isp/" />
+          <VignetteAd />
+          <CookieBanner />
+          <ServiceWorkerRegister />
         </AudioProvider>
         {/* Chatbase AI chat bubble — Simbot (Mnj8LreLagzhOq40QMKDW) — keep script exactly as provided, before </body> */}
         <Script id="chatbase-embed" strategy="afterInteractive">

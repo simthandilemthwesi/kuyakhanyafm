@@ -17,6 +17,9 @@
       "rewrites": [
         { "source": "**", "destination": "/index.html" }
       ],
+      "redirects": [
+        { "source": "/services", "destination": "/media-centre", "type": 301 }
+      ],
       "cleanUrls": true
     },
     {
@@ -35,6 +38,9 @@
       ],
       "rewrites": [
         { "source": "**", "destination": "/index.html" }
+      ],
+      "redirects": [
+        { "source": "/services", "destination": "/media-centre", "type": 301 }
       ],
       "cleanUrls": true
     }

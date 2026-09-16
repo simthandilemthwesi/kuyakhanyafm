@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import BannerAd from "@/components/BannerAd";
 import { siteData } from "@/lib/site-data";
 import { pageMetadata } from "@/lib/seo";
 
@@ -58,6 +59,7 @@ export default function ProgrammesPage() {
             </div>
         </div>
       </section>
+      <BannerAd />
     </>
   );
 }

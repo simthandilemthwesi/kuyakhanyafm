@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import BannerAd from "@/components/BannerAd";
 import { siteData } from "@/lib/site-data";
 import { fetchManagementTeam, fetchTechnicians, fetchPresenters } from "@/lib/api";
 import { pageMetadata } from "@/lib/seo";
@@ -109,6 +110,8 @@ export default async function TeamPage() {
           </div>
         </section>
 
+        <BannerAd />
+
         {/* Technician */}
         <section className="mt-14">
           <h2 className="text-center text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Technician</h2>
@@ -127,6 +130,8 @@ export default async function TeamPage() {
             ))}
           </div>
         </section>
+
+        <BannerAd />
 
         <div className="mt-12 text-center">
           <Link href="/contact" className="inline-flex rounded-full bg-[#6a0dad] px-7 py-3.5 text-sm font-bold text-white hover:bg-[#4b0082] transition-colors shadow-md">

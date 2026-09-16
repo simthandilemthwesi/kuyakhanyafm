@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { siteData } from "@/lib/site-data";
+import BannerAd from "@/components/BannerAd";
 import { shareTarget, SHARE_NETWORKS, SITE_URL } from "@/lib/share";
 import {
   FacebookIcon,
@@ -379,6 +380,7 @@ export default function ShowsPresentersClient() {
           </div>
         </div>
       </section>
+      <BannerAd />
     </>
   );
 }

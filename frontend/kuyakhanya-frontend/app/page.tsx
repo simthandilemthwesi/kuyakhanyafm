@@ -9,6 +9,7 @@ import AimsObjectives from "@/components/AimsObjectives";
 import ListenLive from "@/components/ListenLive";
 import NewsSection from "@/components/NewsSection";
 import EventsSection from "@/components/EventsSection";
+import BannerAd from "@/components/BannerAd";
 import { fetchVisionMission, fetchAimsObjectives } from "@/lib/api";
 
 // Home — massive premium 3D broadcast experience
@@ -22,14 +23,19 @@ export default async function HomePage() {
     <>
       <Hero />
       <WeatherUpdates />
+      <BannerAd />
       <AboutSection />
       <ShowsSection />
+      <BannerAd />
       <PresentersSection />
       <TeamSection />
+      <BannerAd />
       <VisionMission vision={vm?.vision} missionItems={vm?.missionItems} />
       <AimsObjectives objectives={ao?.objectives} />
+      <BannerAd />
       <ListenLive />
       <NewsSection />
+      <BannerAd />
       <EventsSection />
       </>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 type PopupAdProps = {
@@ -9,15 +9,15 @@ type PopupAdProps = {
   link: string;
   sessionKey?: string;
   intervalMs?: number;
+  /** Only show below this viewport width (px). Default 1000: phones + tablets. Desktop uses VignetteAd. */
+  maxWidthPx?: number;
 };
 
 /**
- * PopupAd — modal pop-up advert.
- * - Close (×) dismisses; minimise shrinks to bottom-right corner.
- * - Esc key closes.
- * - localStorage tracks last-shown timestamp so the ad
- *   re-appears every `intervalMs` ms (default 5 min) on mobile
- *   and once per session on desktop.
+ * PopupAd — small-screen modal advert (phones/tablets).
+ * Fits every viewport: capped at 92vw / 88dvh with internal scroll,
+ * safe-area padding, Esc/backdrop close, scroll-lock while open.
+ * Re-appears every `intervalMs` (default 5 min) via localStorage timestamp.
  */
 export default function PopupAd({
   image,
@@ -25,11 +25,10 @@ export default function PopupAd({
   link,
   sessionKey = "octotel-pop-up-shown",
   intervalMs = 5 * 60 * 1000,
+  maxWidthPx = 1000,
 }: PopupAdProps) {
   const [open, setOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
-
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 640;
 
   function lastShown(): number | null {
     try {
@@ -41,9 +40,11 @@ export default function PopupAd({
   }
 
   function shouldShow(): boolean {
+    if (typeof window === "undefined") return false;
+    if (window.innerWidth >= maxWidthPx) return false;
     const last = lastShown();
     if (last === null) return true;
-    return Date.now() - last >= (isMobile ? intervalMs : Infinity);
+    return Date.now() - last >= intervalMs;
   }
 
   function markShown() {
@@ -52,6 +53,7 @@ export default function PopupAd({
 
   function dismiss() {
     setOpen(false);
+    setMinimized(false);
     markShown();
   }
 
@@ -66,43 +68,66 @@ export default function PopupAd({
   }
 
   useEffect(() => {
-    if (shouldShow()) setOpen(true);
+    const t = setTimeout(() => {
+      if (shouldShow()) setOpen(true);
+    }, 1200);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        if (minimized) { setMinimized(false); setOpen(true); }
-        else dismiss();
-      }
+      if (e.key === "Escape") dismiss();
     }
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [minimized]);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   if (!open && !minimized) return null;
 
-  // Minimized pill
   if (minimized) {
     return (
-      <div className="fixed bottom-3 right-3 z-50 flex items-center gap-2 rounded-lg bg-[#1a0b2e]/90 backdrop-blur p-2 shadow-lg animate-fade-in cursor-pointer" onClick={openModal} aria-label="Show advert">
-        <Image src={image} alt={title} width={28} height={28} className="rounded-lg object-cover" />
-        <span className="text-xs text-white/80">{title}</span>
-      </div>
+      <button
+        onClick={openModal}
+        aria-label="Show advert"
+        className="fixed bottom-3 right-3 z-50 flex max-w-[70vw] items-center gap-2 rounded-full border border-[#FFD700]/40 bg-[#1a0b2e]/95 p-2 pr-3 shadow-lg backdrop-blur animate-fade-in"
+        style={{ marginBottom: "env(safe-area-inset-bottom)" }}
+      >
+        <Image src={image} alt="" width={28} height={28} className="h-7 w-7 shrink-0 rounded-lg object-cover" />
+        <span className="truncate text-xs font-bold text-white/85">{title}</span>
+      </button>
     );
   }
 
-  // Full modal
   return (
-    <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur flex items-center justify-center p-4 animate-fade-in" role="dialog" aria-modal="true" aria-label={title}>
-      <div className="relative bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl">
-        <button onClick={dismiss} className="absolute top-2 right-2 text-zinc-500 hover:text-[#FFD700] transition" aria-label="Close">✕</button>
-        <div className="mt-4 flex flex-col items-center">
-          <Image src={image} alt={title} width={120} height={120} className="rounded-2xl object-cover mb-4" />
-          <h3 className="text-xl font-bold text-[#1a0b2e]">{title}</h3>
-          <a href={link} target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-[#6a0dad] underline underline-offset-2 hover:text-[#FFD700] transition">Visit Octotel</a>
+    <div
+      className="fixed inset-0 z-40 flex items-center justify-center overflow-y-auto bg-black/60 p-3 backdrop-blur-sm animate-fade-in sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+      onClick={dismiss}
+      style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+    >
+      <div
+        className="relative my-auto max-h-[88dvh] w-[min(92vw,26rem)] overflow-y-auto rounded-2xl bg-white p-5 shadow-2xl sm:p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button onClick={dismiss} className="absolute right-2 top-2 grid h-9 w-9 place-items-center rounded-full text-zinc-500 transition hover:bg-zinc-100 hover:text-[#1a0b2e]" aria-label="Close advert">✕</button>
+        <div className="flex flex-col items-center text-center">
+          <Image src={image} alt={title} width={480} height={480} sizes="(max-width: 640px) 70vw, 320px" className="mb-4 h-auto max-h-[38dvh] w-full max-w-[280px] rounded-2xl object-contain" />
+          <h3 className="text-lg font-black text-[#1a0b2e] sm:text-xl">{title}</h3>
+          <a href={link} target="_blank" rel="noopener noreferrer sponsored" className="mt-3 inline-block rounded-full bg-[#6a0dad] px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-[#4b0082]">
+            Visit Octotel
+          </a>
+          <button onClick={minimise} className="mt-3 text-xs font-bold text-zinc-500 underline-offset-2 transition hover:text-[#6a0dad] hover:underline">
+            Minimise
+          </button>
         </div>
-        <button onClick={minimise} className="absolute bottom-2 right-2 text-zinc-500 hover:text-[#FFD700] transition" aria-label="Minimise">––</button>
       </div>
     </div>
   );
