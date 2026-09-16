@@ -13,99 +13,7 @@ import {
   YouTubeIcon,
 } from "@/components/SocialIcons";
 
-type Show = {
-  day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
-  title: string;
-  time: string;
-  host: string;
-  image: string;
-  theme: string;
-  description: string;
-  accent: string;
-};
-
-const SHOWS: Show[] = [
-  {
-    day: "Monday",
-    title: "Youth Spotlight",
-    time: "07:00 pm – 08:00 pm",
-    host: "Sbu Hamza",
-    image: "/images/team 5.png",
-    theme: "Youth • Growth • Spotlight",
-    description: "Every Monday, 19:00–20:00 — a platform that puts the youth in the spotlight, featuring young voices, talent and real conversations.",
-    accent: "#FFD700",
-  },
-  {
-    day: "Tuesday",
-    title: "Love & Life",
-    time: "06:00 pm – 08:00 pm",
-    host: "Franky",
-    image: "/images/team 6.png",
-    theme: "Love • Life • Relationships",
-    description: "Warm conversation around love, life and relationships — real stories and heartfelt advice.",
-    accent: "#e91e8c",
-  },
-  {
-    day: "Wednesday",
-    title: "Abafazi Bokholo",
-    time: "10:00 am – 12:00 pm",
-    host: "Mrs Lolwana",
-    image: "/images/team 9.png",
-    theme: "Wisdom • Strength • Purpose",
-    description: "Celebrating women of faith, resilience, wisdom and purpose — powerful testimonies and honest dialogue.",
-    accent: "#8a2be2",
-  },
-  {
-    day: "Wednesday",
-    title: "Inkwenkwezi Zethu",
-    time: "12:00 pm – 02:00 pm",
-    host: "Mrs Klaas",
-    image: "/images/team 7.png",
-    theme: "Inspiration • Empowerment • Faith",
-    description: "Inspiration that connects — stories of empowerment, faith and hope that uplift our community.",
-    accent: "#FFD700",
-  },
-  {
-    day: "Thursday",
-    title: "Ithemba Lokulila",
-    time: "06:00 pm – 08:00 pm",
-    host: "Mrs Mati & Mrs Panduva",
-    image: "/images/Tag_team 1.png",
-    theme: "Faith • Hope • Encouragement",
-    description: "Faith, hope and encouragement for the journey — a space where community finds healing and prayer.",
-    accent: "#4B0082",
-  },
-  {
-    day: "Friday",
-    title: "Friday Vibes",
-    time: "06:00 pm – 10:00 pm",
-    host: "Kay Cee",
-    image: "/images/team 10.png",
-    theme: "Music • Energy • Weekend Vibes",
-    description: "Feel the weekend energy! Music, conversation and vibrant vibes — louder, brighter, made to move you.",
-    accent: "#ff2e8a",
-  },
-  {
-    day: "Saturday",
-    title: "Ezakwa Ntu",
-    time: "04:00 pm – 08:00 pm",
-    host: "DJ Toto",
-    image: "/images/team 11.png",
-    theme: "Culture • Heritage • Roots",
-    description: "A proudly African celebration of culture, heritage and roots — music, language and stories.",
-    accent: "#FFD700",
-  },
-  {
-    day: "Sunday",
-    title: "Yizani Sakhe",
-    time: "10:00 am – 02:00 pm",
-    host: "Mrs Mthwesi & Mrs Ndziba",
-    image: "/images/Tag_team 2.png",
-    theme: "Faith • Restoration • Revival",
-    description: "An inspirational Sunday gathering of faith, restoration and revival — to be restored and sent out to shine.",
-    accent: "#a66cff",
-  },
-];
+import { SHOWS, type Show } from "@/lib/shows";
 
 const DAYS = ["All", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
 
@@ -162,7 +70,7 @@ function ShareIcons({
   );
 }
 
-function ShowCard({ show }: { show: Show }) {
+export function ShowCard({ show }: { show: Show }) {
   const bg = {
     backgroundImage: `linear-gradient(180deg, rgba(11,10,20,0.15) 0%, rgba(21,11,40,0.75) 55%, rgba(11,10,20,0.95) 100%), url('${show.image}')`,
     backgroundSize: "cover",
