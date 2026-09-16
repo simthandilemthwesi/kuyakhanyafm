@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import BannerAd from "@/components/BannerAd";
 
 export const metadata: Metadata = pageMetadata({
   title: "Events | KUYAKHANYA FM",
-  description: "Join KUYAKHANYA FM at our upcoming events — launch party, cultural festivals and gospel awards. Live broadcasts, community love and faith.",
+  description: "Join KUYAKHANYA FM at our upcoming events — launch celebration, cultural gathering and gospel awards. Live broadcasts, community love and faith.",
   path: "/events",
   image: "/images/Kuyakhanya FM Icon.png",
   imageAlt: "KUYAKHANYA FM Events",
@@ -15,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
 
 const EVENTS = [
   {
-    title: "OUR LAUNCH EVENT",
+    title: "KUYAKHANYA FM Launch Event",
     date: "Sunday, 09 Nov 2025",
     time: "15:00–17:00",
     location: "Kuyakhanya FM, Opposite 044 Outdoor Lifestyle",
@@ -29,7 +28,7 @@ const EVENTS = [
     title: "AmaVundle Amahle Cultural Event",
     date: "Mid-October 2028",
     location: "Thundergate, Ntabethemba, Komani, EC",
-    image: "/images/ungma_awards.png",
+    image: "/images/amavundle_launch_event.JPG",
     hashtag: "#KuyakhanyaFM #WeShineBrighterTogether",
   },
   {
@@ -66,7 +65,7 @@ export default function EventsPage() {
                 <div className="relative h-64 overflow-hidden">
                   <Image src={e.image} alt={e.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0b0a14]/80 to-transparent" />
-                  <span className="absolute left-5 top-5 rounded-full bg-[#FFD700] px-3 py-1 text-[10px] font-black tracking-[0.18em] text-[#1a0b2e]">
+                  <span className="absolute left-5 top-5 max-w-[calc(100%-2.5rem)] truncate rounded-full bg-[#FFD700] px-3 py-1 text-[10px] font-black tracking-[0.18em] text-[#1a0b2e]">
                     {e.date}
                   </span>
                 </div>
