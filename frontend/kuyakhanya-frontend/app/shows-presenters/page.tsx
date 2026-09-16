@@ -7,7 +7,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "All 8 programmes & 8 presenters — Youth Spotlight, Love & Life, Abafazi Bokholo, Friday Vibes, Ezakwa Ntu, Yizani Sakhe & more. Share any show card.",
   path: "/shows-presenters",
-  image: "/images/Kuyakhanya FM LOGO.png",
+  image: "/images/Kuyakhanya FM Icon.png",
   imageAlt: "KUYAKHANYA FM Shows & Presenters — shareable cards",
   keywords: ["shows", "presenters", "Love & Life", "Friday Vibes", "Ezakwa Ntu"],
 });

@@ -14,7 +14,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "KUYAKHANYA FM Media Centre — 558,862+ measured digital audience across platforms. Audience insights, geographic reach, advertising, partnership and media enquiries. George & Garden Route, South Africa.",
   path: "/media-centre",
-  image: "/images/Kuyakhanya FM LOGO.png",
+  image: "/images/Kuyakhanya FM Icon.png",
   imageAlt: "KUYAKHANYA FM Media Centre — Advertise, Partner, Connect",
   keywords: [
     "Kuyakhanya FM Media Centre",

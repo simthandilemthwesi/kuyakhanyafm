@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
   title: "Programmes | KUYAKHANYA FM",
   description: "Browse programmes, shows & presenters on KUYAKHANYA FM — Love & Life, Abafazi Bokholo, Friday Vibes, Ezakwa Ntu & more. Share any show.",
   path: "/programmes",
-  image: "/images/Kuyakhanya FM LOGO.png",
+  image: "/images/Kuyakhanya FM Icon.png",
   imageAlt: "KUYAKHANYA FM Programmes — shows & presenters",
   keywords: ["Kuyakhanya programmes", "radio shows", "presenters", "Thembalethu"],
 });
