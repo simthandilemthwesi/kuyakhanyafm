@@ -55,7 +55,7 @@ export default function DownloadPage() {
           {/* Download CTA */}
           <div className="mx-auto max-w-lg text-center">
             <Link
-              href="https://github.com/simthandilemthwesi/kuyakhanyafm/releases"
+              href="https://github.com/simthandilemthwesi/kuyakhanyafm/releases/download/android-v1.0/app-release.apk"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#6a0dad] to-[#8a2be2] px-8 py-4 text-sm font-extrabold text-white shadow-lg transition hover:from-[#4b0082] hover:to-[#6a0dad] hover:shadow-[0_0_30px_rgba(106,13,173,0.4)]"
