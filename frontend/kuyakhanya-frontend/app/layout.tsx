@@ -100,9 +100,9 @@ export const metadata: Metadata = {
     locale: "en_ZA",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "KUYAKHANYA FM — We Shine Brighter Together",
+    title: "Kuyakhanya FM - We Shine Brighter Together",
     description:
-      "Bringing light to Thembalethu through Christ — live 24/7, presenters, shows, news & community. Listen live now.",
+      "Bringing light to Thembalethu through Christ — live 24/7, presenters, shows, news & community.",
     images: [
       {
         url: "/images/og-image.png",
