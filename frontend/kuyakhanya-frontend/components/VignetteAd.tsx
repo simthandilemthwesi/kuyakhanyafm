@@ -142,7 +142,7 @@ export default function VignetteAd({
             href={link}
             target="_blank"
             rel="noopener noreferrer sponsored"
-            className="inline-block rounded-full bg-[#6a0dad] px-6 py-2.5 text-sm font-extrabold text-white transition hover:bg-[#4b0082]"
+            className="inline-block rounded-full bg-[#FD591A] px-6 py-2.5 text-sm font-extrabold text-white transition hover:bg-[#d94813]"
           >
             Visit Octotel
           </a>

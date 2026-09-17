@@ -562,14 +562,30 @@ export default function MediaCentrePage() {
             </p>
           </div>
 
+          <div className="mx-auto mt-10 max-w-5xl rounded-[28px] bg-gradient-to-br from-[#1a0b2e] via-[#4b0082] to-[#6a0dad] p-8 text-center text-white shadow-lift sm:p-10">
+            <p className="text-xs font-bold tracking-[0.25em] text-[#ffd700] uppercase">
+              Limited advertising offer
+            </p>
+            <h3 className="mt-3 font-display text-2xl sm:text-3xl font-black tracking-tight">
+              First 3 months <span className="text-[#ffd700]">FREE</span> advertising
+            </h3>
+            <p className="mx-auto mt-3 max-w-[52ch] text-sm leading-relaxed text-white/75">
+              New advertisers flight their first three months of on-site
+              placements at no cost. This offer covers advertising only — not
+              partnerships. Subject to availability, creative approval and
+              official terms.
+            </p>
+          </div>
+
           <div className="mx-auto mt-10 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "Digital Starter", price: "From R350", featured: false },
-              { name: "Digital Growth", price: "From R750", featured: true },
-              { name: "Digital Impact", price: "From R1,500", featured: false },
+              { name: "Digital Starter", price: "From R110/week", caption: "Starting price", featured: false },
+              { name: "Digital Growth", price: "From R800", caption: "Starting price", featured: true },
+              { name: "Digital Impact", price: "From R1,800", caption: "Starting price", featured: false },
               {
                 name: "Partnership / Custom Campaign",
                 price: "Custom Quote",
+                caption: "Scoped on brief",
                 featured: false,
               },
             ].map((p) => (
@@ -668,36 +684,50 @@ export default function MediaCentrePage() {
             <div className="mt-10 rounded-[32px] bg-gradient-to-br from-[#1a0b2e] via-[#4b0082] to-[#6a0dad] p-[1.5px] shadow-lift">
               <div className="rounded-[30px] bg-gradient-to-br from-[#1a0b2e] via-[#2e0b56] to-[#4b0082] px-6 py-8 sm:px-10 sm:py-10 text-white">
                 <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-                  <div className="max-w-[44ch]">
-                    <p className="text-xs font-bold tracking-[0.22em] text-[#ffd700] uppercase">
-                      Partnership Opportunity
-                    </p>
-                    <h3 className="mt-2 font-display text-2xl sm:text-3xl font-black leading-tight tracking-tight">
-                      First 3 months{" "}
-                      <span className="text-[#ffd700]">FREE</span>
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/75">
-                      Begin your partnership at no cost for the first three months, then
-                      continue at{" "}
-                      <span className="font-bold text-white">R500/month</span> — subject
-                      to official terms and approval.
-                    </p>
-                    <p className="mt-4 inline-flex rounded-full bg-white/10 border border-white/15 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur">
-                      Subject to official terms and approval
-                    </p>
-                  </div>
+                    <div className="max-w-[44ch]">
+                      <p className="text-xs font-bold tracking-[0.22em] text-[#ffd700] uppercase">
+                        Partnership Opportunity
+                      </p>
+                      <h3 className="mt-2 font-display text-2xl sm:text-3xl font-black leading-tight tracking-tight">
+                        Bronze, Silver, Gold{" "}
+                        <span className="text-[#ffd700]">or Platinum</span>
+                      </h3>
+                      <p className="mt-3 text-sm leading-relaxed text-white/75">
+                        Grow with the station at the level that suits you.
+                        Tailored deliverables upon brief — request a quote or
+                        apply today.
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {["Bronze", "Silver", "Gold", "Platinum"].map((t) => (
+                          <span key={t} className="rounded-full bg-white/10 border border-[#ffd700]/40 px-3 py-1.5 text-xs font-black tracking-wide text-[#ffd700]">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="mt-4 inline-flex rounded-full bg-white/10 border border-white/15 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur">
+                        Terms and conditions apply
+                      </p>
+                    </div>
 
                   <div className="shrink-0 rounded-[24px] bg-white p-6 text-[#1a0b2e] shadow-xl lg:w-[340px]">
                     <p className="text-xs font-bold tracking-[0.18em] text-[#6a0dad] uppercase">
-                      What You Get
+                      Partnership Tiers
                     </p>
                     <p className="mt-1 text-sm font-extrabold text-[#1a0b2e]">
-                      Then R500/month
+                      Request a Quote
                     </p>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-                      Partnership deliverables and benefits are defined in official terms
-                      — no invented benefits are displayed here. Apply to receive the
-                      current partnership pack.
+                    <ul className="mt-3 space-y-2">
+                      {["Bronze Partner", "Silver Partner", "Gold Partner", "Platinum Partner"].map((t) => (
+                        <li key={t} className="flex items-center gap-2 rounded-xl bg-[#faf8ff] border border-zinc-100 px-3 py-2 text-sm font-bold text-[#1a0b2e]">
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#ffd700]" aria-hidden />
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                      No prices are shown here — every partnership is scoped on
+                      brief and confirmed before you commit. Terms and
+                      conditions apply.
                     </p>
                     <div className="mt-6">
                       {JOTFORM_PARTNERSHIP_URL ? (

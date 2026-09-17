@@ -21,11 +21,10 @@ KUYAKHANYA FM was birthed from a God-given vision to bring light to the people o
 
 - [Home](https://kuyakhanyafm.web.app/): Live player, shows, presenters, news, weather and contact.
 - [About](https://kuyakhanyafm.web.app/about): Story, vision, mission, values, aims and future plans.
-- [Shows & Presenters](https://kuyakhanyafm.web.app/shows-presenters): All shows and presenters.
-- [Programmes](https://kuyakhanyafm.web.app/programmes): Programme schedule by show.
+- [Shows & Presenters](https://kuyakhanyafm.web.app/shows-presenters): All shows and presenters, programme schedule by show.
 - [News](https://kuyakhanyafm.web.app/news): News, announcements and weather updates for George & 7 SA cities.
 - [Team](https://kuyakhanyafm.web.app/team): Managing Director, management, technician and presenters.
-- [Services](https://kuyakhanyafm.web.app/services): Live streaming, outreach, event coverage, youth development, audio production, marketing.
+- [Media Centre](https://kuyakhanyafm.web.app/media-centre): Advertise, partner and connect — services, outreach and commercial opportunities.
 - [Contact](https://kuyakhanyafm.web.app/contact): Contact form, map and socials.
 
 ## Shows & Presenters

@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.8, changeFrequency: "monthly" },
     { path: "/news", priority: 0.9, changeFrequency: "daily" },
     { path: "/shows-presenters", priority: 0.9, changeFrequency: "weekly" },
-    { path: "/programmes", priority: 0.8, changeFrequency: "weekly" },
     { path: "/team", priority: 0.7, changeFrequency: "monthly" },
     { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
     { path: "/media-centre", priority: 0.9, changeFrequency: "weekly" },

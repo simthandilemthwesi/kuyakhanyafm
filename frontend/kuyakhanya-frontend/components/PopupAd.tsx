@@ -121,7 +121,7 @@ export default function PopupAd({
         <div className="flex flex-col items-center text-center">
           <Image src={image} alt={title} width={480} height={480} sizes="(max-width: 640px) 70vw, 320px" className="mb-4 h-auto max-h-[38dvh] w-full max-w-[280px] rounded-2xl object-contain" />
           <h3 className="text-lg font-black text-[#1a0b2e] sm:text-xl">{title}</h3>
-          <a href={link} target="_blank" rel="noopener noreferrer sponsored" className="mt-3 inline-block rounded-full bg-[#6a0dad] px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-[#4b0082]">
+          <a href={link} target="_blank" rel="noopener noreferrer sponsored" className="mt-3 inline-block rounded-full bg-[#FD591A] px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-[#d94813]">
             Visit Octotel
           </a>
           <button onClick={minimise} className="mt-3 text-xs font-bold text-zinc-500 underline-offset-2 transition hover:text-[#6a0dad] hover:underline">

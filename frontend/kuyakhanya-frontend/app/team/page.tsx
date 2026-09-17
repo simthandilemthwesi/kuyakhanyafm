@@ -63,7 +63,7 @@ export default function TeamPage() {
         <section className="mt-14">
           <h2 className="text-center text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Presenters</h2>
           <p className="text-center text-xs text-zinc-500 mt-2">{presenters.length} voices • {Array.from(new Set(presenters.map((p) => p.role))).join(" • ")}</p>
-          <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-6 grid-cols-2 lg:grid-cols-4">
             {presenters.map((p) => (
               <MasterCard key={p.slug} person={p} profilePath={`/presenters/${p.slug}`} />
             ))}

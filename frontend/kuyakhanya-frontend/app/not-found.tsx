@@ -3,8 +3,8 @@ import Link from "next/link";
 const QUICK_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/programmes", label: "Programmes" },
-  { href: "/services", label: "Services" },
+  { href: "/shows-presenters", label: "Programmes" },
+  { href: "/media-centre", label: "Media Centre" },
   { href: "/news", label: "News" },
   { href: "/contact", label: "Contact" },
 ];

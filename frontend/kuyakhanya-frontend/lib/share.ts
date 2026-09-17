@@ -24,7 +24,7 @@ function buildShareUrl(
       );
     case "x":
       return (
-        "https://twitter.com/intent/tweet?url=" +
+        "https://x.com/intent/tweet?url=" +
         encodeURIComponent(url) +
         "&text=" +
         encodeURIComponent(title + " — " + description)

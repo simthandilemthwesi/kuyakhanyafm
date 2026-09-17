@@ -6,6 +6,7 @@ import { managers } from "@/lib/people";
 import { SITE_URL } from "@/lib/share";
 import { pageMetadata } from "@/lib/seo";
 import MasterCard from "@/components/MasterCard";
+import BannerAd from "@/components/BannerAd";
 import ShareBar from "@/components/ShareBar";
 
 export function generateStaticParams() {
@@ -107,6 +108,8 @@ export default async function TeamMemberPage({
               </Link>
             </div>
           </div>
+
+          <BannerAd />
 
           <div className="mx-auto mt-14 max-w-5xl">
             <h2 className="text-center font-heading text-xl font-black tracking-tight text-white sm:text-2xl">

@@ -12,12 +12,15 @@ import {
   TikTokIcon,
 } from "@/components/SocialIcons";
 import type { Person } from "@/lib/people";
+import { useOpenProfile } from "./ProfileModalProvider";
 
 /**
  * MasterCard — the KUYAKHANYA FM profile card system (283.5 × 420.75).
  * Portrait-first: ~61% photo area, white bold centered name,
  * gold centered bio, FB → X → LinkedIn → WhatsApp → TikTok → Copy Link.
  * Fixed aspect ratio keeps every card identical at all breakpoints.
+ * Tapping opens the profile in-page (modal); the href stays as the
+ * canonical URL for SEO, crawlers and no-JS.
  * `layout="list"` renders a compact horizontal row for list views.
  */
 export default function MasterCard({
@@ -31,6 +34,7 @@ export default function MasterCard({
 }) {
   const url = `${SITE_URL}${profilePath}`;
   const [copied, setCopied] = useState(false);
+  const open = useOpenProfile(person, profilePath);
 
   async function copyLink() {
     try {
@@ -57,10 +61,10 @@ export default function MasterCard({
     }).url;
 
   const gridBtn =
-    "grid h-5 w-5 place-items-center rounded-full bg-white/10 text-[#F8F8FF]/85 transition hover:bg-[#FFD700] hover:text-[#1a0b2e] sm:h-7 sm:w-7";
+    "grid h-5 w-5 place-items-center rounded-full border border-white/25 bg-white/20 text-[#F8F8FF] transition hover:bg-[#FFD700] hover:text-[#1a0b2e] sm:h-7 sm:w-7";
   const gridIcon = "h-3 w-3 sm:h-3.5 sm:w-3.5";
   const listBtn =
-    "grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/10 text-[#F8F8FF]/85 transition hover:bg-[#FFD700] hover:text-[#1a0b2e] sm:h-8 sm:w-8";
+    "grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/25 bg-white/20 text-[#F8F8FF] transition hover:bg-[#FFD700] hover:text-[#1a0b2e] sm:h-8 sm:w-8";
 
   const icons = (
     <>
@@ -106,7 +110,7 @@ export default function MasterCard({
   if (layout === "list") {
     return (
       <article className="group flex items-center gap-3 rounded-2xl border-2 border-[#FFD700] bg-gradient-to-r from-[#1a0b2e]/80 to-black/60 p-3 shadow-[0_18px_50px_-16px_rgba(75,0,130,0.65)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#FFD700,0_24px_60px_-16px_rgba(255,215,0,0.35)] sm:gap-4 sm:p-4">
-        <Link href={profilePath} aria-label={`${person.name} — view full profile`} className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-[#FFD700]/50 sm:h-20 sm:w-20">
+        <Link href={profilePath} onClick={open} aria-label={`${person.name} — view full profile`} className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-[#FFD700]/50 sm:h-20 sm:w-20">
           <Image
             src={person.photo}
             alt={`${person.name}, ${person.role} on KUYAKHANYA FM`}
@@ -116,7 +120,7 @@ export default function MasterCard({
             loading="lazy"
           />
         </Link>
-        <Link href={profilePath} className="min-w-0 flex-1 text-center">
+        <Link href={profilePath} onClick={open} className="min-w-0 flex-1 text-center">
           <h3 title={person.name} className="text-sm font-black uppercase leading-tight tracking-wide text-[#F8F8FF] line-clamp-1 sm:text-base">
             {person.name}
           </h3>
@@ -156,6 +160,7 @@ export default function MasterCard({
     >
       <Link
         href={profilePath}
+        onClick={open}
         aria-label={`${person.name} — view full profile`}
         className="flex min-h-0 flex-1 flex-col"
       >

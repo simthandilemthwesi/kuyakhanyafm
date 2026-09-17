@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import MasterCard from "@/components/MasterCard";
+import BannerAd from "@/components/BannerAd";
 import { presenters } from "@/lib/people";
 import { pageMetadata } from "@/lib/seo";
 
@@ -25,11 +26,12 @@ export default function PresentersPage() {
       <section className="relative py-16 sm:py-24 overflow-hidden bg-[#0b0a14]">
         <div aria-hidden className="absolute top-0 left-1/3 h-[380px] w-[380px] rounded-full bg-[#4B0082]/14 blur-[100px]" />
         <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {presenters.map((p) => (
               <MasterCard key={p.slug} person={p} profilePath={`/presenters/${p.slug}`} />
             ))}
           </div>
+          <BannerAd />
         </div>
       </section>
     </>

@@ -107,9 +107,8 @@ Developed by Simthandile Mthwesi — https://simthandilemthwesi.vercel.app
 - Home: https://kuyakhanyafm.web.app/
 - About: https://kuyakhanyafm.web.app/about
 - Shows & Presenters: https://kuyakhanyafm.web.app/shows-presenters
-- Programmes: https://kuyakhanyafm.web.app/programmes
 - News: https://kuyakhanyafm.web.app/news
 - Team: https://kuyakhanyafm.web.app/team
-- Services: https://kuyakhanyafm.web.app/services
+- Media Centre: https://kuyakhanyafm.web.app/media-centre
 - Contact: https://kuyakhanyafm.web.app/contact
 - Sitemap: https://kuyakhanyafm.web.app/sitemap.xml

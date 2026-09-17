@@ -33,8 +33,8 @@ export default function Footer() {
             <h4 className="font-bold text-[#ffd700] mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-sm text-white/85">
               <li><Link href="/about" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>About Us</Link></li>
+              <li><Link href="/shows-presenters" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Programmes</Link></li>
               <li><Link href="/media-centre" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Media Centre</Link></li>
-              <li><Link href="/programmes" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Programmes</Link></li>
               <li><Link href="/news" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>News & Updates</Link></li>
               <li><Link href="/team" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Our Team</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Contact Us</Link></li>
@@ -44,8 +44,8 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-[#ffd700] mb-4">Explore</h4>
             <ul className="space-y-2.5 text-sm text-white/85">
-              <li><Link href="/join" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Join Our Team</Link></li>
-              <li><Link href="/partners" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Partners</Link></li>
+              <li><Link href="/contact#contact" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Join Our Team</Link></li>
+              <li><Link href="/media-centre#partnership" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Partner With Us</Link></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Terms of Use</Link></li>
               <li><Link href="/#vision-mission" className="hover:text-white transition-colors inline-flex items-center gap-2"><span className="text-[#ffd700]">›</span>Vision & Mission</Link></li>

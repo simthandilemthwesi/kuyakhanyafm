@@ -12,6 +12,7 @@ import SidebarAd from "@/components/SidebarAd";
 import VignetteAd from "@/components/VignetteAd";
 import CookieBanner from "@/components/CookieBanner";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
+import ProfileModalProvider from "@/components/ProfileModalProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -185,6 +186,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="absolute top-[30%] left-0 h-[1px] w-[70%] bg-gradient-to-r from-transparent via-[#FFD700]/20 to-transparent rotate-[-8deg]" />
             <div className="absolute top-[42%] left-0 h-[1px] w-[55%] bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-[-8deg]" />
           </div>
+          <ProfileModalProvider>
           <Header />
           <SidebarAd image="/images/octotel_sidebar.png" title="Octotel ISP" link="https://octotel.co.za/isp/" />
           <main className="flex-1">{children}</main>
@@ -194,6 +196,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <VignetteAd />
           <CookieBanner />
           <ServiceWorkerRegister />
+          </ProfileModalProvider>
         </AudioProvider>
         {/* Chatbase AI chat bubble — Simbot (Mnj8LreLagzhOq40QMKDW) — keep script exactly as provided, before </body> */}
         <Script id="chatbase-embed" strategy="afterInteractive">
