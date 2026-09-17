@@ -3,7 +3,6 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import BannerAd from "@/components/BannerAd";
 import { siteData } from "@/lib/site-data";
-import { fetchAboutUnified, fetchVisionMissionUnified, fetchAimsUnified } from "@/lib/api";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -15,20 +14,14 @@ export const metadata: Metadata = pageMetadata({
   keywords: ["about Kuyakhanya FM", "Thembalethu story", "vision", "mission", "Christian radio"],
 });
 
-export default async function AboutPage() {
-  const [about, vm, ao] = await Promise.all([
-    fetchAboutUnified().catch(() => null),
-    fetchVisionMissionUnified().catch(() => null),
-    fetchAimsUnified().catch(() => null),
-  ]);
-
-  const history = about?.history?.toString() ?? siteData.aboutUs.history;
-  const vision = about?.vision ?? vm?.vision ?? siteData.aboutUs.vision;
-  const mission = about?.mission ?? vm?.missionItems?.join(" ") ?? siteData.aboutUs.mission;
-  const values = about?.values ?? siteData.aboutUs.values;
-  const metrics = about?.impactMetrics ?? siteData.aboutUs.impactMetrics;
-  const futurePlans = about?.futurePlans?.toString() ?? siteData.aboutUs.futurePlans;
-  const objectives = ao?.objectives ?? siteData.aims;
+export default function AboutPage() {
+  const history = siteData.aboutUs.history;
+  const vision = siteData.aboutUs.vision;
+  const mission = siteData.aboutUs.mission;
+  const values = siteData.aboutUs.values;
+  const metrics = siteData.aboutUs.impactMetrics;
+  const futurePlans = siteData.aboutUs.futurePlans;
+  const objectives = siteData.aims;
 
   return (
     <>

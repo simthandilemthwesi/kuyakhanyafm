@@ -10,14 +10,12 @@ import ListenLive from "@/components/ListenLive";
 import NewsSection from "@/components/NewsSection";
 import EventsSection from "@/components/EventsSection";
 import BannerAd from "@/components/BannerAd";
-import { fetchVisionMission, fetchAimsObjectives } from "@/lib/api";
+import { siteData } from "@/lib/site-data";
 
 // Home — massive premium 3D broadcast experience
-export default async function HomePage() {
-  const [vm, ao] = await Promise.all([
-    fetchVisionMission().catch(() => null),
-    fetchAimsObjectives().catch(() => null),
-  ]);
+export default function HomePage() {
+  const vm = { vision: siteData.vision, missionItems: siteData.mission };
+  const ao = { objectives: siteData.aims };
 
   return (
     <>

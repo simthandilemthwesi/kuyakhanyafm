@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const SITE_URL = "https://kuyakhanyafm.web.app";
 const SITE_NAME = "KUYAKHANYA FM";
-const DEFAULT_OG = "/images/Kuyakhanya FM LOGO.svg";
+const DEFAULT_OG = "/images/Kuyakhanya FM Icon.png";
 const FALLBACK_IMG = "/images/team 1.png";
 const ICON = "/images/Kuyakhanya FM Icon.png";
 

@@ -78,7 +78,7 @@ export const siteData = {
     { name: 'DJ Toto', role: 'Ezakwa Ntu', photo: '/images/team 11.png' },
     { name: 'Mrs Ndziba', role: 'Yizani Sakhe', photo: '/images/team 12.png' },
   ],
-  // v2 additions — fallback for DatoCMS models
+  // v2 additions — services catalogue
   services: [
     { title: 'Live Radio Streaming', slug: 'live-streaming', description: '24/7 online streaming of uplifting gospel music and inspirational programmes.', image: '/images/team 1.png', order: 1 },
     { title: 'Community Outreach', slug: 'community-outreach', description: 'On-the-ground programmes in Thembalethu supporting youth, families and churches.', image: '/images/team 9.png', order: 2 },

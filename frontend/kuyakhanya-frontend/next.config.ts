@@ -11,8 +11,6 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "**.strapi.io" },
       { protocol: "http", hostname: "localhost" },
       { protocol: "https", hostname: "kuyakhanyafm.web.app" },
-      { protocol: "https", hostname: "**.datocms-assets.com" },
-      { protocol: "https", hostname: "www.datocms-assets.com" },
       { protocol: "https", hostname: "cdn.sanity.io" },
       { protocol: "https", hostname: "images.unsplash.com" },
     ],
