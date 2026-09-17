@@ -55,14 +55,15 @@ export default function DownloadPage() {
           {/* Download CTA */}
           <div className="mx-auto max-w-lg text-center">
             <Link
-              href="/downloads/kuyakhanya-fm.apk"
-              download="kuyakhanya-fm.apk"
+              href="https://github.com/simthandilemthwesi/kuyakhanyafm/releases"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#6a0dad] to-[#8a2be2] px-8 py-4 text-sm font-extrabold text-white shadow-lg transition hover:from-[#4b0082] hover:to-[#6a0dad] hover:shadow-[0_0_30px_rgba(106,13,173,0.4)]"
             >
               <span className="h-2 w-2 rounded-full bg-[#FFD700] animate-pulse" />
               Download Android Prototype APK
             </Link>
-            <p className="mt-4 text-xs text-zinc-500">Direct prototype link • v1.0 • Free</p>
+            <p className="mt-4 text-xs text-zinc-500">APK prototype • v1.0 • Free via GitHub Releases</p>
           </div>
         </div>
       </section>
