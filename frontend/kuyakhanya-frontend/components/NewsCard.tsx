@@ -103,14 +103,14 @@ export default function NewsCard({ article, variant = "dark" }: Props) {
         aria-modal="true"
         aria-label={article.title}
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 sm:p-6 ${
+        className={`fixed inset-0 z-[100] flex justify-center overflow-y-auto p-4 transition-opacity duration-300 sm:p-6 ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
         <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" aria-hidden />
         <div
           onClick={(e) => e.stopPropagation()}
-          className={`relative max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-white/10 bg-[#110a1f] shadow-2xl transition-all duration-300 ${
+          className={`relative m-auto max-h-[88dvh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-white/10 bg-[#110a1f] shadow-2xl transition-all duration-300 ${
             open ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0"
           }`}
         >

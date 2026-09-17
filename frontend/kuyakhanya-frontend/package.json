@@ -1,6 +1,6 @@
 {
   "name": "kuyakhanya-frontend",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Kuyakhanya FM v2 — Next.js 16 frontend with Tailwind v4",
   "scripts": {

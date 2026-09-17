@@ -6,7 +6,6 @@ import { useAudio } from "@/components/AudioProvider";
 
 export default function ListenLive() {
   const { isPlaying, isLoading, volume, isMuted, error, currentShow, nowPlaying, togglePlay, setVolume, toggleMute } = useAudio();
-  const [showLegacy, setShowLegacy] = useState(false);
   const stageRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
 
@@ -218,34 +217,6 @@ export default function ListenLive() {
               </div>
             </div>
 
-            {/* Legacy Asura Webplayer — kept as fallback, styled premium but hidden by default */}
-            <div className="mt-6 rounded-2xl bg-black/20 border border-white/10 overflow-hidden">
-              <button
-                onClick={() => setShowLegacy((v) => !v)}
-                className="flex w-full items-center justify-between px-4 py-3 text-left hover:bg-white/[0.04] transition"
-              >
-                <span className="text-xs font-bold tracking-wide text-white/80">
-                  Classic Webplayer <span className="text-white/40 font-normal">(AsuraHosting)</span>
-                </span>
-                <span className="text-xs text-[#FFD700]">{showLegacy ? "Hide ▲" : "Show ▼"}</span>
-              </button>
-              {showLegacy && (
-                <div className="border-t border-white/10 p-3 bg-white/90">
-                  <div className="player-wrap rounded-xl overflow-hidden border border-zinc-200">
-                    <div className="cc_player" data-username="kuyakhan" data-size="sm" data-style="light">
-                      Loading player…
-                    </div>
-                  </div>
-                  <p className="mt-2 text-center text-xs text-zinc-600">Classic player by AsuraHosting. Premium native player above is recommended for best experience.</p>
-                </div>
-              )}
-            </div>
-
-            <style>{`
-              .player-wrap .cc_player, .player-wrap iframe { width: 100% !important; height: 64px; display:block; border:0; }
-              @media (max-width: 480px){ .player-wrap .cc_player, .player-wrap iframe { height: 56px; } }
-            `}</style>
-
             {/* Direct links — easy fallback */}
             <div className="mt-4 flex flex-wrap gap-2 justify-center">
               <a href="https://cast3.asurahosting.com/proxy/kuyakhan/stream" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-5 py-2.5 text-xs font-bold text-white hover:bg-white/15 transition">
@@ -264,8 +235,6 @@ export default function ListenLive() {
         </div>
       </div>
 
-      {/* Load Asura player script once — kept for legacy fallback */}
-      <script dangerouslySetInnerHTML={{ __html: `(function(){ if(typeof window==='undefined') return; if(document.querySelector('script[data-kuyakhanya-player]')) return; var s=document.createElement('script'); s.src='https://cast3.asurahosting.com/system/player.js'; s.async=true; s.setAttribute('data-kuyakhanya-player','1'); document.body.appendChild(s); })();` }} />
     </section>
   );
 }

@@ -63,7 +63,7 @@ export default function DownloadPage() {
               <span className="h-2 w-2 rounded-full bg-[#FFD700] animate-pulse" />
               Download Android Prototype APK
             </Link>
-            <p className="mt-4 text-xs text-zinc-500">APK prototype • v1.0 • Free via GitHub Releases</p>
+            <p className="mt-4 text-xs text-zinc-500">APK prototype • v2.1 • Free via GitHub Releases</p>
           </div>
         </div>
       </section>
