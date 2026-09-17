@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { managers } from "@/lib/people";
 import MasterCard from "@/components/MasterCard";
 
@@ -27,23 +26,6 @@ export default function TeamSection() {
               <MasterCard person={p} profilePath={`/team/${p.slug}`} />
             </div>
           ))}
-        </div>
-        <div className="mt-10 text-center">
-          <Link
-            href="/team"
-            className="inline-flex items-center rounded-full bg-[#FFD700] px-7 py-3 text-sm font-black text-[#1a0b2e] shadow-lg transition hover:bg-[#ffe873]"
-          >
-            Meet the Full Team →
-          </Link>
-        </div>
-
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/team"
-            className="inline-flex items-center rounded-full bg-[#FFD700] px-7 py-3 text-sm font-black text-[#1a0b2e] shadow-lg transition hover:bg-[#ffe873]"
-          >
-            Meet the Full Team →
-          </Link>
         </div>
       </div>
     </section>

@@ -39,7 +39,8 @@ const SECTIONS: { heading: string; body: string[] }[] = [
   {
     heading: "Analytics and advertising",
     body: [
-      "We use Google Analytics to understand aggregated listening and reading trends, and Google AdSense plus direct sponsorships (such as Octotel placements) to keep the station running. These providers may set their own cookies as described in Google's Privacy Policy.",
+      "We use Google Analytics to understand aggregated listening and reading trends. These providers may set their own cookies as described in Google's Privacy Policy.",
+      "Advertising across our platform is served exclusively through our own controlled advertising network, operated by KUYAKHANYA FM. We do not serve third-party advertising-network placements on this website; all sponsorships and placements are managed directly by the station.",
       "Our pages embed third-party content such as YouTube players, which may collect viewing data under their own policies.",
     ],
   },
