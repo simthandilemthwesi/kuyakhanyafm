@@ -105,7 +105,7 @@ export const metadata: Metadata = {
       "Bringing light to Thembalethu through Christ — live 24/7, presenters, shows, news & community. Listen live now.",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "KUYAKHANYA FM — We Shine Brighter Together | Thembalethu, George",
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     creator: "@KuyakhanyaFM",
     title: "KUYAKHANYA FM — We Shine Brighter Together",
     description: "Live Christian radio from Thembalethu, George. Music, shows, presenters & community — 24/7.",
-    images: ["/opengraph-image", "/images/team 1.png"],
+    images: ["/images/og-image.png", "/images/team 1.png"],
   },
   verification: {
     google: "WYqd-jCyaCfFiV0lY5ugrmAlbOoDJFCaRae4Od6pvAo",
@@ -170,11 +170,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Script id="gtag-config" strategy="afterInteractive">
             {`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-VED5B4WH4B');`}
           </Script>
-          {/* Google AdSense */}
-          <Script id="adsense"
+          {/* Google AdSense — plain script tag (next/script adds data-nscript, which AdSense warns about) */}
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+          <script
             async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6092968632954371"
-            strategy="afterInteractive"
             crossOrigin="anonymous"
           />
           {/* Broadcast ambient layers — fixed */}

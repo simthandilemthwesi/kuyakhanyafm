@@ -77,14 +77,14 @@ export default function ListenLive() {
           {/* top highlight */}
           <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-          <div className="p-5 sm:p-7 lg:p-8">
+          <div className="p-4 sm:p-7 lg:p-8">
             {/* Station header */}
             <div className="flex items-center gap-4">
               <div className="relative shrink-0">
                 <div className="absolute inset-0 rounded-2xl bg-[#FFD700]/20 blur-xl" />
                 <Image
                   src="/images/Kuyakhanya FM Icon.png"
-                  alt="KUYAKHANYA FM"
+                  alt="KUYAKHANYA FM live radio station logo — listen live online 24/7"
                   width={64}
                   height={64}
                   className="relative h-14 w-14 sm:h-16 sm:w-16 rounded-2xl object-cover border border-white/15 shadow-lg shadow-black/20"
@@ -142,8 +142,8 @@ export default function ListenLive() {
                 </div>
 
                 {/* Waveform — small, premium, visible always but animates when playing */}
-                <div className="mt-4 rounded-xl bg-white/[0.04] border border-white/10 p-3">
-                  <div className="flex items-end justify-center gap-[3px] h-[32px]">
+                <div className="mt-4 rounded-xl bg-white/[0.04] border border-white/10 p-3 overflow-hidden">
+                  <div className="flex items-end justify-center gap-[3px] h-[32px] max-w-full">
                     {Array.from({ length: 24 }).map((_, i) => (
                       <span
                         key={i}
@@ -211,9 +211,9 @@ export default function ListenLive() {
 
                 {/* Easy special features row */}
                 <div className="grid grid-cols-3 gap-2">
-                  <button onClick={handleShare} className="rounded-xl bg-white text-[#1a0b2e] py-2.5 text-xs font-black hover:bg-white/90 transition">Share</button>
-                  <button onClick={handlePopout} className="rounded-xl bg-[#FFD700] text-[#1a0b2e] py-2.5 text-xs font-black hover:bg-[#ffe873] transition">Pop-out</button>
-                  <a href="https://wa.me/27639780839" target="_blank" rel="noreferrer" className="grid place-items-center rounded-xl bg-white/10 border border-white/15 text-white text-xs font-bold hover:bg-white/15 transition">WhatsApp</a>
+                  <button onClick={handleShare} className="rounded-xl bg-white text-[#1a0b2e] py-2.5 text-[11px] sm:text-xs font-black whitespace-nowrap hover:bg-white/90 transition">Share</button>
+                  <button onClick={handlePopout} className="rounded-xl bg-[#FFD700] text-[#1a0b2e] py-2.5 text-[11px] sm:text-xs font-black whitespace-nowrap hover:bg-[#ffe873] transition">Pop-out</button>
+                  <a href="https://wa.me/27639780839" target="_blank" rel="noreferrer" className="grid place-items-center rounded-xl bg-white/10 border border-white/15 text-white text-[11px] sm:text-xs font-bold whitespace-nowrap hover:bg-white/15 transition">WhatsApp</a>
                 </div>
               </div>
             </div>

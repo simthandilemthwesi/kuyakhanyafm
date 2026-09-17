@@ -55,7 +55,7 @@ export function radioStationJsonLd() {
       "https://www.tiktok.com/@kuyakhanyafm",
     ],
     logo: `${site}/images/Kuyakhanya%20FM%20Icon.png`,
-    image: `${site}/opengraph-image`,
+    image: `${site}/images/og-image.png`,
     parentOrganization: {
       "@type": "Organization",
       name: "KUYAKHANYA FM",
