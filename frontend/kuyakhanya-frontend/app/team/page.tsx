@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ProfileCard from "@/components/ProfileCard";
 import PageHero from "@/components/PageHero";
+import MasterCard from "@/components/MasterCard";
 import BannerAd from "@/components/BannerAd";
-import { siteData } from "@/lib/site-data";
-import { fetchManagementTeam, fetchTechnicians, fetchPresenters } from "@/lib/api";
+import { managers, presenters } from "@/lib/people";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -17,44 +16,10 @@ export const metadata: Metadata = pageMetadata({
   type: "profile",
 });
 
-function Card({
-  name,
-  role,
-  bio,
-  photo,
-}: {
-  name: string;
-  role: string;
-  bio?: string;
-  photo: string;
-  featured?: boolean;
-}) {
-  return <ProfileCard name={name} role={role} bio={bio} photo={photo} sharePath="/team" />;
-}
-
-export default async function TeamPage() {
-  // Fetch from Strapi; fall back to site-data when offline
-  const [cmsManagers, cmsTechs, cmsPresenters] = await Promise.all([
-    fetchManagementTeam().catch(() => []),
-    fetchTechnicians().catch(() => []),
-    fetchPresenters().catch(() => []),
-  ]);
-
-  const md = siteData.managingDirector;
-  const managers =
-    cmsManagers.length > 0
-      ? cmsManagers.map((m) => ({
-          name: m.name,
-          role: m.role,
-          bio: m.bio ?? undefined,
-          photo: (m.photo as unknown as { url?: string })?.url ? `${process.env.NEXT_PUBLIC_STRAPI_URL ?? ""}${(m.photo as unknown as { url: string }).url}` : undefined,
-        }))
-      : null;
-
-  // Use static fallback for now (images already in /public)
-  const managementList = siteData.managementTeam;
-  const technician = siteData.technician;
-  const presenters = siteData.presenters;
+export default function TeamPage() {
+  const md = managers[0];
+  const managementList = managers.slice(1, 3);
+  const technician = managers[3];
 
   return (
     <>
@@ -69,8 +34,8 @@ export default async function TeamPage() {
         {/* Managing Director */}
         <section className="text-center">
           <h2 className="text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Managing Director</h2>
-          <div className="mx-auto mt-7 max-w-[420px]">
-            <Card name={md.name} role={md.role} bio={md.bio} photo={md.photo} featured />
+          <div className="mx-auto mt-7 max-w-[320px]">
+            <MasterCard person={md} profilePath={`/team/${md.slug}`} />
           </div>
         </section>
 
@@ -79,7 +44,7 @@ export default async function TeamPage() {
           <h2 className="text-center text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Management Team</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
             {managementList.map((m) => (
-              <Card key={m.name} name={m.name} role={m.role} bio={m.bio} photo={m.photo} />
+              <MasterCard key={m.slug} person={m} profilePath={`/team/${m.slug}`} />
             ))}
           </div>
         </section>
@@ -89,8 +54,8 @@ export default async function TeamPage() {
         {/* Technician */}
         <section className="mt-14">
           <h2 className="text-center text-xs font-bold tracking-[0.25em] text-[#6a0dad] uppercase">Technician</h2>
-          <div className="mt-8 max-w-[380px] mx-auto">
-            <Card name={technician.name} role={technician.role} bio={technician.bio} photo={technician.photo} />
+          <div className="mt-8 max-w-[320px] mx-auto">
+            <MasterCard person={technician} profilePath={`/team/${technician.slug}`} />
           </div>
         </section>
 
@@ -100,12 +65,10 @@ export default async function TeamPage() {
           <p className="text-center text-xs text-zinc-500 mt-2">{presenters.length} voices • {Array.from(new Set(presenters.map((p) => p.role))).join(" • ")}</p>
           <div className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {presenters.map((p) => (
-              <Card key={p.name} name={p.name} role={p.role} photo={p.photo} />
+              <MasterCard key={p.slug} person={p} profilePath={`/presenters/${p.slug}`} />
             ))}
           </div>
         </section>
-
-        <BannerAd />
 
         <div className="mt-12 text-center">
           <Link href="/contact" className="inline-flex rounded-full bg-[#6a0dad] px-7 py-3.5 text-sm font-bold text-white hover:bg-[#4b0082] transition-colors shadow-md">

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { siteData } from "@/lib/site-data";
+import { presenters } from "@/lib/people";
+import MasterCard from "@/components/MasterCard";
 import BannerAd from "@/components/BannerAd";
 import { shareTarget, SHARE_NETWORKS, SITE_URL } from "@/lib/share";
 import {
@@ -112,56 +113,12 @@ export function ShowCard({ show }: { show: Show }) {
   );
 }
 
-function PresenterCardSP({ p }: { p: (typeof siteData.presenters)[number] }) {
-  const initials = p.name
-    .split(" ")
-    .slice(-2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
-  return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-[24px] glass-purple p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,215,0,0.15)]">
-      {/* 3D wave overlay on hover */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background:
-            "radial-gradient(120% 120% at 50% 0%, rgba(138,43,226,0.28) 0%, transparent 55%), radial-gradient(100% 100% at 50% 100%, rgba(255,215,0,0.15) 0%, transparent 55%)",
-        }}
-      />
-      <div className="relative">
-        <div className="relative mx-auto h-32 w-32 rounded-full p-[3px] bg-gradient-to-br from-[#FFD700] via-[#8a2be2] to-[#4B0082] shadow-[0_0_20px_rgba(255,215,0,0.3)]">
-          <div className="h-full w-full rounded-full overflow-hidden border-2 border-[#1a0b2e] bg-gradient-to-br from-[#1a0b2e] to-[#4B0082] grid place-items-center">
-            <img src={p.photo} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
-          </div>
-        </div>
-        <h3 className="mt-4 text-base font-black text-white">{p.name}</h3>
-        <p className="mt-0.5 text-xs font-black tracking-[0.14em] text-[#FFD700] uppercase">{p.role}</p>
-        <div className="mt-4 flex justify-center">
-          <ShareIcons
-            item={p.name}
-            title={`${p.name} — KUYAKHANYA FM Presenter`}
-            description={`Meet ${p.name}, presenter of ${p.role} on KUYAKHANYA FM.`}
-            networks={[
-              { id: "facebook", label: "Facebook" },
-              { id: "x", label: "X" },
-              { id: "instagram", label: "Instagram" },
-              { id: "linkedin", label: "LinkedIn" },
-              { id: "youtube", label: "YouTube" },
-              { id: "whatsapp", label: "WhatsApp" },
-            ]}
-          />
-        </div>
-      </div>
-    </article>
-  );
-}
-
 export default function ShowsPresentersClient() {
   const [dayFilter, setDayFilter] = useState<(typeof DAYS)[number]>("All");
   const [view, setView] = useState<"grid" | "list">("grid");
+  const [pView, setPView] = useState<"grid" | "list">("grid");
 
-  const featured = useMemo(() => siteData.presenters, []);
+  const featured = useMemo(() => presenters, []);
   const filteredShows = useMemo(
     () => (dayFilter === "All" ? SHOWS : SHOWS.filter((s) => s.day === dayFilter)),
     [dayFilter]
@@ -281,11 +238,40 @@ export default function ShowsPresentersClient() {
             <div className="mx-auto mt-6 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#FFD700] to-[#ffb300]" />
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((p) => (
-              <PresenterCardSP key={p.name} p={p} />
-            ))}
+          <div className="mt-8 flex justify-center">
+            <div className="flex items-center gap-1 rounded-full bg-white/10 border border-white/10 p-1" role="tablist" aria-label="Presenters view">
+              <button
+                role="tab"
+                aria-selected={pView === "grid"}
+                onClick={() => setPView("grid")}
+                className={`rounded-full px-4 py-1.5 text-xs font-black transition ${pView === "grid" ? "bg-[#FFD700] text-[#1a0b2e]" : "text-white/70 hover:text-white"}`}
+              >
+                Grid
+              </button>
+              <button
+                role="tab"
+                aria-selected={pView === "list"}
+                onClick={() => setPView("list")}
+                className={`rounded-full px-4 py-1.5 text-xs font-black transition ${pView === "list" ? "bg-[#FFD700] text-[#1a0b2e]" : "text-white/70 hover:text-white"}`}
+              >
+                List
+              </button>
+            </div>
           </div>
+
+          {pView === "grid" ? (
+            <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
+              {featured.map((p) => (
+                <MasterCard key={p.slug} person={p} profilePath={`/presenters/${p.slug}`} />
+              ))}
+            </div>
+          ) : (
+            <div className="mx-auto mt-8 max-w-3xl space-y-3">
+              {featured.map((p) => (
+                <MasterCard key={p.slug} person={p} profilePath={`/presenters/${p.slug}`} layout="list" />
+              ))}
+            </div>
+          )}
         </div>
       </section>
       <BannerAd />

@@ -140,10 +140,10 @@ export const siteData = {
     mission: 'To spread Christ’s light, uplift families and promote local talent through radio.',
     values: ['Faith', 'Community', 'Excellence', 'Integrity', 'Service'],
     impactMetrics: [
-      { label: 'Listeners', value: '5000', suffix: '+' },
-      { label: 'Presenters', value: '15', suffix: '+' },
+      { label: 'Listeners', value: '50 000', suffix: '+' },
+      { label: 'Presenters', value: '10', suffix: '+' },
       { label: 'Programmes', value: '8', suffix: '' },
-      { label: 'Years Serving', value: '2', suffix: '+' },
+      { label: 'Years Serving', value: '1', suffix: '+' },
     ],
     futurePlans: 'Expand to FM broadcast, build a youth training studio, and launch a mobile app for offline listening.',
     heroImage: '/images/team 1.png',

@@ -21,7 +21,7 @@ const EVENTS: EventCard[] = [
   },
   {
     title: "AmaVundle Amahle Cultural Event",
-    date: "Mid-Oct 2028",
+    date: "03 Oct 2026",
     location: "Thundergate, Ntabethemba, Komani, EC",
     description:
       "KUYAKHANYA FM heads to Ntabethemba for the amaVundle Amahle Cultural Event — all nations gather. Stay tuned to our pages for updates.",

@@ -26,7 +26,7 @@ const EVENTS = [
   },
   {
     title: "AmaVundle Amahle Cultural Event",
-    date: "Mid-October 2028",
+    date: "03 October 2026",
     location: "Thundergate, Ntabethemba, Komani, EC",
     image: "/images/amavundle_launch_event.JPG",
     hashtag: "#KuyakhanyaFM #WeShineBrighterTogether",

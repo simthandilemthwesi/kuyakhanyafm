@@ -1,14 +1,7 @@
-import { siteData } from "@/lib/site-data";
-import ProfileCard from "@/components/ProfileCard";
+import { managers } from "@/lib/people";
+import MasterCard from "@/components/MasterCard";
 
 export default function TeamSection() {
-  const staff = [
-    siteData.managingDirector,
-    siteData.managementTeam[0],
-    siteData.managementTeam[1],
-    siteData.technician,
-  ];
-
   return (
     <section id="team" className="relative py-16 sm:py-24 overflow-hidden">
       <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-[#0b0a14] via-[#110a1f] to-[#0b0a14]" />
@@ -27,10 +20,10 @@ export default function TeamSection() {
           <div className="mx-auto mt-6 h-[3px] w-16 rounded-full bg-gradient-to-r from-[#FFD700] to-[#ffb300]" />
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
-          {staff.map((p) => (
-            <div key={p.name} className="h-full" style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
-              <ProfileCard name={p.name} role={p.role} bio={p.bio} photo={p.photo ?? ""} sharePath="/team" />
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
+          {managers.map((p) => (
+            <div key={p.slug} className="h-full" style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
+              <MasterCard person={p} profilePath={`/team/${p.slug}`} />
             </div>
           ))}
         </div>

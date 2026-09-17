@@ -1,10 +1,14 @@
 import Link from "next/link";
-import { siteData } from "@/lib/site-data";
-import ProfileCard from "@/components/ProfileCard";
+import { presenters, type Person } from "@/lib/people";
+import MasterCard from "@/components/MasterCard";
+
+const HOME_PICKS = ["sbu-hamza", "kay-cee", "mrs-klaas", "mrs-ndziba"];
 
 export default function PresentersSection() {
-  // Home shows the first 4 presenters — the full list lives on /team
-  const featured = siteData.presenters.slice(0, 4);
+  // Homepage shows SBU, Kay Cee, Mrs Klaas and Mrs Ndziba only
+  const featured = HOME_PICKS.map((slug) => presenters.find((p) => p.slug === slug)).filter(
+    (p): p is Person => Boolean(p)
+  );
 
   return (
     <section id="presenters" className="relative py-16 sm:py-24 overflow-hidden">
@@ -26,7 +30,7 @@ export default function PresentersSection() {
             href="/team"
             className="hidden sm:inline-flex items-center rounded-full bg-white/10 border border-white/15 backdrop-blur px-5 py-2.5 text-sm font-bold text-white hover:bg-white/15 hover:border-[#FFD700]/30 transition"
           >
-            View All {siteData.presenters.length} Presenters →
+            View All {presenters.length} Presenters →
           </Link>
         </div>
 
@@ -34,17 +38,17 @@ export default function PresentersSection() {
           The voices guiding each KUYAKHANYA FM show — faith, community and inspiration for Thembalethu.
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4" style={{ perspective: "1200px" } as React.CSSProperties}>
           {featured.map((p) => (
-            <div key={p.name} className="h-full" style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
-              <ProfileCard name={p.name} role={p.role} photo={p.photo} sharePath="/shows-presenters#sp-presenters" />
+            <div key={p.slug} className="h-full" style={{ transformStyle: "preserve-3d" } as React.CSSProperties}>
+              <MasterCard person={p} profilePath={`/presenters/${p.slug}`} />
             </div>
           ))}
         </div>
 
         <div className="mt-8 flex sm:hidden justify-center">
           <Link href="/team" className="inline-flex items-center rounded-full bg-[#FFD700] px-6 py-3 text-sm font-black text-[#1a0b2e] shadow-lg">
-            View All {siteData.presenters.length} Presenters →
+            View All {presenters.length} Presenters →
           </Link>
         </div>
       </div>

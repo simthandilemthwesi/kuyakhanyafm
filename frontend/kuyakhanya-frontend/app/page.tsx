@@ -35,8 +35,8 @@ export default async function HomePage() {
       <BannerAd />
       <ListenLive />
       <NewsSection />
-      <BannerAd />
       <EventsSection />
+      <BannerAd />
       </>
   );
 }
