@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/simthandilemthwesi/kuyakhanyafm/main/frontend/kuyakhanya-frontend/public/images/og-image.png" alt="KUYAKHANYA FM" width="100%" />
+  <img src="https://github.com/simthandilemthwesi/kuyakhanyafm/main/frontend/kuyakhanya-frontend/public/images/og-image.png" alt="KUYAKHANYA FM" width="100%" />
 </p>
 
 # KUYAKHANYA FM — Website & Digital Platform
