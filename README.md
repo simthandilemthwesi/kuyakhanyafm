@@ -6,7 +6,9 @@
 
 > Community-focused Christian radio station website — Next.js 16 static export on Firebase Hosting (Spark free tier).
 
-**Live:** https://kuyakhanyafm.web.app
+> **Official website:** [https://kuyakhanyafm.web.app](https://kuyakhanyafm.web.app)
+
+**Live website:** [https://kuyakhanyafm.web.app](https://kuyakhanyafm.web.app)
 **Admin:** https://admin-kuyakhanyafm.web.app
 **Version:** 2.1.0
 **Developer:** Mr Simthandile Mthwesi
@@ -14,7 +16,6 @@
 
 ---
 
----
 
 ## 🤝 Open Collaboration & Contributions
 
