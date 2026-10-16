@@ -1,5 +1,6 @@
 # Kuyakhanya FM — Backend v2 (Strapi 5 + Supabase + Cloudinary)
 
+> **Official website:** [https://kuyakhanyafm.web.app](https://kuyakhanyafm.web.app)
 > **Version:** 2.0.0  |  **Stack:** Strapi 5.52.1 • PostgreSQL (Supabase free tier) • Cloudinary free tier • GraphQL
 
 ## Quick Start
