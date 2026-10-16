@@ -14,6 +14,34 @@
 
 ---
 
+---
+
+## 🤝 Open Collaboration & Contributions
+
+Kuyakhanya FM welcomes developers, designers, testers, and community members interested in improving the station's digital platform. Contributions can include bug fixes, accessibility improvements, responsive design, performance, documentation, and thoughtful feature proposals.
+
+### How to contribute
+
+1. Browse the repository and review the existing project structure.
+2. Open a GitHub Issue to report a bug or discuss a substantial change.
+3. Fork the repository and create a focused branch for your contribution.
+4. Test your changes and describe them clearly in a pull request.
+5. Be respectful, constructive, and avoid including secrets, credentials, or private data.
+
+Please discuss major changes before investing significant work. Contribution proposals should relate to the **Kuyakhanya FM website project only**.
+
+### Project and development credits
+
+- **Project sponsor / supporting organisation:** [Mthwesi Group (PTY) LTD](https://mthwesigroup.web.app)
+- **Coding and development services:** [Simthandile Mthwesi](https://simthandilemthwesi.vercel.app)
+- **Live website:** [kuyakhanyafm.web.app](https://kuyakhanyafm.web.app)
+
+We welcome constructive collaboration that helps make the Kuyakhanya FM digital experience more useful, accessible, and reliable.
+
+### Project scope
+
+This repository is for the Kuyakhanya FM website and digital platform. It is separate from the George Bakhanyiselwa Ngwe Bawo NPC project.
+
 ## What Is This?
 
 The official website for **KUYAKHANYA FM** — a Christian community radio station in Thembalethu, George, South Africa. It serves as the station's digital home: live streaming, show schedules, presenter profiles, news, events, contact forms, a custom ad system, and a download page for the Android app.
