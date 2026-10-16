@@ -1,0 +1,17 @@
+# These are supported funding model platforms.
+# Add only accounts or URLs that are configured to receive sponsorships/donations.
+# Website and developer credits are documented in README.md.
+
+github: # Up to 4 GitHub Sponsors-enabled usernames, e.g. [user1, user2]
+patreon: # Patreon username
+open_collective: # Open Collective project name
+ko_fi: # Ko-fi username
+tidelift: # Tidelift platform/package, e.g. npm/babel
+community_bridge: # Community Bridge project name
+liberapay: # Liberapay username
+issuehunt: # IssueHunt username
+lfx_crowdfunding: # LFX Crowdfunding project name
+polar: # Polar username
+buy_me_a_coffee: # Buy Me a Coffee username
+thanks_dev: # thanks.dev username
+custom: # Up to 4 actual sponsorship URLs, e.g. ['https://example.com/sponsor']
